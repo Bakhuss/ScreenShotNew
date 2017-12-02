@@ -12,7 +12,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class MainClass extends Application {
 
@@ -51,8 +54,8 @@ public class MainClass extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
-        this.primaryStage.setResizable(false);
-        this.primaryStage.setTitle("ScreenShot");
+//        this.primaryStage.setResizable(false);
+//        this.primaryStage.setTitle();
 
         show();
     }
@@ -61,7 +64,11 @@ public class MainClass extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainClass.class.getResource("view/mainView.fxml"));
+            loader.setResources(ResourceBundle.getBundle("bundles.Locale", new Locale("en")));
             AnchorPane mainView = (AnchorPane) loader.load();
+
+            getPrimaryStage().setResizable(false);
+            getPrimaryStage().setTitle(loader.getResources().getString("app.name"));
 
             Scene scene = new Scene(mainView);
             primaryStage.setScene(scene);
