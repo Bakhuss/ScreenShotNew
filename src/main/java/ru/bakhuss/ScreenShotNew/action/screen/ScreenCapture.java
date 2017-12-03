@@ -1,6 +1,7 @@
 package ru.bakhuss.ScreenShotNew.action.screen;
 
 import ru.bakhuss.ScreenShotNew.MainClass;
+import ru.bakhuss.ScreenShotNew.model.media.Media;
 import ru.bakhuss.ScreenShotNew.model.media.Photo;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
@@ -39,13 +40,15 @@ public class ScreenCapture {
                 public void run() {
                     do {
                         try {
-                            photo.addPhoto(System.currentTimeMillis(), new Robot().createScreenCapture(rectangle));
+//                            photo.addPhoto(System.currentTimeMillis(), new Robot().createScreenCapture(rectangle));
+
+                            photo.getMap().put(System.currentTimeMillis(), new Robot().createScreenCapture(rectangle));
                         } catch (AWTException e) {
                             e.printStackTrace();
                         }
                     } while (System.currentTimeMillis() - t < timeScreen * 1000);
-                    System.out.print("run" + w + " - " + photo.size() + "; ");
-                    getFrames().addAndGet(photo.size());
+                    System.out.print("run" + w + " - " + photo.getMap().size() + "; ");
+                    getFrames().addAndGet(photo.getMap().size());
                 }
             });
         }

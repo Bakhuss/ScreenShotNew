@@ -5,7 +5,16 @@ import ru.bakhuss.ScreenShotNew.model.person.Person;
 import java.awt.image.BufferedImage;
 import java.util.*;
 
-public class Photo {
+public class Photo extends Media {
+
+    public Photo(Person person) {
+        super(person);
+//        this.type = MediaType.PHOTO;
+    }
+
+
+    /*
+
 
     private LinkedHashMap map = null;
     private Person person = null;
@@ -30,5 +39,6 @@ public class Photo {
     public int size() {
         return map.size();
     }
+*/
 
 }

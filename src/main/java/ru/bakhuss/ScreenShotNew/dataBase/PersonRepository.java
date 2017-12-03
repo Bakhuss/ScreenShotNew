@@ -2,14 +2,14 @@ package ru.bakhuss.ScreenShotNew.dataBase;
 
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
-public interface PersonRepository {
+public interface PersonRepository extends Repository<Person> {
 
 
-    void setPerson(Person person);
+    void set(Person person);
 
-    Person getPerson();
+    Person get();
 
-    void updatePerson(Person person);
+    void update(Person person);
 
-    void removePerson(Person person);
+    void remove(Person person);
 }

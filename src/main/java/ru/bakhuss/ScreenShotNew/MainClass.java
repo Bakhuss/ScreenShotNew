@@ -1,9 +1,12 @@
 package ru.bakhuss.ScreenShotNew;
 
+import ru.bakhuss.ScreenShotNew.dataBase.SQLiteMedia;
+import ru.bakhuss.ScreenShotNew.model.media.Audio;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
-import ru.bakhuss.ScreenShotNew.model.media.Photo1;
+import ru.bakhuss.ScreenShotNew.model.media.Photo;
+import ru.bakhuss.ScreenShotNew.model.media.Video;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
-import ru.bakhuss.ScreenShotNew.model.person.Person1;
+import ru.bakhuss.ScreenShotNew.model.person.PersonalData;
 import ru.bakhuss.ScreenShotNew.view.mainViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +15,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.awt.*;
-import java.io.File;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -40,11 +45,15 @@ public class MainClass extends Application {
         MainClass.mainMinWidth = mainMinWidth;
     }
 
-    public MainClass() {}
+    public MainClass() {
+    }
 
-    void method() {
-        Media photo = new Photo1(new Person());
-        Person1 person1 = new Person1();
+    static void method() {
+        Person person = new Person();
+        Media media = new Video(person);
+        SQLiteMedia sqLiteMedia = new SQLiteMedia();
+        sqLiteMedia.set(media);
+        System.out.println(media.getClass().getSimpleName());
     }
 
     public static Stage getPrimaryStage() {
@@ -87,8 +96,8 @@ public class MainClass extends Application {
     }
 
     public static void setMainMinSize() {
-        MainClass.getPrimaryStage().setWidth( MainClass.getMainMinWidth() );
-        MainClass.getPrimaryStage().setHeight( MainClass.getMainMinHeight() );
+        MainClass.getPrimaryStage().setWidth(MainClass.getMainMinWidth());
+        MainClass.getPrimaryStage().setHeight(MainClass.getMainMinHeight());
     }
 
     public static int getScreenMaxWidth() {
@@ -100,6 +109,7 @@ public class MainClass extends Application {
     }
 
     public static void main(String[] args) {
+        method();
         launch(args);
     }
 

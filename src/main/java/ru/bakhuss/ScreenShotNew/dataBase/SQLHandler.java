@@ -7,23 +7,23 @@ public class SQLHandler {
     private Connection connection;
     private Statement stms;
     private PreparedStatement pstmt;
-    private String dbType;
+    private DBType type;
     private String user = null;
     private String password = null;
 
-    SQLHandler(String dbType) {
-        this.dbType = dbType;
+    SQLHandler(DBType type) {
+        this.type = type;
     }
 
-    SQLHandler(String dbType, String user, String password) {
-        this.dbType = dbType;
+    SQLHandler(DBType type, String user, String password) {
+        this.type = type;
         this.user = user;
         this.password = password;
     }
 
 
     public void connect() throws SQLException {
-        connection = DriverManager.getConnection(DataBaseFile.getUrlDB(dbType), user, password);
+        connection = DriverManager.getConnection(DataBaseFile.getUrlDB(type.toString()), user, password);
         stms = connection.createStatement();
     }
 

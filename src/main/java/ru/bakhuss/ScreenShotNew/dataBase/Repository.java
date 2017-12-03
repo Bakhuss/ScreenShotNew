@@ -1,4 +1,4 @@
-package ru.bakhuss.ScreenShotNew.model.person;
+package ru.bakhuss.ScreenShotNew.dataBase;
 
 public interface Repository <T> {
     void set(T t);

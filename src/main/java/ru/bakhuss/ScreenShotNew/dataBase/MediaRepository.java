@@ -2,13 +2,13 @@ package ru.bakhuss.ScreenShotNew.dataBase;
 
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 
-public interface MediaRepository {
+public interface MediaRepository extends Repository<Media<? extends Media>> {
 
-    void setMedia();
+    void set(Media<? extends Media> media);
 
-    Media getMedia();
+    Media<? extends Media> get();
 
-    void updateMedia();
+    void update(Media<? extends Media> media);
 
-    void removeMedia();
+    void remove(Media<? extends Media> media);
 }

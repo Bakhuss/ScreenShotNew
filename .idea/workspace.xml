@@ -4,7 +4,40 @@
     <list default="true" id="626d3047-9691-4470-a2b8-305cc1101216" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/action/screen/ScreenCapture.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/action/screen/ScreenCapture.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/bundles/Locale_ru_RU.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/bundles/Locale_ru_en.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/DataBaseFile.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/DataBaseFile.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/MediaRepository.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/MediaRepository.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/PersonRepository.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/PersonRepository.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLHandler.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLHandler.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLite.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Media.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Media.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaRep.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Photo.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Photo.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Photo1.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/Person.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/Person.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/Person1.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/PersonRep.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/PersonalData.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/PersonalData.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/Repository.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/Repository.java" />
       <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/MainClass.class" afterPath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/MainClass.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/action/screen/ScreenCapture$1.class" afterPath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/action/screen/ScreenCapture$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/action/screen/ScreenCapture.class" afterPath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/action/screen/ScreenCapture.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/dataBase/DataBaseFile.class" afterPath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/dataBase/DataBaseFile.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/dataBase/MediaRepository.class" afterPath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/dataBase/MediaRepository.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/dataBase/PersonRepository.class" afterPath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/dataBase/PersonRepository.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/dataBase/SQLHandler.class" afterPath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/dataBase/SQLHandler.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/dataBase/SQLite.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/media/Media.class" afterPath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/media/Media.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/media/MediaRep.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/media/Photo.class" afterPath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/media/Photo.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/media/Photo1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/person/Person.class" afterPath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/person/Person.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/person/Person1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/person/PersonRep.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/person/PersonalData.class" afterPath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/person/PersonalData.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/bakhuss/ScreenShotNew/model/person/Repository.class" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,13 +49,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Audio.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Audio.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1248">
-              <caret line="77" column="42" lean-forward="false" selection-start-line="77" selection-start-column="42" selection-end-line="77" selection-end-column="42" />
-              <folding />
+            <state relative-caret-position="1650">
+              <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+              <folding>
+                <element signature="e#1817#1818#0" expanded="true" />
+                <element signature="e#1852#1853#0" expanded="true" />
+                <element signature="e#3360#3361#0" expanded="true" />
+                <element signature="e#3416#3417#0" expanded="true" />
+                <element signature="e#3462#3463#0" expanded="true" />
+                <element signature="e#3519#3520#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -30,9 +80,14 @@
       <file leaf-file-name="Media.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Media.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-              <folding />
+            <state relative-caret-position="110">
+              <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+              <folding>
+                <element signature="e#524#525#0" expanded="true" />
+                <element signature="e#550#551#0" expanded="true" />
+                <element signature="e#583#584#0" expanded="true" />
+                <element signature="e#612#613#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -41,7 +96,43 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Photo.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="154">
-              <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+              <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScreenCapture.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/action/screen/ScreenCapture.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="39" column="35" lean-forward="true" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SQLiteMedia.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLiteMedia.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#235#236#0" expanded="true" />
+                <element signature="e#293#294#0" expanded="true" />
+                <element signature="e#578#579#0" expanded="true" />
+                <element signature="e#605#606#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Video.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Video.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="8" column="2" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -57,6 +148,7 @@
         <option value="Interface" />
         <option value="Properties" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -80,15 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/ru/ff.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/dataBase/Repository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/model/Person.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/dataBase/FromDB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/model/Person/Media.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/dataBase/Repository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/model/Media.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/dataBase/DataBaseFile.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/dataBase/PersonRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/dataBase/SQLHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/model/Person/Person.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/dataBase/MediaRepository.java" />
@@ -121,9 +204,25 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/Learndb/view/mainViewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/Learndb/model/person/PersonalData.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/bundles/Locale_en_GB.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Med.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaRep.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/docs/RU/Passport.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/Person.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/PersonalData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/PersonRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/Repository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLite.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/DBType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/DataBaseFile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLiteMedia.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/MediaRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Video.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Audio.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Photo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/action/screen/ScreenCapture.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Media.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java" />
       </list>
     </option>
   </component>
@@ -134,7 +233,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
     <option name="width" value="1378" />
     <option name="height" value="745" />
@@ -225,7 +324,26 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ScreenShotNew" type="462c0819:PsiDirectoryNode" />
-              <item name="bundles" type="462c0819:PsiDirectoryNode" />
+              <item name="action" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ScreenShotNew" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ScreenShotNew" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ScreenShotNew" type="462c0819:PsiDirectoryNode" />
+              <item name="action" type="462c0819:PsiDirectoryNode" />
+              <item name="screen" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ScreenShotNew" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ScreenShotNew" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ScreenShotNew" type="462c0819:PsiDirectoryNode" />
+              <item name="dataBase" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ScreenShotNew" type="b2602c69:ProjectViewProjectNode" />
@@ -235,16 +353,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ScreenShotNew" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ScreenShotNew" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ScreenShotNew" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ScreenShotNew" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -265,10 +373,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.bakhuss.ScreenShotNew.dataBase" />
+      <recent name="ru.bakhuss.ScreenShotNew.model.docs" />
       <recent name="ru.bakhuss.Learndb.action" />
       <recent name="ru.bakhuss.LearnDB" />
       <recent name="ru.bakhuss" />
-      <recent name="ru" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Win\Documents\JavaProjects\ScreenShotNew\src\main\resources" />
@@ -420,28 +529,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1378" height="745" extended-state="1" />
+    <frame x="-7" y="0" width="1378" height="745" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32626426" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32626426" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37683523" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37683523" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22230652" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20106222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39967373" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -466,17 +575,17 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39967373" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32626426" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32626426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20106222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37683523" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19802731" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32626426" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -488,45 +597,12 @@
     </ignored-roots>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/MediaRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/PersonRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Photo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
@@ -534,13 +610,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="46" lean-forward="false" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLite.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/dataBase/FromDB.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -569,20 +639,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/model/Person/Profile.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/dataBase/FromDB.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/LearnDB/dataBase/Repository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/DataBaseFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/application/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -594,13 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
           <caret line="2407" column="17" lean-forward="false" selection-start-line="2407" selection-start-column="17" selection-end-line="2407" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/MediaRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -636,54 +685,12 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/Learndb/myTest/TestClass.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/Learndb/myTest/myTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/Learndb/model/Person/PersonAbstract.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/PersonRep.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/PersonRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/Repository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="8" column="47" lean-forward="false" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Photo1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/Learndb/view/Local..properties" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -694,119 +701,176 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/Person1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/PersonalData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/action/screen/ScreenCapture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="40" column="29" lean-forward="false" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/bundles/Locale_en_GB.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/bundles/Locale_ru_en.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/bundles/Locale_ru_RU.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/bundles/Locale_en_GB.properties" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/bundles/Locale_ru_en.properties" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/bundles/Locale_ru_RU.properties" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mainView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="123" column="99" lean-forward="false" selection-start-line="123" selection-start-column="99" selection-end-line="123" selection-end-column="99" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/bundles/Locale_en.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="ResourceBundle">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Photo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Med.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/docs/RU/Passport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        <state relative-caret-position="66">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/Person1.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Photo1.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/PersonRep.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/Repository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaRep.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLite.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/PersonRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="88">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/DBType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaRep.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/PersonalData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="25" column="62" lean-forward="false" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/MediaRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="73" lean-forward="false" selection-start-line="4" selection-start-column="73" selection-end-line="4" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/DataBaseFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Video.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="2" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Audio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLiteMedia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#235#236#0" expanded="true" />
+            <element signature="e#293#294#0" expanded="true" />
+            <element signature="e#578#579#0" expanded="true" />
+            <element signature="e#605#606#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Media.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+        <state relative-caret-position="110">
+          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding>
+            <element signature="e#524#525#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+            <element signature="e#583#584#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Photo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Med.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/action/screen/ScreenCapture.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        <state relative-caret-position="132">
+          <caret line="39" column="35" lean-forward="true" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1248">
-          <caret line="77" column="42" lean-forward="false" selection-start-line="77" selection-start-column="42" selection-end-line="77" selection-end-column="42" />
-          <folding />
+        <state relative-caret-position="1650">
+          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding>
+            <element signature="e#1817#1818#0" expanded="true" />
+            <element signature="e#1852#1853#0" expanded="true" />
+            <element signature="e#3360#3361#0" expanded="true" />
+            <element signature="e#3416#3417#0" expanded="true" />
+            <element signature="e#3462#3463#0" expanded="true" />
+            <element signature="e#3519#3520#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -862,7 +926,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>LearnDB</last-edited>
+          <last-edited>ScreenShotNew</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
