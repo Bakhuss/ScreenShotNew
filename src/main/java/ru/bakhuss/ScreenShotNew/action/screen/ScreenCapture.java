@@ -40,8 +40,6 @@ public class ScreenCapture {
                 public void run() {
                     do {
                         try {
-//                            photo.addPhoto(System.currentTimeMillis(), new Robot().createScreenCapture(rectangle));
-
                             photo.getMap().put(System.currentTimeMillis(), new Robot().createScreenCapture(rectangle));
                         } catch (AWTException e) {
                             e.printStackTrace();

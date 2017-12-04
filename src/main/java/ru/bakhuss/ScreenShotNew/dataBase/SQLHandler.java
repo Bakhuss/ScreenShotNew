@@ -5,7 +5,7 @@ import java.sql.*;
 public class SQLHandler {
 
     private Connection connection;
-    private Statement stms;
+    private Statement stmt;
     private PreparedStatement pstmt;
     private DBType type;
     private String user = null;
@@ -24,7 +24,7 @@ public class SQLHandler {
 
     public void connect() throws SQLException {
         connection = DriverManager.getConnection(DataBaseFile.getUrlDB(type.toString()), user, password);
-        stms = connection.createStatement();
+        stmt = connection.createStatement();
     }
 
     public void disconnect() {
@@ -35,4 +35,23 @@ public class SQLHandler {
         }
     }
 
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public Statement getStmt() {
+        return stmt;
+    }
+
+    public PreparedStatement getPstmt() {
+        return pstmt;
+    }
+
+    public void setStmt(Statement stmt) {
+        this.stmt = stmt;
+    }
+
+    public void setPstmt(PreparedStatement pstmt) {
+        this.pstmt = pstmt;
+    }
 }

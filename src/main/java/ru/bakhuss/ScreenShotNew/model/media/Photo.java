@@ -5,7 +5,34 @@ import ru.bakhuss.ScreenShotNew.model.person.Person;
 import java.awt.image.BufferedImage;
 import java.util.*;
 
-public class Photo extends Media {
+public class Photo extends Media<Long, BufferedImage> {
+//    private Person person = null;
+//    private LinkedHashMap<Long, BufferedImage> map = null;
+
+    public Photo(Person person) {
+        this.person = person;
+        this.map = new LinkedHashMap<>();
+    }
+
+    public Photo(String tempName) {
+        this.tempName = tempName;
+        this.map = new LinkedHashMap<>();
+    }
+
+    @Override
+    public Map<Long, BufferedImage> getMap() {
+        return map;
+    }
+
+
+
+
+
+
+
+
+
+/*
 
     public Photo(Person person) {
         super(person);

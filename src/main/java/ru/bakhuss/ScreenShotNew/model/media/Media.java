@@ -4,28 +4,26 @@ import ru.bakhuss.ScreenShotNew.model.person.Person;
 
 import java.awt.image.BufferedImage;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
-public class Media<T extends Media> {
-    private LinkedHashMap<Long, BufferedImage> map = null;
-    private Person person = null;
-//    protected MediaType type = null;
+public abstract class Media<K, V> {
+    protected Person person = null;
+    protected Map<K, V> map = null;
+    protected String tempName = null;
 
-    public Media(Person person) {
-        this.person = person;
-        map = new LinkedHashMap<Long, BufferedImage>();
-    }
-
-    public LinkedHashMap<Long, BufferedImage> getMap() {
-        return map;
-    }
+    public abstract Map<K, V> getMap();
 
     public Person getPerson() {
         return person;
     }
 
-//    public MediaType getType() {
-//        return type;
-//    }
+    public String getTempName() {
+        return tempName;
+    }
+
+    public void setTempName(String tempName) {
+        this.tempName = tempName;
+    }
 
     enum  MediaType {
         PHOTO, AUDIO, VIDEO;

@@ -50,10 +50,13 @@ public class MainClass extends Application {
 
     static void method() {
         Person person = new Person();
-        Media media = new Video(person);
+        Media media = new Photo(person);
         SQLiteMedia sqLiteMedia = new SQLiteMedia();
         sqLiteMedia.set(media);
+        Photo photo = new Photo(person);
+        photo.setTempName("temp");
         System.out.println(media.getClass().getSimpleName());
+        System.out.println(photo.getTempName());
     }
 
     public static Stage getPrimaryStage() {
