@@ -1,12 +1,14 @@
 package ru.bakhuss.ScreenShotNew.action.screen;
 
 import ru.bakhuss.ScreenShotNew.MainClass;
+import ru.bakhuss.ScreenShotNew.dataBase.SQLiteMedia;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 import ru.bakhuss.ScreenShotNew.model.media.Photo;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
 import java.awt.*;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -28,16 +30,20 @@ public class ScreenCapture {
         int threadsCount = Runtime.getRuntime().availableProcessors()-1;
 
         if (threadsCount == 0) threadsCount = 1;
+        System.out.println("treads: " + threadsCount);
 
         ExecutorService executor = Executors.newFixedThreadPool(threadsCount);
         final Rectangle rectangle = new Rectangle(getxSize(), getySize(), getWidth(),getHeight());
         setFrames(new AtomicInteger(0));
         for (int i = 0; i < threadsCount; i++) {
-            final Photo photo = new Photo(person);
+//            final Photo photo = new Photo(new Date().toString());;
+            String date = new Date().toString();
+
             final long t = System.currentTimeMillis();
             final int w = i;
             executor.execute(new Runnable() {
                 public void run() {
+                    Photo photo = new Photo(date);
                     do {
                         try {
                             photo.getMap().put(System.currentTimeMillis(), new Robot().createScreenCapture(rectangle));
@@ -45,8 +51,12 @@ public class ScreenCapture {
                             e.printStackTrace();
                         }
                     } while (System.currentTimeMillis() - t < timeScreen * 1000);
-                    System.out.print("run" + w + " - " + photo.getMap().size() + "; ");
+//                    System.out.println(photo.getTempName());
+                    SQLiteMedia sqLiteMedia = new SQLiteMedia();
+                    sqLiteMedia.set(photo);
+//                    System.out.print("run" + w + " - " + photo.getMap().size() + "; ");
                     getFrames().addAndGet(photo.getMap().size());
+                    photo.getMap().clear();
                 }
             });
         }

@@ -3,6 +3,7 @@ package ru.bakhuss.ScreenShotNew.model.media;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

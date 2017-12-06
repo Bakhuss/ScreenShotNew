@@ -1,12 +1,9 @@
 package ru.bakhuss.ScreenShotNew;
 
 import ru.bakhuss.ScreenShotNew.dataBase.SQLiteMedia;
-import ru.bakhuss.ScreenShotNew.model.media.Audio;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 import ru.bakhuss.ScreenShotNew.model.media.Photo;
-import ru.bakhuss.ScreenShotNew.model.media.Video;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
-import ru.bakhuss.ScreenShotNew.model.person.PersonalData;
 import ru.bakhuss.ScreenShotNew.view.mainViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,10 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.ResourceBundle;
 

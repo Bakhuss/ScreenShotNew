@@ -12,11 +12,13 @@ public class Photo extends Media<Long, BufferedImage> {
     public Photo(Person person) {
         this.person = person;
         this.map = new LinkedHashMap<>();
+//        this.map = new HashMap<>();
     }
 
     public Photo(String tempName) {
         this.tempName = tempName;
         this.map = new LinkedHashMap<>();
+//        this.map = new HashMap<>();
     }
 
     @Override

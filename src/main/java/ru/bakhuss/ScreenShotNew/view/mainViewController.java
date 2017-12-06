@@ -41,10 +41,9 @@ public class mainViewController {
     private ProgressIndicator progIndDoneScreen;
 
     private TableView<Person> viewPersons;
+    private TableColumn<Person, String> surNameColumn, name, patronymic, birthday;
 
     private MainClass mainClass;
-
-    TableColumn<Person, String> birthday = null;
 
     public mainViewController() {
     }
@@ -57,12 +56,11 @@ public class mainViewController {
     }
 
     private void createTableColumns() {
-        viewPersons = new TableView<Person>();
-        TableColumn<Person, String> surNameColumn = new TableColumn<Person, String>("Surname");
-        TableColumn<Person, String> name = new TableColumn<Person, String>("Name");
-        TableColumn<Person, String> patronymic = new TableColumn<Person, String>("Patronymic");
-        birthday = new TableColumn<Person, String>("Birthday");
-//        TableColumn<Person, String> birthday = new TableColumn<Person, String>("Birthday");
+        viewPersons = new TableView<>();
+        surNameColumn = new TableColumn<>("Surname");
+        name = new TableColumn<>("Name");
+        patronymic = new TableColumn<>("Patronymic");
+        birthday = new TableColumn<>("Birthday");
 
         viewPersons.getColumns().addAll(surNameColumn, name, patronymic, birthday);
         viewPersons.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -121,17 +119,14 @@ public class mainViewController {
                     ExecutorService es = Executors.newSingleThreadExecutor();
                     es.execute(new Runnable() {
                         public void run() {
-                            if (viewPersons.isTableMenuButtonVisible()) {
-                                viewPersons.setTableMenuButtonVisible(false);
-                            } else viewPersons.setTableMenuButtonVisible(true);
 
-                            Platform.runLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    viewPersons.getColumns().remove(birthday);
-                                    viewPersons.getColumns().add(0, birthday);
-                                }
-                            });
+//                            Platform.runLater(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    viewPersons.getColumns().remove(birthday);
+//                                    viewPersons.getColumns().add(0, birthday);
+//                                }
+//                            });
 
                             ScreenCapture.getScreen(new Person(new Date().toString()));
                         }
