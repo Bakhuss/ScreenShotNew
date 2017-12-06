@@ -25,6 +25,7 @@ public class SQLiteMedia implements MediaRepository {
 
     @Override
     public void set(Media media) {
+        long b = System.currentTimeMillis();
         try {
 //            System.out.println(media.getTempName());
             String mediaType = media.getClass().toString();
@@ -57,7 +58,7 @@ public class SQLiteMedia implements MediaRepository {
                     baos.close();
                     ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 
-                    sqlHandler.getPstmt().setString(1, substr);
+                    sqlHandler.getPstmt().setString(1, entry.getKey().toString());
                     sqlHandler.getPstmt().setBinaryStream(2, bais, baos.toByteArray().length);
 //                    System.out.println("1");
                     sqlHandler.getPstmt().addBatch();
@@ -75,6 +76,8 @@ public class SQLiteMedia implements MediaRepository {
         } finally {
             sqlHandler.disconnect();
         }
+
+        System.out.println("sqlTime: " + (System.currentTimeMillis()-b));
     }
 
     private String[] switchTables(String table) {

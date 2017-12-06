@@ -32,10 +32,10 @@ public class ScreenCapture {
         if (threadsCount == 0) threadsCount = 1;
         System.out.println("treads: " + threadsCount);
 
-        ExecutorService executor = Executors.newFixedThreadPool(threadsCount);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
         final Rectangle rectangle = new Rectangle(getxSize(), getySize(), getWidth(),getHeight());
         setFrames(new AtomicInteger(0));
-        for (int i = 0; i < threadsCount; i++) {
+        for (int i = 0; i < 10; i++) {
 //            final Photo photo = new Photo(new Date().toString());;
             String date = new Date().toString();
 
