@@ -5,8 +5,15 @@ import ru.bakhuss.ScreenShotNew.dataBase.SQLiteMedia;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 import ru.bakhuss.ScreenShotNew.model.media.Photo;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
+import sun.awt.image.BufferedImageDevice;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.concurrent.ExecutorService;
@@ -25,38 +32,44 @@ public class ScreenCapture {
     private static AtomicInteger frames;
 
     public static void getScreen(Person person) {
+        final Rectangle rectangle = new Rectangle(getxSize(), getySize(), getWidth(),getHeight());
 
-        long time = System.currentTimeMillis();
+//        long time = System.currentTimeMillis();
         int threadsCount = Runtime.getRuntime().availableProcessors()-1;
+        String date = new Date().toString();
 
         if (threadsCount == 0) threadsCount = 1;
         System.out.println("treads: " + threadsCount);
 
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-        final Rectangle rectangle = new Rectangle(getxSize(), getySize(), getWidth(),getHeight());
-        setFrames(new AtomicInteger(0));
-        for (int i = 0; i < 10; i++) {
-//            final Photo photo = new Photo(new Date().toString());;
-            String date = new Date().toString();
+        SQLiteMedia[] sqLiteMedia = new SQLiteMedia[threadsCount];
+        Media[] media = new Photo[threadsCount];
+        for (int i = 0; i < threadsCount; i++) {
+            sqLiteMedia[i] = new SQLiteMedia();
+            media[i] = new Photo(date);
+        }
 
-            final long t = System.currentTimeMillis();
+        ExecutorService executor = Executors.newFixedThreadPool(threadsCount);
+        setFrames(new AtomicInteger(0));
+        final long time = System.currentTimeMillis();
+        for (int i = 0; i < threadsCount; i++) {
             final int w = i;
             executor.execute(new Runnable() {
                 public void run() {
-                    Photo photo = new Photo(date);
                     do {
                         try {
-                            photo.getMap().put(System.currentTimeMillis(), new Robot().createScreenCapture(rectangle));
+                            media[w].getMap().put(System.currentTimeMillis(), new Robot().createScreenCapture(rectangle));
                         } catch (AWTException e) {
                             e.printStackTrace();
                         }
-                    } while (System.currentTimeMillis() - t < timeScreen * 1000);
+                    } while (System.currentTimeMillis() - time < timeScreen * 1000);
 //                    System.out.println(photo.getTempName());
-                    SQLiteMedia sqLiteMedia = new SQLiteMedia();
-                    sqLiteMedia.set(photo);
+//                    SQLiteMedia sqLiteMedia = new SQLiteMedia();
+                    System.out.println("\ntime: " + (System.currentTimeMillis() - time) + " | " + w + " " + media[w].getMap().size() );
+                    sqLiteMedia[w].set(media[w]);
+//                    sqLiteMedia.set(photo);
 //                    System.out.print("run" + w + " - " + photo.getMap().size() + "; ");
-                    getFrames().addAndGet(photo.getMap().size());
-                    photo.getMap().clear();
+                    getFrames().addAndGet(media[w].getMap().size());
+                    media[w].getMap().clear();
                 }
             });
         }
@@ -64,8 +77,9 @@ public class ScreenCapture {
 
         while (!executor.isTerminated()) {}
 
-        System.out.println("\ntime: " + (System.currentTimeMillis() - time) );
+//        System.out.println("\ntime: " + (System.currentTimeMillis() - time) );
         System.out.println("photoSize: " + getFrames().get());
+
     }
 
     public static int getWidth() {

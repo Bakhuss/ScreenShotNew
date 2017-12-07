@@ -7,9 +7,7 @@ import ru.bakhuss.ScreenShotNew.model.media.Photo;
 import javax.imageio.ImageIO;
 import javax.xml.crypto.Data;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +23,7 @@ public class SQLiteMedia implements MediaRepository {
 
     @Override
     public void set(Media media) {
-        long b = System.currentTimeMillis();
+
         try {
 //            System.out.println(media.getTempName());
             String mediaType = media.getClass().toString();
@@ -45,6 +43,7 @@ public class SQLiteMedia implements MediaRepository {
             Map.Entry<Long, BufferedImage> entry = null;
             sqlHandler.getConnection().setAutoCommit(false);
             ByteArrayOutputStream baos = null;
+            long b = System.currentTimeMillis();
             while (it.hasNext()) {
                 try {
                     entry = it.next();
@@ -60,7 +59,7 @@ public class SQLiteMedia implements MediaRepository {
 
                     sqlHandler.getPstmt().setString(1, entry.getKey().toString());
                     sqlHandler.getPstmt().setBinaryStream(2, bais, baos.toByteArray().length);
-//                    System.out.println("1");
+//                    System.out.println("baosSize: " + baos.toByteArray().length);
                     sqlHandler.getPstmt().addBatch();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -70,6 +69,7 @@ public class SQLiteMedia implements MediaRepository {
             sqlHandler.getConnection().commit();
             sqlHandler.getConnection().setAutoCommit(true);
 //            System.out.println("size: " + media.getMap().size() );
+            System.out.println("sqlTime: " + (System.currentTimeMillis()-b));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -77,7 +77,7 @@ public class SQLiteMedia implements MediaRepository {
             sqlHandler.disconnect();
         }
 
-        System.out.println("sqlTime: " + (System.currentTimeMillis()-b));
+
     }
 
     private String[] switchTables(String table) {
@@ -85,7 +85,7 @@ public class SQLiteMedia implements MediaRepository {
         switch (table) {
             case "Photo":
                 columns = new String[2];
-                columns[0] = "name";
+                columns[0] = "date_in";
                 columns[1] = "image";
                 break;
             default:
