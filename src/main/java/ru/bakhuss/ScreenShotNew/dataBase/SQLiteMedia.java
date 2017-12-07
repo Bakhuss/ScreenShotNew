@@ -23,61 +23,52 @@ public class SQLiteMedia implements MediaRepository {
 
     @Override
     public void set(Media media) {
-
         try {
-//            System.out.println(media.getTempName());
-            String mediaType = media.getClass().toString();
-
             DataBaseFile.createDBFile();
             sqlHandler.connect();
-//            String sql = "insert into Photo (name, image) values (?,?);";
             String table = media.getClass().getSimpleName();
-//            String[] columns = null;
-
             String[] columns = switchTables(table);
 
-            String sql = SQLConstructor.sqlPstmtInsert(table, columns);
-            System.out.println("sql: " + sql);
-            sqlHandler.setPstmt(sqlHandler.getConnection().prepareStatement(sql));
+//            String sql = SQLConstructor.sqlPstmtInsert(table, columns);
+//            System.out.println("sql: " + sql);
             Iterator<Map.Entry<Long, BufferedImage>> it = media.getMap().entrySet().iterator();
             Map.Entry<Long, BufferedImage> entry = null;
-            sqlHandler.getConnection().setAutoCommit(false);
             ByteArrayOutputStream baos = null;
             long b = System.currentTimeMillis();
             while (it.hasNext()) {
                 try {
                     entry = it.next();
-//                    System.out.print("it: " + entry.getKey());
-                    String substr = entry.getKey().toString().substring(entry.getKey().toString().length() - 7);
-//                    System.out.println("it: " + substr);
-
                     baos = new ByteArrayOutputStream();
                     ImageIO.write(entry.getValue(), "jpg", baos);
-//                    System.out.println("2: " + baos.size());
                     baos.close();
                     ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 
+                    String query = "insert into Photo (date_in, image) values (?,?);";
+                    sqlHandler.setPstmt(sqlHandler.getConnection().prepareStatement(query));
                     sqlHandler.getPstmt().setString(1, entry.getKey().toString());
                     sqlHandler.getPstmt().setBinaryStream(2, bais, baos.toByteArray().length);
-//                    System.out.println("baosSize: " + baos.toByteArray().length);
-                    sqlHandler.getPstmt().addBatch();
+                    sqlHandler.getPstmt().execute();
+                    query = "select id from Photo where rowid = last_insert_rowid();";
+                    ResultSet rs = sqlHandler.getStmt().executeQuery(query);
+                    rs.next();
+                    int photoId = rs.getInt(1);
+                    rs.close();
+                    query = "insert into Photo_Name (photo_group_id, photo_id, name) values (?,?,?);";
+                    sqlHandler.setPstmt(sqlHandler.getConnection().prepareStatement(query));
+                    sqlHandler.getPstmt().setInt(1,media.getGroupNameId());
+                    sqlHandler.getPstmt().setInt(2, photoId);
+                    sqlHandler.getPstmt().setString(3, String.valueOf(entry.getKey().toString()));
+                    sqlHandler.getPstmt().execute();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            sqlHandler.getPstmt().executeBatch();
-            sqlHandler.getConnection().commit();
-            sqlHandler.getConnection().setAutoCommit(true);
-//            System.out.println("size: " + media.getMap().size() );
             System.out.println("sqlTime: " + (System.currentTimeMillis()-b));
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             sqlHandler.disconnect();
         }
-
-
     }
 
     private String[] switchTables(String table) {
@@ -94,8 +85,28 @@ public class SQLiteMedia implements MediaRepository {
         return columns;
     }
 
+    public int setGroupName(String groupName) {
+        try {
+            String sqlIns = "insert into Photo_Group (name, auto_screen) values ('" + groupName + "', 1);";
+            String sqlSel = "select id from Photo_Group where rowid = last_insert_rowid();";
+            sqlHandler.connect();
+            sqlHandler.getStmt().execute(sqlIns);
+            ResultSet rs = sqlHandler.getStmt().executeQuery(sqlSel);
+            rs.next();
+            System.out.println("rs: " + rs.getInt(1));
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("error: setGroupName");
+        } finally {
+            sqlHandler.disconnect();
+        }
+        return 0;
+    }
+
     @Override
     public Media get() {
+
         return null;
     }
 

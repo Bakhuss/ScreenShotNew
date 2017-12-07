@@ -11,6 +11,7 @@ public abstract class Media<K, V> {
     protected Person person = null;
     protected Map<K, V> map = null;
     protected String tempName = null;
+    protected int groupNameId = 0;
 
     public abstract Map<K, V> getMap();
 
@@ -24,6 +25,14 @@ public abstract class Media<K, V> {
 
     public void setTempName(String tempName) {
         this.tempName = tempName;
+    }
+
+    public void setGroupNameId(int groupNameId) {
+        this.groupNameId = groupNameId;
+    }
+
+    public int getGroupNameId() {
+        return groupNameId;
     }
 
     enum  MediaType {

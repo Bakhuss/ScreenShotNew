@@ -11,7 +11,7 @@ public class SQLHandler {
     private String user = null;
     private String password = null;
 
-    SQLHandler(DBType type) {
+    public SQLHandler(DBType type) {
         this.type = type;
     }
 

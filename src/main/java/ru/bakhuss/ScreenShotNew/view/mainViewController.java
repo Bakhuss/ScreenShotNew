@@ -6,10 +6,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import ru.bakhuss.ScreenShotNew.MainClass;
 import ru.bakhuss.ScreenShotNew.action.screen.*;
+import ru.bakhuss.ScreenShotNew.dataBase.DBType;
+import ru.bakhuss.ScreenShotNew.dataBase.DataBaseFile;
+import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -149,5 +156,43 @@ public class mainViewController {
                 }
             }
         }).start();
+    }
+
+    public void getDBFile(ActionEvent actionEvent) {
+        FileChooser getDBFile = new FileChooser();
+        getDBFile.setTitle("Open DBFile");
+        getDBFile.getExtensionFilters().add(new FileChooser.ExtensionFilter("SQLite", "*.db"));
+
+        File file = getDBFile.showOpenDialog(MainClass.getPrimaryStage());
+        DataBaseFile.setDBFile(file);
+    }
+
+    public void createDBFile(ActionEvent actionEvent) {
+
+        FileChooser createDBFile = new FileChooser();
+        createDBFile.setTitle("Create DB file");
+        createDBFile.getExtensionFilters().add(new FileChooser.ExtensionFilter("SQLite", "*.db"));
+
+        File file = createDBFile.showSaveDialog(MainClass.getPrimaryStage());
+
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        DataBaseFile.setDBFile(file);
+
+        SQLHandler connect = new SQLHandler(DBType.sqlite);
+        try {
+            connect.connect();
+            DataBaseFile.createDBStructure(connect.getStmt());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("error: createDBFile");
+        } finally {
+            connect.disconnect();
+        }
+
     }
 }

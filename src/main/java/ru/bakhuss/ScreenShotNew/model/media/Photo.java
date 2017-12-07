@@ -15,8 +15,9 @@ public class Photo extends Media<Long, BufferedImage> {
 //        this.map = new HashMap<>();
     }
 
-    public Photo(String tempName) {
+    public Photo(String tempName, int groupNameId) {
         this.tempName = tempName;
+        this.groupNameId = groupNameId;
         this.map = new LinkedHashMap<>();
 //        this.map = new HashMap<>();
     }

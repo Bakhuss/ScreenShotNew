@@ -25,8 +25,17 @@
                            <children>
                               <MenuButton mnemonicParsing="false" text="Menu">
                                 <items>
-                                  <MenuItem mnemonicParsing="false" text="Файл DB" />
-                                  <MenuItem mnemonicParsing="false" text="О программе" />
+                                  <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <MenuButton mnemonicParsing="false" text="fileDB">
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" onAction="#getDBFile" text="Choose..." />
+                                              <MenuItem mnemonicParsing="false" onAction="#createDBFile" text="Create..." />
+                                            </items>
+                                          </MenuButton>
+                                       </graphic>
+                                    </MenuItem>
+                                  <MenuItem mnemonicParsing="false" />
                                 </items>
                               </MenuButton>
                            </children>
