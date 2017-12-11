@@ -6,14 +6,22 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
 import ru.bakhuss.ScreenShotNew.MainClass;
 import ru.bakhuss.ScreenShotNew.action.screen.*;
@@ -22,6 +30,7 @@ import ru.bakhuss.ScreenShotNew.dataBase.DataBaseFile;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -59,6 +68,8 @@ public class mainViewController {
     private TableView<Person> viewPersons;
     private TableColumn<Person, String> surNameCol, firstNameCol, patronymicCol;
     private static ObservableList<Person> data = FXCollections.observableArrayList();
+    private HBox hBox;
+    private Label lbAdd, lbDel, lbSave;
 
     private MainClass mainClass;
 
@@ -70,6 +81,14 @@ public class mainViewController {
         lbWidthSize.setText(String.valueOf(MainClass.getScreenMaxWidth()));
         lbHeightSize.setText(String.valueOf(MainClass.getScreenMaxHeight()));
 //        createTableColumns();
+
+        data = FXCollections.observableArrayList(
+                new Person("surname", "name", "patronymic"),
+                new Person("Surname", "name", "patronymic"),
+                new Person("surname", "Name", "patronymic"),
+                new Person("surname", "name", "Patronymic")
+
+        );
     }
 
     private void createTableColumns() {
@@ -79,24 +98,64 @@ public class mainViewController {
         patronymicCol = new TableColumn<>("Patronymic");
         patronymicCol.setEditable(true);
         viewPersons.setEditable(true);
-//        birthdayCol = new TableColumn<>("Birthday");
-
         viewPersons.getColumns().addAll(surNameCol, firstNameCol, patronymicCol);
         viewPersons.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        data = FXCollections.observableArrayList(
-                new Person("surname", "name", "patronymic"),
-                new Person("Surname", "name", "patronymic"),
-                new Person("surname", "Name", "patronymic"),
-                new Person("surname", "name", "Patronymic")
-
-        );
-        surNameCol.setCellValueFactory(new PropertyValueFactory<>("Surname"));
-        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        patronymicCol.setCellValueFactory(new PropertyValueFactory<>("Patronymic"));
-//        birthdayCol.setCellValueFactory(new PropertyValueFactory<>("Birthday"));
+        surNameCol.setCellValueFactory(cellData -> cellData.getValue().surnameProperty());
+        firstNameCol.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
+        patronymicCol.setCellValueFactory(cellData -> cellData.getValue().patronymicProperty());
         viewPersons.setItems(data);
 
+        setOnEditCommitMyColumn();
+
+        AnchorPane.setBottomAnchor(viewPersons, 25.0);
+        AnchorPane.setLeftAnchor(viewPersons, 0.0);
+        AnchorPane.setRightAnchor(viewPersons, 0.0);
+        AnchorPane.setTopAnchor(viewPersons, 0.0);
+
+        hBox = new HBox();
+        hBox.setAlignment(Pos.CENTER_LEFT);
+
+        lbAdd = new Label("+");
+        lbAdd.setTooltip(new Tooltip("add"));
+        lbDel = new Label("-");
+        lbDel.setTooltip(new Tooltip("del"));
+        lbSave = new Label("save");
+        createLabel(lbAdd, 20.0);
+        createLabel(lbDel, 20.0);
+        createLabel(lbSave, 15.0);
+
+        hBox.getChildren().addAll(lbAdd, lbDel, lbSave);
+        AnchorPane.setBottomAnchor(hBox,0.0);
+        AnchorPane.setLeftAnchor(hBox, 0.0);
+        AnchorPane.setRightAnchor(hBox, 0.0);
+    }
+
+    public void createLabel(Label label, Double size) {
+        label.setFont(new Font(size));
+        label.setTextFill(Color.RED);
+        label.setTextAlignment(TextAlignment.CENTER);
+        label.setAlignment(Pos.CENTER);
+        label.setPadding(new Insets(2.0,0.0,0.0,10.0));
+        label.setOnMouseEntered(
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        label.setFont(new Font("System BOLD",size));
+                    }
+                }
+        );
+        label.setOnMouseExited(
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        label.setFont(new Font(size));
+                    }
+                }
+        );
+    }
+
+    public void setOnEditCommitMyColumn() {
         surNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         surNameCol.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
@@ -108,10 +167,30 @@ public class mainViewController {
                     }
                 }
         );
-        AnchorPane.setBottomAnchor(viewPersons, 0.0);
-        AnchorPane.setLeftAnchor(viewPersons, 0.0);
-        AnchorPane.setRightAnchor(viewPersons, 0.0);
-        AnchorPane.setTopAnchor(viewPersons, 0.0);
+
+        firstNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        firstNameCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Person, String> event) {
+                        (event.getTableView().getItems().get(
+                                event.getTablePosition().getRow())
+                        ).setFirstName(event.getNewValue());
+                    }
+                }
+        );
+
+        patronymicCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        patronymicCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Person, String> event) {
+                        (event.getTableView().getItems().get(
+                                event.getTablePosition().getRow())
+                        ).setPatronymic(event.getNewValue());
+                    }
+                }
+        );
     }
 
     public MainClass getMainClass() {
@@ -126,12 +205,13 @@ public class mainViewController {
         if (btTogOpenTable.isSelected()) {
             MainClass.getPrimaryStage().setResizable(true);
             createTableColumns();
-            anchorSetTable.getChildren().add(viewPersons);
+            anchorSetTable.getChildren().addAll(viewPersons, hBox);
             MainClass.getPrimaryStage().setMinHeight(MainClass.getMainMinHeight() + 200);
 
         } else {
-            anchorSetTable.getChildren().remove(viewPersons);
+            anchorSetTable.getChildren().removeAll(viewPersons, hBox);
             viewPersons = null;
+            hBox = null;
 
             MainClass.getPrimaryStage().setResizable(false);
             MainClass.setMainMinSize();
@@ -163,7 +243,7 @@ public class mainViewController {
                     ExecutorService es = Executors.newSingleThreadExecutor();
                     es.execute(new Runnable() {
                         public void run() {
-                            ScreenCapture.getScreen(new Person(new Date().toString()));
+                            ScreenCapture.getScreen(new Person());
                         }
                     });
                     es.shutdown();

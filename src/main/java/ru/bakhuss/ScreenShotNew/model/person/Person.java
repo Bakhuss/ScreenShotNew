@@ -1,77 +1,65 @@
 package ru.bakhuss.ScreenShotNew.model.person;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Person {
 
-    private String surname;
-    private String firstName;
-    private String patronymic;
-    private String tempName;
+    private StringProperty surname;
+    private StringProperty firstName;
+    private StringProperty patronymic;
     private int personIdInDB = 0;
 
     // Constructors
     public Person() {
-        this.surname = null;
-        this.firstName = null;
-        this.patronymic = null;
-        this.tempName = null;
+        this.surname = new SimpleStringProperty();
+        this.firstName = new SimpleStringProperty();
+        this.patronymic = new SimpleStringProperty();
     }
 
     public Person(String surname, String firstName, String patronymic) {
-        this.surname = surname;
-        this.firstName = firstName;
-        this.patronymic = patronymic;
-        this.tempName = null;
+        this.surname = new SimpleStringProperty(surname);
+        this.firstName = new SimpleStringProperty(firstName);
+        this.patronymic = new SimpleStringProperty(patronymic);
     }
 
-    public Person(String tempName) {
-        this.surname = null;
-        this.firstName = null;
-        this.patronymic = null;
-        this.tempName = tempName;
-    }
-
-    public Person(String surname, String firstName, String patronymic, int personIdInDB) {
-        this.surname = surname;
-        this.firstName = firstName;
-        this.patronymic = patronymic;
-        this.tempName = null;
-        this.personIdInDB = personIdInDB;
-    }
 
 
     //Getters and Setters
     public String getSurname() {
-        return surname;
+        return surname.get();
     }
 
     public void setSurname(String surname) {
-        this.surname = surname;
+        this.surname.set(surname);
+    }
+
+    public StringProperty surnameProperty() {
+        return surname;
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstName.get();
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName.set(firstName);
+    }
+
+    public StringProperty firstNameProperty() {
+        return firstName;
     }
 
     public String getPatronymic() {
-        return patronymic;
+        return patronymic.get();
     }
 
     public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
+        this.patronymic.set(patronymic);
     }
 
-    public String getTempName() {
-        return tempName;
-    }
-
-    public void setTempName(String tempName) {
-        this.tempName = tempName;
+    public StringProperty patronymicProperty() {
+        return patronymic;
     }
 
     public int getPersonIdInDB() { return personIdInDB; }
