@@ -1,9 +1,17 @@
 package ru.bakhuss.ScreenShotNew.view;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -14,6 +22,7 @@ import ru.bakhuss.ScreenShotNew.dataBase.DataBaseFile;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -48,7 +57,8 @@ public class mainViewController {
     private ProgressIndicator progIndDoneScreen;
 
     private TableView<Person> viewPersons;
-    private TableColumn<Person, String> surNameColumn, name, patronymic, birthday;
+    private TableColumn<Person, String> surNameCol, firstNameCol, patronymicCol;
+    private static ObservableList<Person> data = FXCollections.observableArrayList();
 
     private MainClass mainClass;
 
@@ -64,14 +74,40 @@ public class mainViewController {
 
     private void createTableColumns() {
         viewPersons = new TableView<>();
-        surNameColumn = new TableColumn<>("Surname");
-        name = new TableColumn<>("Name");
-        patronymic = new TableColumn<>("Patronymic");
-        birthday = new TableColumn<>("Birthday");
+        surNameCol = new TableColumn<>("Surname");
+        firstNameCol = new TableColumn<>("Name");
+        patronymicCol = new TableColumn<>("Patronymic");
+        patronymicCol.setEditable(true);
+        viewPersons.setEditable(true);
+//        birthdayCol = new TableColumn<>("Birthday");
 
-        viewPersons.getColumns().addAll(surNameColumn, name, patronymic, birthday);
+        viewPersons.getColumns().addAll(surNameCol, firstNameCol, patronymicCol);
         viewPersons.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
+        data = FXCollections.observableArrayList(
+                new Person("surname", "name", "patronymic"),
+                new Person("Surname", "name", "patronymic"),
+                new Person("surname", "Name", "patronymic"),
+                new Person("surname", "name", "Patronymic")
+
+        );
+        surNameCol.setCellValueFactory(new PropertyValueFactory<>("Surname"));
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        patronymicCol.setCellValueFactory(new PropertyValueFactory<>("Patronymic"));
+//        birthdayCol.setCellValueFactory(new PropertyValueFactory<>("Birthday"));
+        viewPersons.setItems(data);
+
+        surNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        surNameCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Person, String> event) {
+                        (event.getTableView().getItems().get(
+                                event.getTablePosition().getRow())
+                        ).setSurname(event.getNewValue());
+                    }
+                }
+        );
         AnchorPane.setBottomAnchor(viewPersons, 0.0);
         AnchorPane.setLeftAnchor(viewPersons, 0.0);
         AnchorPane.setRightAnchor(viewPersons, 0.0);
@@ -91,7 +127,8 @@ public class mainViewController {
             MainClass.getPrimaryStage().setResizable(true);
             createTableColumns();
             anchorSetTable.getChildren().add(viewPersons);
-            MainClass.getPrimaryStage().setMinHeight(MainClass.getMainMinHeight() + 100);
+            MainClass.getPrimaryStage().setMinHeight(MainClass.getMainMinHeight() + 200);
+
         } else {
             anchorSetTable.getChildren().remove(viewPersons);
             viewPersons = null;
@@ -126,15 +163,6 @@ public class mainViewController {
                     ExecutorService es = Executors.newSingleThreadExecutor();
                     es.execute(new Runnable() {
                         public void run() {
-
-//                            Platform.runLater(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    viewPersons.getColumns().remove(birthday);
-//                                    viewPersons.getColumns().add(0, birthday);
-//                                }
-//                            });
-
                             ScreenCapture.getScreen(new Person(new Date().toString()));
                         }
                     });
@@ -194,5 +222,15 @@ public class mainViewController {
             connect.disconnect();
         }
 
+    }
+
+    public static ObservableList<Person> getData() {
+        System.out.println("dataSize: " + data.size());
+        return data;
+    }
+
+    public static void setData(Person person) {
+        mainViewController.data.add(person);
+        System.out.println("dataSize: " + data.size());
     }
 }

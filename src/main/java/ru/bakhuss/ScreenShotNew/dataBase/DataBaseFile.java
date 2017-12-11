@@ -44,11 +44,12 @@ public class DataBaseFile {
     }
 
     public static void createDBStructure(Statement stmt) throws SQLException {
-        String sql = "CREATE TABLE IF NOT EXISTS Photo (\n" +
-                "    id    INTEGER PRIMARY KEY AUTOINCREMENT\n" +
-                "                  NOT NULL,\n" +
-                "    name  TEXT    NOT NULL,\n" +
-                "    image BLOB\n" +
+        String sql = "CREATE TABLE IF NOT EXISTS Image (\n" +
+                "    id      INTEGER PRIMARY KEY AUTOINCREMENT\n" +
+                "                    NOT NULL\n" +
+                "                    UNIQUE,\n" +
+                "    date_in TEXT    NOT NULL,\n" +
+                "    image   BLOB    NOT NULL\n" +
                 ");";
         stmt.execute(sql);
     }

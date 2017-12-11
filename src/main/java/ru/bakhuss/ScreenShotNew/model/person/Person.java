@@ -1,11 +1,14 @@
 package ru.bakhuss.ScreenShotNew.model.person;
 
+import javafx.beans.property.StringProperty;
+
 public class Person {
 
     private String surname;
     private String firstName;
     private String patronymic;
     private String tempName;
+    private int personIdInDB = 0;
 
     // Constructors
     public Person() {
@@ -27,6 +30,14 @@ public class Person {
         this.firstName = null;
         this.patronymic = null;
         this.tempName = tempName;
+    }
+
+    public Person(String surname, String firstName, String patronymic, int personIdInDB) {
+        this.surname = surname;
+        this.firstName = firstName;
+        this.patronymic = patronymic;
+        this.tempName = null;
+        this.personIdInDB = personIdInDB;
     }
 
 
@@ -61,5 +72,11 @@ public class Person {
 
     public void setTempName(String tempName) {
         this.tempName = tempName;
+    }
+
+    public int getPersonIdInDB() { return personIdInDB; }
+
+    public void setPersonIdInDB(int personIdInDB) {
+        this.personIdInDB = personIdInDB;
     }
 }

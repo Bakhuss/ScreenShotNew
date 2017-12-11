@@ -6,6 +6,7 @@ import ru.bakhuss.ScreenShotNew.dataBase.SQLiteMedia;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 import ru.bakhuss.ScreenShotNew.model.media.Photo;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
+import ru.bakhuss.ScreenShotNew.view.mainViewController;
 import sun.awt.image.BufferedImageDevice;
 
 import javax.imageio.ImageIO;
@@ -16,9 +17,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedHashMap;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -34,17 +35,25 @@ public class ScreenCapture {
     private static int countFrames = 0;
     private static AtomicInteger frames;
     private static int groupNameId = 0;
+    private static final String dateFormStr = "dd.MM.yyyy-HH:mm:ss.SSS-z";
+    private static final TimeZone TZ_utc = TimeZone.getTimeZone("UTC");
+    private static final int TIMEZONE_OFFSET = TimeZone.getDefault().getOffset(new Date().getTime());
 
     public static void getScreen(Person person) {
         System.out.println("dbFile: " + DataBaseFile.getDBFile());
-        final Rectangle rectangle = new Rectangle(getxSize(), getySize(), getWidth(),getHeight());
+        final Rectangle rectangle = new Rectangle(getxSize(), getySize(), getWidth(), getHeight());
 
-        int threadsCount = Runtime.getRuntime().availableProcessors()-1;
+        int threadsCount = Runtime.getRuntime().availableProcessors() - 1;
         dateNow = new Date();
-        System.out.println("date: " + dateNow);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy-kk:mm:ss.SS");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormStr);
+        dateFormat.setTimeZone(TZ_utc);
         String date = dateFormat.format(dateNow);
         System.out.println("date: " + date);
+        SimpleDateFormat saveDateUTC = new SimpleDateFormat();
+        saveDateUTC.setTimeZone(TZ_utc);
+        Date d = new Date();
+        System.out.println(d);
+        System.out.println(saveDateUTC.format(d));
 
         if (threadsCount == 0) threadsCount = 1;
         System.out.println("treads: " + threadsCount);
@@ -69,21 +78,28 @@ public class ScreenCapture {
                 public void run() {
                     do {
                         try {
-                            media[w].getMap().put(System.currentTimeMillis(), new Robot().createScreenCapture(rectangle));
+
+                            media[w].getMap().put((System.currentTimeMillis() - TIMEZONE_OFFSET), new Robot().createScreenCapture(rectangle));
                         } catch (AWTException e) {
                             e.printStackTrace();
                         }
                     } while (System.currentTimeMillis() - time < timeScreen * 1000);
-                    System.out.println("\ntime: " + (System.currentTimeMillis() - time) + " | " + w + " " + media[w].getMap().size() );
+                    System.out.println("\ntime: " + (System.currentTimeMillis() - time) + " | " + w + " " + media[w].getMap().size());
                     sqLiteMedia[w].set(media[w]);
                     getFrames().addAndGet(media[w].getMap().size());
                     media[w].getMap().clear();
                 }
             });
+
         }
         executor.shutdown();
-        while (!executor.isTerminated()) {}
+        while (!executor.isTerminated()) {
+        }
         System.out.println("photoSize: " + getFrames().get());
+
+        SQLiteMedia sql = new SQLiteMedia();
+        Media m = new Photo("1", 8);
+        sql.remove(m);
     }
 
     public static int getWidth() {
