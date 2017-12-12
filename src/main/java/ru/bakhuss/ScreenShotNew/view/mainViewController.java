@@ -11,15 +11,12 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
@@ -31,12 +28,9 @@ import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLitePerson;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
-import javax.swing.*;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.SQLInput;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -71,7 +65,8 @@ public class mainViewController {
     private TableColumn<Person, String> surNameCol, firstNameCol, patronymicCol;
     private static ObservableList<Person> data = FXCollections.observableArrayList();
     private HBox hBox;
-    private Label lbAdd, lbDel, lbSave;
+    private Label lbAdd, lbDel, lbSave, lbCountInDB;
+    private static int countPersonsInDB = 0;
 
     private MainClass mainClass;
 
@@ -84,13 +79,19 @@ public class mainViewController {
         lbHeightSize.setText(String.valueOf(MainClass.getScreenMaxHeight()));
 //        createTableColumns();
 
-        data = FXCollections.observableArrayList(
-                new Person("surname", "name", "patronymic"),
-                new Person("Surname", "name", "patronymic"),
-                new Person("surname", "Name", "patronymic"),
-                new Person("surname", "name", "Patronymic")
+//        data = FXCollections.observableArrayList(
+//                new Person("surname", "name", "patronymic"),
+//                new Person("Surname", "name", "patronymic"),
+//                new Person("surname", "Name", "patronymic"),
+//                new Person("surname", "name", "Patronymic")
+//
+//        );
 
-        );
+    }
+
+    public void getDataFromDB() {
+        SQLitePerson sqLitePerson = new SQLitePerson();
+        data.addAll(FXCollections.observableArrayList(sqLitePerson.getAll()));
     }
 
     private void createTableColumns() {
@@ -130,16 +131,15 @@ public class mainViewController {
                 new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-
                         for (Person p : getData()) {
                             if (p.getPersonIdInDB() != 0) continue;
                             SQLitePerson sqLitePerson = new SQLitePerson();
                             System.out.println(p.getSurname());
                             sqLitePerson.set(p);
+                            updateCountPersonsFromDBInMain();
                             System.out.println("goodSetPerson");
                             System.out.println("id: " + p.getPersonIdInDB());
                         }
-
                     }
                 }
         );
@@ -161,6 +161,7 @@ public class mainViewController {
                         if (person.getPersonIdInDB() != 0) {
                             SQLitePerson sqLitePerson = new SQLitePerson();
                             sqLitePerson.remove(person);
+                            updateCountPersonsFromDBInMain();
                         }
                         getData().remove(person);
 
@@ -168,7 +169,14 @@ public class mainViewController {
                 }
         );
 
-        hBox.getChildren().addAll(lbAdd, lbDel, lbSave);
+        lbCountInDB = new Label();
+        setCountPersonsInDB(getData().size());
+        updateCountPersonsFromDBInMain();
+
+        System.out.println("count: " + getCountPersonsInDB());
+        lbCountInDB.setPadding(new Insets(2.0, 0.0, 0.0, 50.0));
+
+        hBox.getChildren().addAll(lbAdd, lbDel, lbSave, lbCountInDB);
         AnchorPane.setBottomAnchor(hBox,0.0);
         AnchorPane.setLeftAnchor(hBox, 0.0);
         AnchorPane.setRightAnchor(hBox, 0.0);
@@ -247,6 +255,7 @@ public class mainViewController {
     public void openTable(ActionEvent actionEvent) {
         if (btTogOpenTable.isSelected()) {
             MainClass.getPrimaryStage().setResizable(true);
+            getDataFromDB();
             createTableColumns();
             anchorSetTable.getChildren().addAll(viewPersons, hBox);
             MainClass.getPrimaryStage().setMinHeight(MainClass.getMainMinHeight() + 200);
@@ -255,6 +264,7 @@ public class mainViewController {
             anchorSetTable.getChildren().removeAll(viewPersons, hBox);
             viewPersons = null;
             hBox = null;
+            getData().clear();
 
             MainClass.getPrimaryStage().setResizable(false);
             MainClass.setMainMinSize();
@@ -355,5 +365,24 @@ public class mainViewController {
     public static void setData(Person person) {
         mainViewController.data.add(person);
         System.out.println("dataSize: " + data.size());
+    }
+
+    public static int getCountPersonsInDB() {
+        return countPersonsInDB;
+    }
+
+    public static void setCountPersonsInDB(int countPersonsInDB) {
+        mainViewController.countPersonsInDB = countPersonsInDB;
+    }
+
+    public void updateCountPersonsFromDBInMain() {
+        SQLitePerson sqLitePerson = new SQLitePerson();
+        setCountPersonsInDB( sqLitePerson.getCountFromRep() );
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                lbCountInDB.setText(String.valueOf(getCountPersonsInDB()));
+            }
+        });
     }
 }

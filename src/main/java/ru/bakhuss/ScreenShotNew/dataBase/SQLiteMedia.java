@@ -116,6 +116,11 @@ public class SQLiteMedia implements MediaRepository {
     }
 
     @Override
+    public ArrayList<Media> getAll() {
+        return null;
+    }
+
+    @Override
     public void update(Media media) {
 
     }
