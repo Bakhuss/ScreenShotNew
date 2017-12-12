@@ -99,7 +99,7 @@ public class ScreenCapture {
 
         SQLiteMedia sql = new SQLiteMedia();
         Media m = new Photo("1", 8);
-        sql.remove(m);
+//        sql.remove(m);
     }
 
     public static int getWidth() {

@@ -28,6 +28,7 @@ import ru.bakhuss.ScreenShotNew.action.screen.*;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
 import ru.bakhuss.ScreenShotNew.dataBase.DataBaseFile;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
+import ru.bakhuss.ScreenShotNew.dataBase.SQLitePerson;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
 import javax.swing.*;
@@ -35,6 +36,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.SQLInput;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -124,6 +126,47 @@ public class mainViewController {
         createLabel(lbAdd, 20.0);
         createLabel(lbDel, 20.0);
         createLabel(lbSave, 15.0);
+        lbSave.setOnMouseReleased(
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+
+                        for (Person p : getData()) {
+                            if (p.getPersonIdInDB() != 0) continue;
+                            SQLitePerson sqLitePerson = new SQLitePerson();
+                            System.out.println(p.getSurname());
+                            sqLitePerson.set(p);
+                            System.out.println("goodSetPerson");
+                            System.out.println("id: " + p.getPersonIdInDB());
+                        }
+
+                    }
+                }
+        );
+        lbAdd.setOnMouseReleased(
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        getData().add(new Person("new", "new","new"));
+                    }
+                }
+        );
+        lbDel.setOnMouseReleased(
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        Person person = viewPersons.getFocusModel().getFocusedItem();
+                        System.out.println( person.getSurname() );
+
+                        if (person.getPersonIdInDB() != 0) {
+                            SQLitePerson sqLitePerson = new SQLitePerson();
+                            sqLitePerson.remove(person);
+                        }
+                        getData().remove(person);
+
+                    }
+                }
+        );
 
         hBox.getChildren().addAll(lbAdd, lbDel, lbSave);
         AnchorPane.setBottomAnchor(hBox,0.0);

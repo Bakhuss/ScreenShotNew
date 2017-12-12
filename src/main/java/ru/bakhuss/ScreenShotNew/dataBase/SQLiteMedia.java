@@ -49,10 +49,12 @@ public class SQLiteMedia implements MediaRepository {
                     sqlHandler.getPstmt().setString(1, entry.getKey().toString());
                     sqlHandler.getPstmt().setBinaryStream(2, bais, baos.toByteArray().length);
                     sqlHandler.getPstmt().execute();
+
                     query = "select id from Image where rowid = last_insert_rowid();";
                     ResultSet rs = sqlHandler.getStmt().executeQuery(query);
                     rs.next();
                     int imageId = rs.getInt(1);
+                    System.out.println("imageId: " + imageId);
                     rs.close();
                     System.out.print(imageId + " ");
                     query = "insert into Image_Name (image_id, name) values (?,?);";
