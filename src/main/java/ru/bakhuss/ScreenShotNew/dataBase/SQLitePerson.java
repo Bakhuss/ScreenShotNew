@@ -29,12 +29,19 @@ public class SQLitePerson implements PersonRepository {
             rs.next();
             int idFullNameFromDB = rs.getInt(1);
             rs.close();
-            sqlHandler.getStmt().execute("insert into Person (full_name_id) values (" + idFullNameFromDB + ");");
+            query = "insert into PersonalData default values";
+            sqlHandler.getStmt().execute(query);
+            rs = sqlHandler.getStmt().executeQuery("select id from PersonalData where rowid = last_insert_rowid();");
+            rs.next();
+            int idPersonalDataFromDB = rs.getInt(1);
+            rs.close();
+            query = "insert into Person (full_name_id, personal_data_id) values (" + idFullNameFromDB + ", " + idPersonalDataFromDB + ");";
+            sqlHandler.getStmt().execute(query);
             rs = sqlHandler.getStmt().executeQuery("select id from Person where rowid = last_insert_rowid();");
             rs.next();
             int idPersonFromDB = rs.getInt(1);
+            rs.close();
             System.out.println(idPersonFromDB);
-            System.out.println("idFromDB: " + idFullNameFromDB);
             person.setPersonIdInDB(idPersonFromDB);
 
         } catch (SQLException e) {

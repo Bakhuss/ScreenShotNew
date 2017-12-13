@@ -156,6 +156,7 @@ public class mainViewController {
                     public void handle(MouseEvent event) {
                         getData().add(new Person("new", "new","new"));
                         viewPersons.getSelectionModel().select(getData().size()-1);
+                        viewPersons.scrollTo(getData().size()-1);
                     }
                 }
         );
