@@ -1,9 +1,7 @@
 package ru.bakhuss.ScreenShotNew.dataBase;
 
 import ru.bakhuss.ScreenShotNew.model.person.Person;
-import ru.bakhuss.ScreenShotNew.view.mainViewController;
 
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

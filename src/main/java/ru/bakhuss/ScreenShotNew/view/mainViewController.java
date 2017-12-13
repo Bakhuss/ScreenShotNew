@@ -62,7 +62,7 @@ public class mainViewController {
     private ProgressIndicator progIndDoneScreen;
 
     private TableView<Person> viewPersons;
-    private TableColumn<Person, String> surNameCol, firstNameCol, patronymicCol;
+    private TableColumn<Person, String> surNameCol, firstNameCol, patronymicCol, personalDataCol, mediaCol;
     private static ObservableList<Person> data = FXCollections.observableArrayList();
     private HBox hBox;
     private Label lbAdd, lbDel, lbSave, lbCountInDB;
@@ -99,9 +99,16 @@ public class mainViewController {
         surNameCol = new TableColumn<>("Surname");
         firstNameCol = new TableColumn<>("Name");
         patronymicCol = new TableColumn<>("Patronymic");
-        patronymicCol.setEditable(true);
+        personalDataCol = new TableColumn<>("PersData");
+        personalDataCol.setMaxWidth(60.0);
+        personalDataCol.setMinWidth(60.0);
+        mediaCol = new TableColumn<>("Media");
+        mediaCol.setMaxWidth(45.0);
+        mediaCol.setMinWidth(45.0);
+
+//        patronymicCol.setEditable(true);
         viewPersons.setEditable(true);
-        viewPersons.getColumns().addAll(surNameCol, firstNameCol, patronymicCol);
+        viewPersons.getColumns().addAll(surNameCol, firstNameCol, patronymicCol, personalDataCol, mediaCol);
         viewPersons.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         surNameCol.setCellValueFactory(cellData -> cellData.getValue().surnameProperty());
@@ -148,6 +155,7 @@ public class mainViewController {
                     @Override
                     public void handle(MouseEvent event) {
                         getData().add(new Person("new", "new","new"));
+                        viewPersons.getSelectionModel().select(getData().size()-1);
                     }
                 }
         );
@@ -164,7 +172,6 @@ public class mainViewController {
                             updateCountPersonsFromDBInMain();
                         }
                         getData().remove(person);
-
                     }
                 }
         );
@@ -259,6 +266,7 @@ public class mainViewController {
             createTableColumns();
             anchorSetTable.getChildren().addAll(viewPersons, hBox);
             MainClass.getPrimaryStage().setMinHeight(MainClass.getMainMinHeight() + 200);
+            viewPersons.getSelectionModel().select(0);
 
         } else {
             anchorSetTable.getChildren().removeAll(viewPersons, hBox);
