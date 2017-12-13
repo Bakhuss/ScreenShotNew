@@ -18,9 +18,7 @@ public class SQLitePerson implements PersonRepository {
 
     @Override
     public void set(Person person) {
-
         try {
-
             String query = "insert into Full_Name (surname, first_name, patronymic) values (?,?,?)";
             sqlHandler.connect();
             sqlHandler.setPstmt(sqlHandler.getConnection().prepareStatement(query));
@@ -31,9 +29,15 @@ public class SQLitePerson implements PersonRepository {
             query = "select id from Full_Name where rowid = last_insert_rowid();";
             ResultSet rs = sqlHandler.getStmt().executeQuery(query);
             rs.next();
-            int idFromDB = rs.getInt(1);
-            System.out.println("idFromDB: " + idFromDB);
-            person.setPersonIdInDB(idFromDB);
+            int idFullNameFromDB = rs.getInt(1);
+            rs.close();
+            sqlHandler.getStmt().execute("insert into Person (full_name_id) values (" + idFullNameFromDB + ");");
+            rs = sqlHandler.getStmt().executeQuery("select id from Person where rowid = last_insert_rowid();");
+            rs.next();
+            int idPersonFromDB = rs.getInt(1);
+            System.out.println(idPersonFromDB);
+            System.out.println("idFromDB: " + idFullNameFromDB);
+            person.setPersonIdInDB(idPersonFromDB);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -53,7 +57,8 @@ public class SQLitePerson implements PersonRepository {
         ArrayList<Person> people = new ArrayList<>();
         Person p = null;
         try {
-            String query = "select * from Full_Name";
+            String query = "select Person.id, surname, first_name, patronymic from Person\n" +
+                    "    inner join Full_Name on Person.full_name_id = Full_Name.id;";
             sqlHandler.connect();
             ResultSet rs = sqlHandler.getStmt().executeQuery(query);
             while (rs.next()) {
@@ -83,7 +88,7 @@ public class SQLitePerson implements PersonRepository {
     @Override
     public void remove(Person person) {
         try {
-            String query = "delete from Full_Name where id = " + person.getPersonIdInDB() + ";";
+            String query = "delete from Person where id = " + person.getPersonIdInDB() + ";";
             sqlHandler.connect();
             sqlHandler.getStmt().execute(query);
 
@@ -96,7 +101,7 @@ public class SQLitePerson implements PersonRepository {
     }
 
     public int getCountFromRep() {
-        String query = "select count(*) from Full_Name";
+        String query = "select count(*) from Person";
         int count = 0;
         try {
             sqlHandler.connect();
