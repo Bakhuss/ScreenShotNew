@@ -3,7 +3,7 @@ package ru.bakhuss.ScreenShotNew.model.person;
 public class PersonalData {
     private Person person;
     private String birthDay;
-    private String berthPlace;
+    private String birthPlace;
     private String deathDay;
     private String deathPlace;
     private String height;
@@ -31,12 +31,12 @@ public class PersonalData {
         this.birthDay = birthDay;
     }
 
-    public String getBerthPlace() {
-        return berthPlace;
+    public String getBirthPlace() {
+        return birthPlace;
     }
 
-    public void setBerthPlace(String berthPlace) {
-        this.berthPlace = berthPlace;
+    public void setBirthPlace(String birthPlace) {
+        this.birthPlace = birthPlace;
     }
 
     public String getDeathDay() {

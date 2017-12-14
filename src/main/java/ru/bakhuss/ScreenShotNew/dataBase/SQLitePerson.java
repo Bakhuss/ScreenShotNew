@@ -1,6 +1,7 @@
 package ru.bakhuss.ScreenShotNew.dataBase;
 
 import ru.bakhuss.ScreenShotNew.model.person.Person;
+import ru.bakhuss.ScreenShotNew.model.person.PersonalData;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,8 +30,8 @@ public class SQLitePerson implements PersonRepository {
             rs.next();
             int idFullNameFromDB = rs.getInt(1);
             rs.close();
-            query = "insert into PersonalData default values";
-            sqlHandler.getStmt().execute(query);
+            SQLitePersonalDataRepository sqLitePersonalDataRepository = new SQLitePersonalDataRepository(this.sqlHandler);
+            sqLitePersonalDataRepository.set(new PersonalData(person));
             rs = sqlHandler.getStmt().executeQuery("select id from PersonalData where rowid = last_insert_rowid();");
             rs.next();
             int idPersonalDataFromDB = rs.getInt(1);
@@ -93,7 +94,10 @@ public class SQLitePerson implements PersonRepository {
     @Override
     public void remove(Person person) {
         try {
-            String query = "delete from Person where id = " + person.getPersonIdInDB() + ";";
+            String query = "delete from PersonalData where id = (select personal_data_id from Person where id = " + person.getPersonIdInDB() + ");" +
+                    "delete from Person where id = " + person.getPersonIdInDB() + ";";
+
+//            String query = "delete from Person where id = " + person.getPersonIdInDB() + ";";
             sqlHandler.connect();
             sqlHandler.getStmt().execute(query);
 

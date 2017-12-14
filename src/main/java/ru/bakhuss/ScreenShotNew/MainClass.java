@@ -1,10 +1,13 @@
 package ru.bakhuss.ScreenShotNew;
 
+import javafx.stage.Modality;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLiteMedia;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 import ru.bakhuss.ScreenShotNew.model.media.Photo;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
+import ru.bakhuss.ScreenShotNew.model.person.PersonalData;
 import ru.bakhuss.ScreenShotNew.view.mainViewController;
+import ru.bakhuss.ScreenShotNew.view.mediaViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -87,6 +90,35 @@ public class MainClass extends Application {
             setMainMinWidth(getPrimaryStage().getWidth());
             getPrimaryStage().setMinWidth(getMainMinWidth());
             getPrimaryStage().setMinHeight(getMainMinHeight());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showMediaforPerson(Person person) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainClass.class.getResource("view/mediaView.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage dialogStage = new Stage();
+            String name, patronymic, surname;
+            name = person.getFirstName();
+            patronymic = person.getPatronymic();
+            surname = person.getSurname();
+
+            dialogStage.setTitle("Media: " + name + " " + patronymic + " " + surname);
+//            dialogStage.initModality(Modality.NONE);
+//            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            mediaViewController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setPerson(person);
+
+            dialogStage.showAndWait();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

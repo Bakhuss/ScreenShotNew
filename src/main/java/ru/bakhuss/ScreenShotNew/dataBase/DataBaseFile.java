@@ -179,7 +179,7 @@ public class DataBaseFile {
                 "                       UNIQUE\n" +
                 "                       NOT NULL,\n" +
                 "    birthDay   TEXT,\n" +
-                "    berthPlace TEXT,\n" +
+                "    birthPlace TEXT,\n" +
                 "    deathDay   TEXT,\n" +
                 "    deathPlace TEXT,\n" +
                 "    height     TEXT,\n" +

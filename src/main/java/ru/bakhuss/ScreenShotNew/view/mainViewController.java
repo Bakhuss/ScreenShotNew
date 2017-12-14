@@ -27,6 +27,7 @@ import ru.bakhuss.ScreenShotNew.dataBase.DataBaseFile;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLitePerson;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
+import ru.bakhuss.ScreenShotNew.model.person.PersonalData;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,6 +40,7 @@ public class mainViewController {
 
     private double currentMainHeight;
     private Date date;
+    private MainClass mainClass;
 
     @FXML
     private AnchorPane anchorMainViewTable;
@@ -67,8 +69,6 @@ public class mainViewController {
     private HBox hBox;
     private Label lbAdd, lbDel, lbSave, lbCountInDB;
     private static int countPersonsInDB = 0;
-
-    private MainClass mainClass;
 
     public mainViewController() {
     }
@@ -247,6 +247,18 @@ public class mainViewController {
                         (event.getTableView().getItems().get(
                                 event.getTablePosition().getRow())
                         ).setPatronymic(event.getNewValue());
+                    }
+                }
+        );
+
+        mediaCol.setOnEditStart(
+                new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Person, String> event) {
+                        Person person = event.getTableView().getItems().get(
+                                event.getTablePosition().getRow()
+                        );
+                        mainClass.showMediaforPerson(person);
                     }
                 }
         );
