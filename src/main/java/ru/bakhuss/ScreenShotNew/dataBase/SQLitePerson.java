@@ -94,11 +94,13 @@ public class SQLitePerson implements PersonRepository {
     @Override
     public void remove(Person person) {
         try {
-            String query = "delete from PersonalData where id = (select personal_data_id from Person where id = " + person.getPersonIdInDB() + ");" +
-                    "delete from Person where id = " + person.getPersonIdInDB() + ";";
+//            String query = "delete from PersonalData where id = (select personal_data_id from Person where id = " + person.getPersonIdInDB() + ");" +
+//                    "delete from Person where id = " + person.getPersonIdInDB() + ";";
 
-//            String query = "delete from Person where id = " + person.getPersonIdInDB() + ";";
+            String query = "delete from PersonalData where id = (select personal_data_id from Person where id = " + person.getPersonIdInDB() + ");";
             sqlHandler.connect();
+            sqlHandler.getStmt().execute(query);
+            query = "delete from Person where id = " + person.getPersonIdInDB() + ";";
             sqlHandler.getStmt().execute(query);
 
         } catch (SQLException e) {

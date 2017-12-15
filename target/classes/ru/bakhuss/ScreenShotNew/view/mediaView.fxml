@@ -28,7 +28,7 @@
             </Label>
          </children>
       </HBox>
-      <TableView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+      <TableView fx:id="tableViewMediaForPerson" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
         <columns>
           <TableColumn fx:id="mediaName" prefWidth="345.0" text="name" />
           <TableColumn fx:id="mediaGroup" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" text="group" />

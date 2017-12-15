@@ -3,6 +3,7 @@ package ru.bakhuss.ScreenShotNew.dataBase;
 import ru.bakhuss.ScreenShotNew.dataBase.sqlQuery.SQLConstructor;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 import ru.bakhuss.ScreenShotNew.model.media.Photo;
+import ru.bakhuss.ScreenShotNew.model.person.Person;
 
 import javax.imageio.ImageIO;
 import javax.xml.crypto.Data;
@@ -113,6 +114,29 @@ public class SQLiteMedia implements MediaRepository {
     public Media get() {
 
         return null;
+    }
+
+    public ArrayList<Media> getAllMediaNameForPerson(Person person) {
+        ArrayList<Media> medias = new ArrayList<>();
+        try {
+            sqlHandler.connect();
+            String query = "select Image_Name.name as Image, Audio_Name.name as Audio, Video_Name.name as Video, Group_Name.name as 'Group', auto_screen from Person_AND_Media\n" +
+                    "    inner join Image_Name on Person_AND_Media.any_media = Image_Name.image_id\n" +
+                    "    inner join Audio_Name on Person_AND_Media.any_media = Audio_Name.audio_id\n" +
+                    "    inner join Video_Name on Person_AND_Media.any_media = Video_Name.video_id\n" +
+                    "    inner join Group_Name on Person_AND_Media.any_media = Group_Name.id\n" +
+                    "where person_id = " + person.getPersonIdInDB() +";";
+            ResultSet rs = sqlHandler.getStmt().executeQuery(query);
+            while (rs.next()) {
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            sqlHandler.disconnect();
+        }
+        return medias;
     }
 
     @Override
