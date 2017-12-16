@@ -23,10 +23,10 @@ public class SQLitePersonalDataRepository implements PersonalDataRepository {
     }
 
     @Override
-    public void set(PersonalData personalData) {
-        try {
+    public void set(PersonalData personalData) throws SQLException {
+//        try {
 //            sqlHandler.connect();
-            String query = "insert into PersonalData (birthDay, birthPlace, deathDay, deathPlace, height, eyeColor, hairColor)" +
+            String query = "insert into Personal_Data (birthDay, birthPlace, deathDay, deathPlace, height, eyeColor, hairColor)" +
                     " values (?,?,?,?,?,?,?)";
             sqlHandler.setPstmt(sqlHandler.getConnection().prepareStatement(query));;
             sqlHandler.getPstmt().setString(1, personalData.getBirthDay());
@@ -37,15 +37,20 @@ public class SQLitePersonalDataRepository implements PersonalDataRepository {
             sqlHandler.getPstmt().setString(6, personalData.getEyeColor());
             sqlHandler.getPstmt().setString(7, personalData.getHairColor());
             sqlHandler.getPstmt().execute();
-//            sqlHandler.getStmt().execute("select id from PersonalData where rowid = last_insert_rowid();");
+//            sqlHandler.getStmt().execute("select id from Personal_Data where rowid = last_insert_rowid();");
             sqlHandler.getPstmt().clearParameters();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("error: SQLitePersonalDataRepository set");
-        } finally {
-//            sqlHandler.disconnect();
-        }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            System.out.println("error: SQLitePersonalDataRepository set");
+//        } finally {
+////            sqlHandler.disconnect();
+//        }
+
+    }
+
+    @Override
+    public void setGroup(PersonalData personalData) throws SQLException {
 
     }
 

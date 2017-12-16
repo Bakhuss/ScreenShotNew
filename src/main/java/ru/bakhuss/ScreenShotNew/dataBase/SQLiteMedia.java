@@ -1,15 +1,12 @@
 package ru.bakhuss.ScreenShotNew.dataBase;
 
-import ru.bakhuss.ScreenShotNew.dataBase.sqlQuery.SQLConstructor;
+import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
-import ru.bakhuss.ScreenShotNew.model.media.Photo;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
 import javax.imageio.ImageIO;
-import javax.xml.crypto.Data;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
@@ -20,6 +17,10 @@ public class SQLiteMedia implements MediaRepository {
 
     public SQLiteMedia() {
         sqlHandler = new SQLHandler(DBType.sqlite);
+    }
+
+    public SQLiteMedia(SQLHandler sqlHandler) {
+        this.sqlHandler = sqlHandler;
     }
 
     @Override
@@ -33,21 +34,22 @@ public class SQLiteMedia implements MediaRepository {
 //            String sql = SQLConstructor.sqlPstmtInsert(table, columns);
 //            System.out.println("sql: " + sql);
 
-            Iterator<Map.Entry<Long, BufferedImage>> it = media.getMap().entrySet().iterator();
-            Map.Entry<Long, BufferedImage> entry = null;
+//            Iterator<Map.Entry<Long, BufferedImage>> it = media.getMap().entrySet().iterator();
+            Iterator<Image> it = media.getMediaGroup().iterator();
+            Image entry = null;
             ByteArrayOutputStream baos = null;
             long b = System.currentTimeMillis();
             while (it.hasNext()) {
                 try {
                     entry = it.next();
                     baos = new ByteArrayOutputStream();
-                    ImageIO.write(entry.getValue(), "jpg", baos);
+                    ImageIO.write(entry.getMedia(), "jpg", baos);
                     baos.close();
                     ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 
                     String query = "insert into Image (date_in, image) values (?,?);";
                     sqlHandler.setPstmt(sqlHandler.getConnection().prepareStatement(query));
-                    sqlHandler.getPstmt().setString(1, entry.getKey().toString());
+                    sqlHandler.getPstmt().setString(1, entry.getDateIn().toString());
                     sqlHandler.getPstmt().setBinaryStream(2, bais, baos.toByteArray().length);
                     sqlHandler.getPstmt().execute();
 
@@ -61,7 +63,7 @@ public class SQLiteMedia implements MediaRepository {
                     query = "insert into Image_Name (image_id, name) values (?,?);";
                     sqlHandler.setPstmt(sqlHandler.getConnection().prepareStatement(query));
                     sqlHandler.getPstmt().setInt(1, imageId);
-                    sqlHandler.getPstmt().setString(2, String.valueOf(entry.getKey().toString()));
+                    sqlHandler.getPstmt().setString(2, entry.getDateIn().toString());
                     sqlHandler.getPstmt().execute();
                     query = "insert into Group_All_Media (group_name, any_media) values (" + media.getGroupNameId() + "," + imageId + ");";
                     sqlHandler.getStmt().execute(query);
@@ -77,10 +79,15 @@ public class SQLiteMedia implements MediaRepository {
         }
     }
 
+    @Override
+    public void setGroup(Media media) throws SQLException {
+
+    }
+
     private String[] switchTables(String table) {
         String[] columns = null;
         switch (table) {
-            case "Photo":
+            case "Image":
                 columns = new String[2];
                 columns[0] = "date_in";
                 columns[1] = "image";
@@ -120,7 +127,7 @@ public class SQLiteMedia implements MediaRepository {
         ArrayList<Media> medias = new ArrayList<>();
         try {
             sqlHandler.connect();
-            String query = "select Image_Name.name as Image, Audio_Name.name as Audio, Video_Name.name as Video, Group_Name.name as 'Group', auto_screen from Person_AND_Media\n" +
+            String query = "select Image_Name.groupName as Image, Audio_Name.groupName as Audio, Video_Name.groupName as Video, Group_Name.groupName as 'Group', auto_screen from Person_AND_Media\n" +
                     "    inner join Image_Name on Person_AND_Media.any_media = Image_Name.image_id\n" +
                     "    inner join Audio_Name on Person_AND_Media.any_media = Audio_Name.audio_id\n" +
                     "    inner join Video_Name on Person_AND_Media.any_media = Video_Name.video_id\n" +

@@ -80,10 +80,10 @@ public class mainViewController {
 //        createTableColumns();
 
 //        data = FXCollections.observableArrayList(
-//                new Person("surname", "name", "patronymic"),
-//                new Person("Surname", "name", "patronymic"),
+//                new Person("surname", "groupName", "patronymic"),
+//                new Person("Surname", "groupName", "patronymic"),
 //                new Person("surname", "Name", "patronymic"),
-//                new Person("surname", "name", "Patronymic")
+//                new Person("surname", "groupName", "Patronymic")
 //
 //        );
 

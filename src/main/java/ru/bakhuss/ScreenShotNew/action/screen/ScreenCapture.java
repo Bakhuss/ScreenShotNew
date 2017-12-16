@@ -3,21 +3,11 @@ package ru.bakhuss.ScreenShotNew.action.screen;
 import ru.bakhuss.ScreenShotNew.MainClass;
 import ru.bakhuss.ScreenShotNew.dataBase.DataBaseFile;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLiteMedia;
+import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
-import ru.bakhuss.ScreenShotNew.model.media.Photo;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
-import ru.bakhuss.ScreenShotNew.view.mainViewController;
-import sun.awt.image.BufferedImageDevice;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
@@ -58,16 +48,24 @@ public class ScreenCapture {
         if (threadsCount == 0) threadsCount = 1;
         System.out.println("treads: " + threadsCount);
 
-        SQLiteMedia photoGroup = new SQLiteMedia();
-        groupNameId = photoGroup.setGroupName(date);
+        Media<Image>[] medias = new Media[threadsCount];
+
+        SQLiteMedia groupName = new SQLiteMedia();
+        groupNameId = groupName.setGroupName(date);
         System.out.println("groupNameId: " + groupNameId);
 
         SQLiteMedia[] sqLiteMedia = new SQLiteMedia[threadsCount];
-        Media[] media = new Photo[threadsCount];
+        Media[] media = new Image[threadsCount];
         for (int i = 0; i < threadsCount; i++) {
             sqLiteMedia[i] = new SQLiteMedia();
-            media[i] = new Photo(date, groupNameId);
+            medias[i] = new Image();
+            medias[i].setGroupNameId(groupNameId);
         }
+
+
+
+
+
 
         ExecutorService executor = Executors.newFixedThreadPool(2);
         setFrames(new AtomicInteger(0));
@@ -78,16 +76,17 @@ public class ScreenCapture {
                 public void run() {
                     do {
                         try {
+//                            media[w].getMap().put((System.currentTimeMillis() - TIMEZONE_OFFSET), new Robot().createScreenCapture(rectangle));
 
-                            media[w].getMap().put((System.currentTimeMillis() - TIMEZONE_OFFSET), new Robot().createScreenCapture(rectangle));
+                            medias[w].getMediaGroup().add(new Image( (System.currentTimeMillis() - TIMEZONE_OFFSET), new Robot().createScreenCapture(rectangle) ));
                         } catch (AWTException e) {
                             e.printStackTrace();
                         }
                     } while (System.currentTimeMillis() - time < timeScreen * 1000);
-                    System.out.println("\ntime: " + (System.currentTimeMillis() - time) + " | " + w + " " + media[w].getMap().size());
-                    sqLiteMedia[w].set(media[w]);
-                    getFrames().addAndGet(media[w].getMap().size());
-                    media[w].getMap().clear();
+                    System.out.println("\ntime: " + (System.currentTimeMillis() - time) + " | " + w + " " + medias[w].getMediaGroup().size());
+                    sqLiteMedia[w].set(medias[w]);
+                    getFrames().addAndGet(medias[w].getMediaGroup().size());
+                    medias[w].getMediaGroup().clear();
                 }
             });
 
@@ -97,8 +96,6 @@ public class ScreenCapture {
         }
         System.out.println("photoSize: " + getFrames().get());
 
-        SQLiteMedia sql = new SQLiteMedia();
-        Media m = new Photo("1", 8);
 //        sql.remove(m);
     }
 

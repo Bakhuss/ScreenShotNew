@@ -1,11 +1,8 @@
 package ru.bakhuss.ScreenShotNew;
 
-import javafx.stage.Modality;
-import ru.bakhuss.ScreenShotNew.dataBase.SQLiteMedia;
-import ru.bakhuss.ScreenShotNew.model.media.Media;
-import ru.bakhuss.ScreenShotNew.model.media.Photo;
+import ru.bakhuss.ScreenShotNew.model.media.*;
+import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
-import ru.bakhuss.ScreenShotNew.model.person.PersonalData;
 import ru.bakhuss.ScreenShotNew.view.mainViewController;
 import ru.bakhuss.ScreenShotNew.view.mediaViewController;
 import javafx.application.Application;
@@ -15,8 +12,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class MainClass extends Application {
@@ -45,16 +44,17 @@ public class MainClass extends Application {
     public MainClass() {
     }
 
-//    static void method() {
-//        Person person = new Person();
-//        Media media = new Photo(person);
-//        SQLiteMedia sqLiteMedia = new SQLiteMedia();
-//        sqLiteMedia.set(media);
-//        Photo photo = new Photo(person);
-//        photo.setTempName("temp");
-//        System.out.println(media.getClass().getSimpleName());
-//        System.out.println(photo.getTempName());
-//    }
+    static void method() {
+        Image image = new Image();
+        Media<Media> media = new Media<>();
+        Media<Image> med = new Media<>();
+
+        media.getMediaGroup().add(image);
+        media.getMediaGroup().add(new Media<>());
+        for ( Media m : media.getMediaGroup() ) {
+            System.out.println( m.getClass().getSimpleName() );
+        }
+    }
 
     public static Stage getPrimaryStage() {
         return primaryStage;
@@ -138,6 +138,8 @@ public class MainClass extends Application {
     }
 
     public static void main(String[] args) {
+        method();
+
         launch(args);
     }
 

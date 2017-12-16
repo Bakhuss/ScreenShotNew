@@ -2,17 +2,20 @@ package ru.bakhuss.ScreenShotNew.dataBase;
 
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface MediaRepository extends Repository<Media> {
 
-    void set(Media media);
+    void set(Media media) throws SQLException;
 
-    Media get();
+//    void setGroup(Media media) throws SQLException;
 
-    ArrayList<Media> getAll();
+    Media get() throws SQLException;
 
-    void update(Media media);
+    ArrayList<Media> getAll() throws SQLException;
 
-    void remove(Media media);
+    void update(Media media) throws SQLException;
+
+    void remove(Media media) throws SQLException;
 }

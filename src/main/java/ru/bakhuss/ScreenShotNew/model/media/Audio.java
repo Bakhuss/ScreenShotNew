@@ -6,12 +6,7 @@ import java.util.Map;
 
 public class Audio extends Media {
 
-    public Audio(Person person) {
-        this.person = person;
+    public Audio() {
     }
 
-    @Override
-    public Map getMap() {
-        return map;
-    }
 }

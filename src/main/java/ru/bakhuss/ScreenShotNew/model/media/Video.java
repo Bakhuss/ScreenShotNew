@@ -6,19 +6,7 @@ import java.util.Map;
 
 public class Video extends Media {
 
-    public Video(Person person) {
-        this.person = person;
+    public Video() {
     }
 
-    @Override
-    public Map getMap() {
-        return map;
-    }
-
-    /*
-    public Video(Person person) {
-        super(person);
-//        this.type = MediaType.VIDEO;
-    }
-*/
 }

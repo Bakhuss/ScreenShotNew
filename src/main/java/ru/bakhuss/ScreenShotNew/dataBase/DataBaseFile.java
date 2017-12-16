@@ -16,10 +16,10 @@ public class DataBaseFile {
     }
 
     public static void createDBFile() {
-        String sql = "CREATE TABLE IF NOT EXISTS Photo (\n" +
+        String sql = "CREATE TABLE IF NOT EXISTS Image (\n" +
                 "    id    INTEGER PRIMARY KEY AUTOINCREMENT\n" +
                 "                  NOT NULL,\n" +
-                "    name  TEXT    NOT NULL,\n" +
+                "    groupName  TEXT    NOT NULL,\n" +
                 "    image BLOB\n" +
                 ");";
         SQLHandler handler = new SQLHandler(DBType.sqlite);
@@ -74,7 +74,7 @@ public class DataBaseFile {
         sql = "CREATE TABLE Audio_Name (\n" +
                 "    audio_id INTEGER REFERENCES Audio (id) \n" +
                 "                     NOT NULL,\n" +
-                "    name     TEXT    NOT NULL\n" +
+                "    groupName     TEXT    NOT NULL\n" +
                 ");";
         stmt.execute(sql);
 
@@ -82,14 +82,14 @@ public class DataBaseFile {
                 "    image_id INTEGER REFERENCES Image (id) ON DELETE CASCADE\n" +
                 "                                           ON UPDATE CASCADE\n" +
                 "                     NOT NULL,\n" +
-                "    name     TEXT    NOT NULL\n" +
+                "    groupName     TEXT    NOT NULL\n" +
                 ");";
         stmt.execute(sql);
 
         sql = "CREATE TABLE Video_Name (\n" +
                 "    video_id INTEGER REFERENCES Video (id) \n" +
                 "                     NOT NULL,\n" +
-                "    name     TEXT    NOT NULL\n" +
+                "    groupName     TEXT    NOT NULL\n" +
                 ");";
         stmt.execute(sql);
 
@@ -134,7 +134,7 @@ public class DataBaseFile {
                 "    id          INTEGER PRIMARY KEY AUTOINCREMENT\n" +
                 "                        UNIQUE\n" +
                 "                        NOT NULL,\n" +
-                "    name        TEXT    NOT NULL,\n" +
+                "    groupName        TEXT    NOT NULL,\n" +
                 "    auto_screen BOOLEAN NOT NULL\n" +
                 ");";
         stmt.execute(sql);
@@ -169,12 +169,12 @@ public class DataBaseFile {
                 "                             NOT NULL,\n" +
                 "    full_name_id     INTEGER REFERENCES Full_Name (id) \n" +
                 "                             NOT NULL,\n" +
-                "    personal_data_id INTEGER REFERENCES PersonalData (id) \n" +
+                "    personal_data_id INTEGER REFERENCES Personal_Data (id) \n" +
                 "                             UNIQUE\n" +
                 ");";
         stmt.execute(sql);
 
-        sql = "CREATE TABLE PersonalData (\n" +
+        sql = "CREATE TABLE Personal_Data (\n" +
                 "    id         INTEGER PRIMARY KEY AUTOINCREMENT\n" +
                 "                       UNIQUE\n" +
                 "                       NOT NULL,\n" +
