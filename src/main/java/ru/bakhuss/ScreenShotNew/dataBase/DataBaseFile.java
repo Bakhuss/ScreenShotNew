@@ -61,6 +61,18 @@ public class DataBaseFile {
                 "    image   BLOB    NOT NULL\n" +
                 ");";
         stmt.execute(sql);
+        sql = "CREATE TRIGGER after_insert\n" +
+                "         AFTER INSERT\n" +
+                "            ON Image\n" +
+                "BEGIN\n" +
+                "    INSERT INTO Image_Temp (\n" +
+                "                               image_id\n" +
+                "                           )\n" +
+                "                           VALUES (\n" +
+                "                               new.id\n" +
+                "                           );\n" +
+                "END;";
+        stmt.execute(sql);
 
         sql = "CREATE TABLE IF NOT EXISTS Video (\n" +
                 "    id      INTEGER PRIMARY KEY AUTOINCREMENT\n" +
@@ -78,11 +90,11 @@ public class DataBaseFile {
                 ");";
         stmt.execute(sql);
 
-        sql = "CREATE TABLE Image_Name (\n" +
+        sql = "CREATE TABLE IF NOT EXISTS Image_Name (\n" +
                 "    image_id INTEGER REFERENCES Image (id) ON DELETE CASCADE\n" +
                 "                                           ON UPDATE CASCADE\n" +
                 "                     NOT NULL,\n" +
-                "    groupName     TEXT    NOT NULL\n" +
+                "    name     TEXT    NOT NULL\n" +
                 ");";
         stmt.execute(sql);
 
@@ -130,11 +142,11 @@ public class DataBaseFile {
                 ");";
         stmt.execute(sql);
 
-        sql = "CREATE TABLE Group_Name (\n" +
+        sql = "CREATE TABLE IF NOT EXISTS Group_Name (\n" +
                 "    id          INTEGER PRIMARY KEY AUTOINCREMENT\n" +
                 "                        UNIQUE\n" +
                 "                        NOT NULL,\n" +
-                "    groupName        TEXT    NOT NULL,\n" +
+                "    name        TEXT    NOT NULL,\n" +
                 "    auto_screen BOOLEAN NOT NULL\n" +
                 ");";
         stmt.execute(sql);
@@ -233,7 +245,7 @@ public class DataBaseFile {
                 "    )\n" +
                 "    REFERENCES Video_Name (video_id) \n" +
                 ");";
-        stmt.execute(sql);
+//        stmt.execute(sql);
     }
 
 }
