@@ -7,40 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Media<T extends Media> {
+public class Media {
 
-    // one media
     protected BufferedImage media = null;
     protected String name = null;
-
-    // group media
-    private List<T> mediaGroup = null;
-    private String groupName = null;
-    private int groupNameId = 0;
-
-    // mutual
     protected Long dateIn = null;
-    protected Person person = null;
+    protected int id = 0;
+
+    protected Media(){}
 
 
-    public Media() {
-        this.mediaGroup = new ArrayList<>();
-    }
-
-
-    protected BufferedImage getMedia() {
-        return media;
-    }
-
-    protected void setMedia(BufferedImage media) {
-        this.media = media;
-    }
-
-    protected String getName() {
+    public String getName() {
         return name;
     }
 
-    protected void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -52,31 +33,12 @@ public class Media<T extends Media> {
         this.dateIn = dateIn;
     }
 
-    public List<T> getMediaGroup() {
-        return mediaGroup;
+    public int getId() {
+        return id;
     }
 
-    public int getGroupNameId() {
-        return groupNameId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setGroupNameId(int groupNameId) {
-        this.groupNameId = groupNameId;
-    }
-
-    public String getGroupName() {
-        return groupName;
-    }
-
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
 }

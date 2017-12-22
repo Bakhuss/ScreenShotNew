@@ -1,5 +1,8 @@
-package ru.bakhuss.ScreenShotNew.dataBase;
+package ru.bakhuss.ScreenShotNew.dataBase.SQLite;
 
+import ru.bakhuss.ScreenShotNew.dataBase.DBType;
+import ru.bakhuss.ScreenShotNew.dataBase.PersonRepository;
+import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 import ru.bakhuss.ScreenShotNew.model.person.PersonalData;
 
@@ -9,17 +12,19 @@ import java.util.ArrayList;
 
 public class SQLitePerson implements PersonRepository {
 
-    SQLHandler sqlHandler;
+    private SQLHandler sqlHandler;
 
     public SQLitePerson() {
         sqlHandler = new SQLHandler(DBType.sqlite);
     }
 
+    public SQLitePerson(SQLHandler sqlHandler) { this.sqlHandler = sqlHandler;}
+
     @Override
     public void set(Person person) {
         try {
             String query = "insert into Full_Name (surname, first_name, patronymic) values (?,?,?)";
-            sqlHandler.connect();
+//            sqlHandler.connect();
             sqlHandler.setPstmt(sqlHandler.getConnection().prepareStatement(query));
             sqlHandler.getPstmt().setString(1, person.getSurname());
             sqlHandler.getPstmt().setString(2, person.getFirstName());
@@ -49,13 +54,8 @@ public class SQLitePerson implements PersonRepository {
             e.printStackTrace();
             System.out.println("error: SQLitePerson setPerson");
         } finally {
-            sqlHandler.disconnect();
+//            sqlHandler.disconnect();
         }
-    }
-
-    @Override
-    public void setGroup(Person person) throws SQLException {
-
     }
 
     @Override

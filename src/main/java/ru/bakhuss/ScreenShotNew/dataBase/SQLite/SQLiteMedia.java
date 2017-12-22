@@ -1,17 +1,26 @@
-package ru.bakhuss.ScreenShotNew.dataBase;
+package ru.bakhuss.ScreenShotNew.dataBase.SQLite;
 
+import ru.bakhuss.ScreenShotNew.dataBase.DBType;
+import ru.bakhuss.ScreenShotNew.dataBase.MediaRepository;
+import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
+import ru.bakhuss.ScreenShotNew.model.media.MediaGroup;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Semaphore;
 
 public class SQLiteMedia implements MediaRepository {
+
+    Object obj = new Object();
 
     SQLHandler sqlHandler;
 
@@ -25,17 +34,19 @@ public class SQLiteMedia implements MediaRepository {
 
     @Override
     public void set(Media media) {
+    }
+
+    @Override
+    public void set(Media... media) {
+    }
+
+    @Override
+    public synchronized void set(MediaGroup mediaGroup) {
+        Array array = null;
         try {
-//            DataBaseFile.createDBFile();
-            sqlHandler.connect();
-            String table = media.getClass().getSimpleName();
-            String[] columns = switchTables(table);
+            String table = mediaGroup.getClass().getSimpleName();
 
-//            String sql = SQLConstructor.sqlPstmtInsert(table, columns);
-//            System.out.println("sql: " + sql);
-
-//            Iterator<Map.Entry<Long, BufferedImage>> it = media.getMap().entrySet().iterator();
-            Iterator<Image> it = media.getMediaGroup().iterator();
+            Iterator<Image> it = mediaGroup.getMediaList().iterator();
             Image entry = null;
             ByteArrayOutputStream baos = null;
             long b = System.currentTimeMillis();
@@ -43,44 +54,45 @@ public class SQLiteMedia implements MediaRepository {
                 try {
                     entry = it.next();
                     baos = new ByteArrayOutputStream();
-                    ImageIO.write(entry.getMedia(), "jpg", baos);
+                    ImageIO.write(entry.getImage(), "jpg", baos);
                     baos.close();
                     ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 
                     String query = "insert into Image (date_in, image) values (?,?);";
-                    sqlHandler.setPstmt(sqlHandler.getConnection().prepareStatement(query));
+                    if (sqlHandler.getPstmt() == null) {
+                        System.out.println("Pstmt is null");
+                        sqlHandler.setPstmt(sqlHandler.getConnection().prepareStatement(query));
+                    }
                     sqlHandler.getPstmt().setString(1, entry.getDateIn().toString());
                     sqlHandler.getPstmt().setBinaryStream(2, bais, baos.toByteArray().length);
-                    sqlHandler.getPstmt().execute();
+                    sqlHandler.getPstmt().addBatch();
 
-                    query = "select id from Image where rowid = last_insert_rowid();";
-                    ResultSet rs = sqlHandler.getStmt().executeQuery(query);
-                    rs.next();
-                    int imageId = rs.getInt(1);
-                    System.out.println("imageId: " + imageId);
-                    rs.close();
-                    System.out.print(imageId + " ");
-                    query = "insert into Image_Name (image_id, name) values (?,?);";
-                    sqlHandler.setPstmt(sqlHandler.getConnection().prepareStatement(query));
-                    sqlHandler.getPstmt().setInt(1, imageId);
-                    sqlHandler.getPstmt().setString(2, entry.getDateIn().toString());
-                    sqlHandler.getPstmt().execute();
-                    query = "insert into Group_All_Media (group_name, any_media) values (" + media.getGroupNameId() + "," + imageId + ");";
-                    sqlHandler.getStmt().execute(query);
+
+//                    query = "select id from Image where rowid = last_insert_rowid();";
+//                    ResultSet rs = sqlHandler.getStmt().executeQuery(query);
+//                    rs.next();
+//                    int imageId = rs.getInt(1);
+//                    System.out.println("imageId: " + imageId);
+//                    rs.close();
+//                    System.out.print(imageId + " ");
+//                    query = "insert into Image_Name (image_id, name) values (?,?);";
+//                    sqlHandler.setPstmt(sqlHandler.getConnection().prepareStatement(query));
+//                    sqlHandler.getPstmt().setInt(1, imageId);
+//                    sqlHandler.getPstmt().setString(2, entry.getDateIn().toString());
+//                    sqlHandler.getPstmt().execute();
+//                    query = "insert into Group_All_Media (group_name, any_media) values (" + mediaGroup.getGroupNameId() + "," + imageId + ");";
+//                    sqlHandler.getStmt().execute(query);
+
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            System.out.println("sqlTime: " + (System.currentTimeMillis()-b));
+            System.out.println("sqlTime: " + (System.currentTimeMillis() - b));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            sqlHandler.disconnect();
         }
-    }
-
-    @Override
-    public void setGroup(Media media) throws SQLException {
 
     }
 
@@ -102,7 +114,7 @@ public class SQLiteMedia implements MediaRepository {
         try {
             String sqlIns = "insert into Group_Name (name, auto_screen) values ('" + groupName + "', 1);";
             String sqlSel = "select id from Group_Name where rowid = last_insert_rowid();";
-            sqlHandler.connect();
+//            sqlHandler.connect();
             sqlHandler.getStmt().execute(sqlIns);
             ResultSet rs = sqlHandler.getStmt().executeQuery(sqlSel);
             rs.next();
@@ -112,7 +124,7 @@ public class SQLiteMedia implements MediaRepository {
             e.printStackTrace();
             System.out.println("error: setGroupName");
         } finally {
-            sqlHandler.disconnect();
+//            sqlHandler.disconnect();
         }
         return 0;
     }
@@ -132,7 +144,7 @@ public class SQLiteMedia implements MediaRepository {
                     "    inner join Audio_Name on Person_AND_Media.any_media = Audio_Name.audio_id\n" +
                     "    inner join Video_Name on Person_AND_Media.any_media = Video_Name.video_id\n" +
                     "    inner join Group_Name on Person_AND_Media.any_media = Group_Name.id\n" +
-                    "where person_id = " + person.getPersonIdInDB() +";";
+                    "where person_id = " + person.getPersonIdInDB() + ";";
             ResultSet rs = sqlHandler.getStmt().executeQuery(query);
             while (rs.next()) {
 
@@ -160,8 +172,8 @@ public class SQLiteMedia implements MediaRepository {
     public void remove(Media media) {
         try {
             sqlHandler.connect();
-            int a = sqlHandler.getStmt().executeUpdate("delete from Image where id in (select any_media from Group_All_Media where group_name = " + media.getGroupNameId() + ");");
-            System.out.println("delete: " + a);
+//            int a = sqlHandler.getStmt().executeUpdate("delete from Image where id in (select any_media from Group_All_Media where group_name = " + media.getGroupNameId() + ");");
+//            System.out.println("delete: " + a);
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("error: remove media");
@@ -169,4 +181,5 @@ public class SQLiteMedia implements MediaRepository {
             sqlHandler.disconnect();
         }
     }
+
 }

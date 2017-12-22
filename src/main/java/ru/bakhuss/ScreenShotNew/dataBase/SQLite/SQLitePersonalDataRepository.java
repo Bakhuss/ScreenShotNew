@@ -1,5 +1,8 @@
-package ru.bakhuss.ScreenShotNew.dataBase;
+package ru.bakhuss.ScreenShotNew.dataBase.SQLite;
 
+import ru.bakhuss.ScreenShotNew.dataBase.DBType;
+import ru.bakhuss.ScreenShotNew.dataBase.PersonalDataRepository;
+import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.model.person.PersonalData;
 
 import java.sql.Connection;
@@ -49,10 +52,6 @@ public class SQLitePersonalDataRepository implements PersonalDataRepository {
 
     }
 
-    @Override
-    public void setGroup(PersonalData personalData) throws SQLException {
-
-    }
 
     @Override
     public PersonalData get() {

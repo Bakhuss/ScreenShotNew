@@ -2,6 +2,11 @@ package ru.bakhuss.ScreenShotNew.model.person;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import ru.bakhuss.ScreenShotNew.model.media.Media;
+import ru.bakhuss.ScreenShotNew.model.media.MediaGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Person {
 
@@ -9,6 +14,7 @@ public class Person {
     private StringProperty firstName;
     private StringProperty patronymic;
     private int personIdInDB = 0;
+    private List mediaList = null;
 
     // Constructors
     public Person() {
@@ -22,7 +28,6 @@ public class Person {
         this.firstName = new SimpleStringProperty(firstName);
         this.patronymic = new SimpleStringProperty(patronymic);
     }
-
 
 
     //Getters and Setters
@@ -67,4 +72,13 @@ public class Person {
     public void setPersonIdInDB(int personIdInDB) {
         this.personIdInDB = personIdInDB;
     }
+
+    public List getPersonMediaList() {
+        return mediaList;
+    }
+
+    public void newPersonMediaList() {
+        if (mediaList == null) mediaList = new ArrayList();
+    }
+
 }

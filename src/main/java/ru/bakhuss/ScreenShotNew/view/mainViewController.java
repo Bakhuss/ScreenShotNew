@@ -25,9 +25,8 @@ import ru.bakhuss.ScreenShotNew.action.screen.*;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
 import ru.bakhuss.ScreenShotNew.dataBase.DataBaseFile;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
-import ru.bakhuss.ScreenShotNew.dataBase.SQLitePerson;
+import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLitePerson;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
-import ru.bakhuss.ScreenShotNew.model.person.PersonalData;
 
 import java.io.File;
 import java.io.IOException;
@@ -140,10 +139,21 @@ public class mainViewController {
                     public void handle(MouseEvent event) {
                         for (Person p : getData()) {
                             if (p.getPersonIdInDB() != 0) continue;
-                            SQLitePerson sqLitePerson = new SQLitePerson();
+                            SQLHandler sqlite = new SQLHandler(DBType.sqlite);
+                            SQLitePerson sqLitePerson = new SQLitePerson(sqlite);
                             System.out.println(p.getSurname());
-                            sqLitePerson.set(p);
-                            updateCountPersonsFromDBInMain();
+
+                            try {
+                                sqlite.connect();
+                                sqLitePerson.set(p);
+                                updateCountPersonsFromDBInMain(sqlite);
+
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            } finally {
+                                sqlite.disconnect();
+                            }
+
                             System.out.println("goodSetPerson");
                             System.out.println("id: " + p.getPersonIdInDB());
                         }
@@ -168,9 +178,17 @@ public class mainViewController {
                         System.out.println( person.getSurname() );
 
                         if (person.getPersonIdInDB() != 0) {
-                            SQLitePerson sqLitePerson = new SQLitePerson();
-                            sqLitePerson.remove(person);
-                            updateCountPersonsFromDBInMain();
+                            SQLHandler sqlite = new SQLHandler(DBType.sqlite);
+                            SQLitePerson sqLitePerson = new SQLitePerson(sqlite);
+                            try {
+                                sqlite.connect();
+                                sqLitePerson.remove(person);
+                                updateCountPersonsFromDBInMain(sqlite);
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            } finally {
+                                sqlite.disconnect();
+                            }
                         }
                         getData().remove(person);
                     }
@@ -179,7 +197,8 @@ public class mainViewController {
 
         lbCountInDB = new Label();
         setCountPersonsInDB(getData().size());
-        updateCountPersonsFromDBInMain();
+        SQLHandler sqlite = new SQLHandler(DBType.sqlite);
+        updateCountPersonsFromDBInMain(sqlite);
 
         System.out.println("count: " + getCountPersonsInDB());
         lbCountInDB.setPadding(new Insets(2.0, 0.0, 0.0, 50.0));
@@ -317,7 +336,7 @@ public class mainViewController {
                     ExecutorService es = Executors.newSingleThreadExecutor();
                     es.execute(new Runnable() {
                         public void run() {
-                            ScreenCapture.getScreen(new Person());
+                            ScreenCapture.getScreen();
                         }
                     });
                     es.shutdown();
@@ -396,8 +415,8 @@ public class mainViewController {
         mainViewController.countPersonsInDB = countPersonsInDB;
     }
 
-    public void updateCountPersonsFromDBInMain() {
-        SQLitePerson sqLitePerson = new SQLitePerson();
+    public void updateCountPersonsFromDBInMain(SQLHandler sqlHandler) {
+        SQLitePerson sqLitePerson = new SQLitePerson(sqlHandler);
         setCountPersonsInDB( sqLitePerson.getCountFromRep() );
         Platform.runLater(new Runnable() {
             @Override

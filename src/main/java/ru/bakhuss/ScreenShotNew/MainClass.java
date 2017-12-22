@@ -1,5 +1,8 @@
 package ru.bakhuss.ScreenShotNew;
 
+import ru.bakhuss.ScreenShotNew.dataBase.DBType;
+import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
+import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLiteMedia;
 import ru.bakhuss.ScreenShotNew.model.media.*;
 import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
@@ -12,10 +15,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Locale;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class MainClass extends Application {
@@ -45,15 +47,22 @@ public class MainClass extends Application {
     }
 
     static void method() {
-        Image image = new Image();
-        Media<Media> media = new Media<>();
-        Media<Image> med = new Media<>();
+        SQLHandler sqlite = new SQLHandler(DBType.sqlite);
+        SQLiteMedia sqLiteMedia = new SQLiteMedia(sqlite);
 
-        media.getMediaGroup().add(image);
-        media.getMediaGroup().add(new Media<>());
-        for ( Media m : media.getMediaGroup() ) {
-            System.out.println( m.getClass().getSimpleName() );
-        }
+
+        MediaGroup<Media> media = new MediaGroup<>(false);
+        media.getMediaList().add(new Image());
+        media.getMediaList().add(new Audio());
+        media.getMediaList().add(new Video());
+        media.getMediaList().add(new Image());
+        Person person = new Person();
+        person.newPersonMediaList();
+        System.out.println(person.getPersonMediaList().size());
+        person.getPersonMediaList().add(media);
+        person.getPersonMediaList().add(new Image());
+        System.out.println(person.getPersonMediaList().size());
+
     }
 
     public static Stage getPrimaryStage() {

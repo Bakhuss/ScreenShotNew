@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.bakhuss</groupId>
-    <artifactId>LearnDB</artifactId>
+    <artifactId>ScreenShonNew</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <build>
@@ -18,7 +18,9 @@
             </resource>
         </resources>
 
+
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -39,6 +41,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
+                            <classpathPrefix>/../lib/</classpathPrefix>
                             <mainClass>ru.bakhuss.ScreenShotNew.MainClass</mainClass>
                         </manifest>
                     </archive>
@@ -55,6 +58,7 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.21.0</version>
         </dependency>
+
     </dependencies>
 
 

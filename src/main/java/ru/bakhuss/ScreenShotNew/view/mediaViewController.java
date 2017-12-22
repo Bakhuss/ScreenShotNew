@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import ru.bakhuss.ScreenShotNew.dataBase.SQLiteMedia;
+import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLiteMedia;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 

@@ -1,15 +1,23 @@
 package ru.bakhuss.ScreenShotNew.action.screen;
 
 import ru.bakhuss.ScreenShotNew.MainClass;
+import ru.bakhuss.ScreenShotNew.dataBase.DBType;
 import ru.bakhuss.ScreenShotNew.dataBase.DataBaseFile;
-import ru.bakhuss.ScreenShotNew.dataBase.SQLiteMedia;
+import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
+import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLiteMedia;
 import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
+import ru.bakhuss.ScreenShotNew.model.media.MediaGroup;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
+import javax.management.relation.RelationSupport;
 import java.awt.*;
+import java.lang.reflect.Array;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -29,7 +37,11 @@ public class ScreenCapture {
     private static final TimeZone TZ_utc = TimeZone.getTimeZone("UTC");
     private static final int TIMEZONE_OFFSET = TimeZone.getDefault().getOffset(new Date().getTime());
 
-    public static void getScreen(Person person) {
+    private static Person person = null;
+    private static MediaGroup mediaGroup = null;
+
+
+    public static void getScreen() {
         System.out.println("dbFile: " + DataBaseFile.getDBFile());
         final Rectangle rectangle = new Rectangle(getxSize(), getySize(), getWidth(), getHeight());
 
@@ -45,58 +57,93 @@ public class ScreenCapture {
         System.out.println(d);
         System.out.println(saveDateUTC.format(d));
 
+        SQLHandler sqlite = new SQLHandler(DBType.sqlite);
+        SQLiteMedia sqLiteMedia = new SQLiteMedia(sqlite);
+
         if (threadsCount == 0) threadsCount = 1;
         System.out.println("treads: " + threadsCount);
 
-        Media<Image>[] medias = new Media[threadsCount];
+        MediaGroup<Image>[] medias = new MediaGroup[threadsCount];
 
-        SQLiteMedia groupName = new SQLiteMedia();
-        groupNameId = groupName.setGroupName(date);
-        System.out.println("groupNameId: " + groupNameId);
 
-        SQLiteMedia[] sqLiteMedia = new SQLiteMedia[threadsCount];
-        Media[] media = new Image[threadsCount];
-        for (int i = 0; i < threadsCount; i++) {
-            sqLiteMedia[i] = new SQLiteMedia();
-            medias[i] = new Image();
-            medias[i].setGroupNameId(groupNameId);
+        try {
+            sqlite.connect();
+            sqlite.getConnection().setAutoCommit(false);
+            String imgTemp = "CREATE TABLE IF NOT EXISTS Image_Temp (\n" +
+                    "    group_name_id INTEGER,\n" +
+                    "    image_id      INTEGER\n" +
+                    ");";
+            sqlite.getStmt().execute(imgTemp);
+
+            if (mediaGroup != null) {
+                if (mediaGroup.getGroupNameId() != 0) {
+                    groupNameId = mediaGroup.getGroupNameId();
+                } else groupNameId = sqLiteMedia.setGroupName(mediaGroup.getGroupName());
+            } else groupNameId = sqLiteMedia.setGroupName(date);
+
+            sqlite.getStmt().execute("insert into Image_Temp (group_name_id) values (" + groupNameId + ")");
+
+            for (int i = 0; i < threadsCount; i++) {
+                medias[i] = new MediaGroup<>(true);
+                medias[i].setGroupNameId(groupNameId);
+            }
+
+            System.out.println("groupNameId = " + groupNameId);
+
+            ExecutorService executor = Executors.newFixedThreadPool(2);
+            setFrames(new AtomicInteger(0));
+            final long time = System.currentTimeMillis();
+
+            for (int i = 0; i < threadsCount; i++) {
+                final int w = i;
+                executor.execute(new Runnable() {
+                    public void run() {
+                        do {
+                            try {
+                                medias[w].getMediaList().add(new Image((System.currentTimeMillis() - TIMEZONE_OFFSET), new Robot().createScreenCapture(rectangle)));
+                            } catch (AWTException e) {
+                                e.printStackTrace();
+                            }
+                        } while (System.currentTimeMillis() - time < timeScreen * 1000);
+                        System.out.println("\ntime: " + (System.currentTimeMillis() - time) + " | " + w + " " + medias[w].getMediaList().size());
+                        getFrames().addAndGet(medias[w].getMediaList().size());
+                        sqLiteMedia.set(medias[w]);
+                        System.out.println("w: " + medias[w].getMediaList().size());
+                        medias[w].getMediaList().clear();
+                    }
+                });
+
+            }
+            executor.shutdown();
+            while (!executor.isTerminated()) {
+            }
+            sqlite.getPstmt().executeBatch();
+
+            String query = "insert into Image_Name (image_id, name) " +
+                    "select id, date_in from Image where id in ( select image_id from Image_Temp);";
+            sqlite.getStmt().execute(query);
+
+            query = "insert into Group_All_Media (group_name, any_media) " +
+                    "select " + groupNameId + ", image_id from Image_Temp where image_id IS NOT NULL;";
+
+            query = "insert into Group_All_Media (group_name, any_media) " +
+                    "select (select group_name_id from Image_Temp where group_name_id is not null), " +
+                    "image_id from Image_Temp where image_id is not null;";
+            sqlite.getStmt().execute(query);
+            sqlite.getStmt().execute("DROP TABLE IF EXISTS Image_Temp;");
+
+
+            sqlite.getConnection().commit();
+            sqlite.getConnection().setAutoCommit(true);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            sqlite.disconnect();
         }
 
-
-
-
-
-
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-        setFrames(new AtomicInteger(0));
-        final long time = System.currentTimeMillis();
-        for (int i = 0; i < threadsCount; i++) {
-            final int w = i;
-            executor.execute(new Runnable() {
-                public void run() {
-                    do {
-                        try {
-//                            media[w].getMap().put((System.currentTimeMillis() - TIMEZONE_OFFSET), new Robot().createScreenCapture(rectangle));
-
-                            medias[w].getMediaGroup().add(new Image( (System.currentTimeMillis() - TIMEZONE_OFFSET), new Robot().createScreenCapture(rectangle) ));
-                        } catch (AWTException e) {
-                            e.printStackTrace();
-                        }
-                    } while (System.currentTimeMillis() - time < timeScreen * 1000);
-                    System.out.println("\ntime: " + (System.currentTimeMillis() - time) + " | " + w + " " + medias[w].getMediaGroup().size());
-                    sqLiteMedia[w].set(medias[w]);
-                    getFrames().addAndGet(medias[w].getMediaGroup().size());
-                    medias[w].getMediaGroup().clear();
-                }
-            });
-
-        }
-        executor.shutdown();
-        while (!executor.isTerminated()) {
-        }
         System.out.println("photoSize: " + getFrames().get());
 
-//        sql.remove(m);
     }
 
     public static int getWidth() {
@@ -145,5 +192,21 @@ public class ScreenCapture {
 
     public static void setFrames(AtomicInteger frames) {
         ScreenCapture.frames = frames;
+    }
+
+    private static Person getPerson() {
+        return person;
+    }
+
+    public static void setPerson(Person person) {
+        ScreenCapture.person = person;
+    }
+
+    private static MediaGroup getMediaGroup() {
+        return mediaGroup;
+    }
+
+    public static void setMediaGroup(MediaGroup mediaGroup) {
+        ScreenCapture.mediaGroup = mediaGroup;
     }
 }

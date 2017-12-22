@@ -1,12 +1,14 @@
 package ru.bakhuss.ScreenShotNew.dataBase;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class SQLHandler {
 
     private Connection connection;
     private Statement stmt;
     private PreparedStatement pstmt;
+    private ArrayList<PreparedStatement> pstmts;
     private DBType type;
     private String user = null;
     private String password = null;
@@ -25,11 +27,13 @@ public class SQLHandler {
     public void connect() throws SQLException {
         connection = DriverManager.getConnection(DataBaseFile.getUrlDB(type.toString()), user, password);
         stmt = connection.createStatement();
+        System.out.println("db connect");
     }
 
     public void disconnect() {
         try {
             connection.close();
+            System.out.println("db disconnect");
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -8,12 +8,14 @@ public class MediaGroup<T extends Media> {
     private List<T> mediaGroup = null;
     private String groupName = null;
     private int groupNameId = 0;
+    private boolean autoscreen = false;
 
-    public MediaGroup() {
+    public MediaGroup(boolean autoscreen) {
         this.mediaGroup = new ArrayList<>();
+        this.autoscreen = autoscreen;
     }
 
-    public List<T> getMediaGroup() {
+    public List<T> getMediaList() {
         return mediaGroup;
     }
 
@@ -31,5 +33,9 @@ public class MediaGroup<T extends Media> {
 
     public void setGroupNameId(int groupNameId) {
         this.groupNameId = groupNameId;
+    }
+
+    public boolean isAutoscreen() {
+        return autoscreen;
     }
 }
