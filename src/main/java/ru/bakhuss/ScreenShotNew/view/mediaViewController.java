@@ -8,10 +8,15 @@ import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLiteMedia;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 public class mediaViewController {
 
     private Stage dialogStage;
     private Person person;
+    private static HashSet<Person> persons;
+
     @FXML
     private TableView<Media> tableViewMediaForPerson;
     @FXML
@@ -41,5 +46,13 @@ public class mediaViewController {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public static HashSet<Person> getPersons() {
+        return persons;
+    }
+
+    public static void setPersons() {
+        mediaViewController.persons = new HashSet<>();
     }
 }

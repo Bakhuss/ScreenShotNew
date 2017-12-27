@@ -1,5 +1,7 @@
 package ru.bakhuss.ScreenShotNew;
 
+import javafx.event.EventHandler;
+import javafx.stage.WindowEvent;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLiteMedia;
@@ -17,6 +19,7 @@ import javafx.stage.Stage;
 import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -62,6 +65,12 @@ public class MainClass extends Application {
         person.getPersonMediaList().add(media);
         person.getPersonMediaList().add(new Image());
         System.out.println(person.getPersonMediaList().size());
+
+
+        System.out.println(System.currentTimeMillis());
+        System.out.println(System.currentTimeMillis());
+        System.out.println(System.nanoTime());
+        System.out.println(System.nanoTime());
 
     }
 
@@ -126,6 +135,14 @@ public class MainClass extends Application {
             controller.setDialogStage(dialogStage);
             controller.setPerson(person);
 
+            dialogStage.setOnCloseRequest(
+                    new EventHandler<WindowEvent>() {
+                        @Override
+                        public void handle(WindowEvent event) {
+                            System.out.println("close media for Person " + person.getFullName());
+                        }
+                    }
+            );
             dialogStage.showAndWait();
 
         } catch (IOException e) {

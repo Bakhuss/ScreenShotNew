@@ -81,4 +81,8 @@ public class Person {
         if (mediaList == null) mediaList = new ArrayList();
     }
 
+    public String getFullName() {
+        return firstName.get().concat(" ").concat(patronymic.get()).concat(" ").concat(surname.get());
+    }
+
 }

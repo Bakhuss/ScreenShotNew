@@ -4,7 +4,9 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
+import javafx.util.Callback;
 import ru.bakhuss.ScreenShotNew.MainClass;
 import ru.bakhuss.ScreenShotNew.action.screen.*;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
@@ -28,6 +31,7 @@ import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLitePerson;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -67,6 +71,7 @@ public class mainViewController {
     private static ObservableList<Person> data = FXCollections.observableArrayList();
     private HBox hBox;
     private Label lbAdd, lbDel, lbSave, lbCountInDB;
+    private MenuButton mbAllMedia;
     private static int countPersonsInDB = 0;
 
     public mainViewController() {
@@ -76,16 +81,7 @@ public class mainViewController {
     public void initialize() {
         lbWidthSize.setText(String.valueOf(MainClass.getScreenMaxWidth()));
         lbHeightSize.setText(String.valueOf(MainClass.getScreenMaxHeight()));
-//        createTableColumns();
-
-//        data = FXCollections.observableArrayList(
-//                new Person("surname", "groupName", "patronymic"),
-//                new Person("Surname", "groupName", "patronymic"),
-//                new Person("surname", "Name", "patronymic"),
-//                new Person("surname", "groupName", "Patronymic")
-//
-//        );
-
+        mediaViewController.setPersons();
     }
 
     public void getDataFromDB() {
@@ -164,9 +160,9 @@ public class mainViewController {
                 new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        getData().add(new Person("new", "new","new"));
-                        viewPersons.getSelectionModel().select(getData().size()-1);
-                        viewPersons.scrollTo(getData().size()-1);
+                        getData().add(new Person("new", "new", "new"));
+                        viewPersons.getSelectionModel().select(getData().size() - 1);
+                        viewPersons.scrollTo(getData().size() - 1);
                     }
                 }
         );
@@ -175,7 +171,7 @@ public class mainViewController {
                     @Override
                     public void handle(MouseEvent event) {
                         Person person = viewPersons.getFocusModel().getFocusedItem();
-                        System.out.println( person.getSurname() );
+                        System.out.println(person.getSurname());
 
                         if (person.getPersonIdInDB() != 0) {
                             SQLHandler sqlite = new SQLHandler(DBType.sqlite);
@@ -199,12 +195,19 @@ public class mainViewController {
         setCountPersonsInDB(getData().size());
         SQLHandler sqlite = new SQLHandler(DBType.sqlite);
         updateCountPersonsFromDBInMain(sqlite);
-
         System.out.println("count: " + getCountPersonsInDB());
-        lbCountInDB.setPadding(new Insets(2.0, 0.0, 0.0, 50.0));
+        lbCountInDB.setPadding(new Insets(4.0, 150.0, 0.0, 50.0));
 
-        hBox.getChildren().addAll(lbAdd, lbDel, lbSave, lbCountInDB);
-        AnchorPane.setBottomAnchor(hBox,0.0);
+        mbAllMedia = new MenuButton("Media");
+        mbAllMedia.setPadding(new Insets(0.0, 0.0, 0.0, 0.0));
+        MenuItem allMedia = new MenuItem("All");
+        MenuItem imageAllMedia = new MenuItem("Image");
+        MenuItem videoAllMedia = new MenuItem("Video");
+        MenuItem audioAllMedia = new MenuItem("Audio");
+        mbAllMedia.getItems().addAll(allMedia, imageAllMedia, videoAllMedia, audioAllMedia);
+
+        hBox.getChildren().addAll(lbAdd, lbDel, lbSave, lbCountInDB, mbAllMedia);
+        AnchorPane.setBottomAnchor(hBox, 0.0);
         AnchorPane.setLeftAnchor(hBox, 0.0);
         AnchorPane.setRightAnchor(hBox, 0.0);
     }
@@ -214,12 +217,12 @@ public class mainViewController {
         label.setTextFill(Color.RED);
         label.setTextAlignment(TextAlignment.CENTER);
         label.setAlignment(Pos.CENTER);
-        label.setPadding(new Insets(2.0,0.0,0.0,10.0));
+        label.setPadding(new Insets(2.0, 0.0, 0.0, 10.0));
         label.setOnMouseEntered(
                 new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        label.setFont(new Font("System BOLD",size));
+                        label.setFont(new Font("System BOLD", size));
                     }
                 }
         );
@@ -417,7 +420,7 @@ public class mainViewController {
 
     public void updateCountPersonsFromDBInMain(SQLHandler sqlHandler) {
         SQLitePerson sqLitePerson = new SQLitePerson(sqlHandler);
-        setCountPersonsInDB( sqLitePerson.getCountFromRep() );
+        setCountPersonsInDB(sqLitePerson.getCountFromRep());
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
