@@ -1,6 +1,7 @@
 package ru.bakhuss.ScreenShotNew.view;
 
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
+import javafx.util.Callback;
 import ru.bakhuss.ScreenShotNew.MainClass;
 import ru.bakhuss.ScreenShotNew.action.screen.*;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
@@ -98,7 +100,12 @@ public class mainViewController {
         viewPersons.getColumns().addAll(surNameCol, firstNameCol, patronymicCol, personalDataCol, mediaCol);
         viewPersons.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        surNameCol.setCellValueFactory(cellData -> cellData.getValue().surnameProperty());
+        surNameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Person, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Person, String> cellData) {
+                return cellData.getValue().surnameProperty();
+            }
+        });
         firstNameCol.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         patronymicCol.setCellValueFactory(cellData -> cellData.getValue().patronymicProperty());
         viewPersons.setItems(data);

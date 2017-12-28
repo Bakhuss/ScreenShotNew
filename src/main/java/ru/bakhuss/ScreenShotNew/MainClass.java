@@ -180,11 +180,10 @@ public class MainClass extends Application {
                     tView.getColumns().remove(2);
                     TableColumn tColumn = (TableColumn) tView.getColumns().get(0);
                     tColumn.setText("Name");
+                    tColumn.setStyle("-fx-alignment: CENTER;");
                 }
             });
-
-
-
+            controller.getMediaInTableView();
         } catch (IOException e) {
             e.printStackTrace();
         }
