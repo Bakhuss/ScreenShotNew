@@ -4,9 +4,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,7 +20,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
-import javafx.util.Callback;
 import ru.bakhuss.ScreenShotNew.MainClass;
 import ru.bakhuss.ScreenShotNew.action.screen.*;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
@@ -31,7 +28,6 @@ import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLitePerson;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -50,19 +46,13 @@ public class mainViewController {
     @FXML
     private AnchorPane anchorSetTable;
     @FXML
-    private ToggleButton btTogOpenTable;
-    @FXML
-    private ToggleButton btTogScreen;
+    private ToggleButton btTogOpenTable, btTogScreen;
     @FXML
     private TextField tfScreenTime;
     @FXML
     private VBox vboxMainViewTable;
     @FXML
-    private Label lbWidthSize;
-    @FXML
-    private Label lbHeightSize;
-    @FXML
-    private Label mainFrames;
+    private Label lbWidthSize, lbHeightSize, mainFrames;
     @FXML
     private ProgressIndicator progIndDoneScreen;
 
@@ -72,7 +62,9 @@ public class mainViewController {
     private HBox hBox;
     private Label lbAdd, lbDel, lbSave, lbCountInDB;
     private MenuButton mbAllMedia;
+    private MenuItem allMedia, imageAllMedia, videoAllMedia, audioAllMedia;
     private static int countPersonsInDB = 0;
+
 
     public mainViewController() {
     }
@@ -113,7 +105,7 @@ public class mainViewController {
 
         setOnEditCommitMyColumn();
 
-        AnchorPane.setBottomAnchor(viewPersons, 25.0);
+        AnchorPane.setBottomAnchor(viewPersons, 30.0);
         AnchorPane.setLeftAnchor(viewPersons, 0.0);
         AnchorPane.setRightAnchor(viewPersons, 0.0);
         AnchorPane.setTopAnchor(viewPersons, 0.0);
@@ -200,11 +192,22 @@ public class mainViewController {
 
         mbAllMedia = new MenuButton("Media");
         mbAllMedia.setPadding(new Insets(0.0, 0.0, 0.0, 0.0));
-        MenuItem allMedia = new MenuItem("All");
-        MenuItem imageAllMedia = new MenuItem("Image");
-        MenuItem videoAllMedia = new MenuItem("Video");
-        MenuItem audioAllMedia = new MenuItem("Audio");
+        allMedia = new MenuItem("All");
+        imageAllMedia = new MenuItem("Image");
+        videoAllMedia = new MenuItem("Video");
+        audioAllMedia = new MenuItem("Audio");
         mbAllMedia.getItems().addAll(allMedia, imageAllMedia, videoAllMedia, audioAllMedia);
+
+        imageAllMedia.setOnAction(
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        System.out.println( event.getEventType().getName() );
+                        System.out.println( event.getSource().getClass().getSimpleName() );
+                        mainClass.showAllMedia(imageAllMedia.getText());
+                    }
+                }
+        );
 
         hBox.getChildren().addAll(lbAdd, lbDel, lbSave, lbCountInDB, mbAllMedia);
         AnchorPane.setBottomAnchor(hBox, 0.0);
@@ -218,23 +221,9 @@ public class mainViewController {
         label.setTextAlignment(TextAlignment.CENTER);
         label.setAlignment(Pos.CENTER);
         label.setPadding(new Insets(2.0, 0.0, 0.0, 10.0));
-        label.setOnMouseEntered(
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        label.setFont(new Font("System BOLD", size));
-                    }
-                }
-        );
-        label.setOnMouseExited(
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        label.setFont(new Font(size));
-                    }
-                }
-        );
+        MyLabel.setBoldIfMouseEntered(label, size);
     }
+
 
     public void setOnEditCommitMyColumn() {
         surNameCol.setCellFactory(TextFieldTableCell.forTableColumn());

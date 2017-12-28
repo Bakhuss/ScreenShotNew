@@ -1,6 +1,9 @@
 package ru.bakhuss.ScreenShotNew;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.WindowEvent;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
@@ -18,8 +21,6 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -71,7 +72,6 @@ public class MainClass extends Application {
         System.out.println(System.currentTimeMillis());
         System.out.println(System.nanoTime());
         System.out.println(System.nanoTime());
-
     }
 
     public static Stage getPrimaryStage() {
@@ -144,6 +144,46 @@ public class MainClass extends Application {
                     }
             );
             dialogStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showAllMedia(String mediaType) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainClass.class.getResource("view/mediaView.fxml"));
+            AnchorPane pane = (AnchorPane) loader.load();
+
+            Stage dialogStage = new Stage();
+
+            dialogStage.setTitle(mediaType);
+            Scene scene = new Scene(pane);
+            dialogStage.setScene(scene);
+
+            mediaViewController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            dialogStage.setOnCloseRequest(
+                    new EventHandler<WindowEvent>() {
+                        @Override
+                        public void handle(WindowEvent event) {
+                            System.out.println("close AllMedia " + mediaType);
+                        }
+                    }
+            );
+            dialogStage.show();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    TableView tView = (TableView) pane.getChildren().get(1);
+                    tView.getColumns().remove(2);
+                    TableColumn tColumn = (TableColumn) tView.getColumns().get(0);
+                    tColumn.setText("Name");
+                }
+            });
+
+
 
         } catch (IOException e) {
             e.printStackTrace();
