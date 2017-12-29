@@ -199,11 +199,20 @@ public class mainViewController {
 
         mbAllMedia = new MenuButton("Media");
         mbAllMedia.setPadding(new Insets(0.0, 0.0, 0.0, 0.0));
-        allMedia = new MenuItem("All");
+        allMedia = new MenuItem("All media");
         imageAllMedia = new MenuItem("Image");
         videoAllMedia = new MenuItem("Video");
         audioAllMedia = new MenuItem("Audio");
         mbAllMedia.getItems().addAll(allMedia, imageAllMedia, videoAllMedia, audioAllMedia);
+
+        allMedia.setOnAction(
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        mainClass.showAllMedia(allMedia.getText());
+                    }
+                }
+        );
 
         imageAllMedia.setOnAction(
                 new EventHandler<ActionEvent>() {

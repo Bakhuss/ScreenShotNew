@@ -179,11 +179,29 @@ public class MainClass extends Application {
                     TableView tView = (TableView) pane.getChildren().get(1);
                     tView.getColumns().remove(2);
                     TableColumn tColumn = (TableColumn) tView.getColumns().get(0);
-                    tColumn.setText("Name");
                     tColumn.setStyle("-fx-alignment: CENTER;");
                 }
             });
-            controller.getMediaInTableView();
+
+            switch (mediaType) {
+                case "All media":
+                    System.out.println("all media");
+                    controller.getAllMediaInTableView();
+                    break;
+                case "Image":
+                    controller.getImageInTableView();
+                    break;
+                case "Video":
+                    System.out.println("Video");
+                    break;
+                case "Audio":
+                    System.out.println("Audio");
+                    break;
+                default:
+                    break;
+            }
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
