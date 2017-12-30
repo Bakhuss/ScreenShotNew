@@ -7,19 +7,16 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLiteMedia;
-import ru.bakhuss.ScreenShotNew.model.media.Image;
-import ru.bakhuss.ScreenShotNew.model.media.Media;
-import ru.bakhuss.ScreenShotNew.model.media.MediaGroup;
+import ru.bakhuss.ScreenShotNew.model.media.*;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
+import java.lang.reflect.ParameterizedType;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,10 +34,14 @@ public class mediaViewController {
 
     @FXML
     private Label lbAdd, lbDel, lbSave;
+//    @FXML
+//    private TableView<Media> tableViewMedia;
+
     @FXML
-    private TableView<Media> tableViewMedia;
+    private TableView<MediaGroup> tableViewMedia;
+
     @FXML
-    private TableColumn<Media, String> mediaNameCol, mediaGroupCol, mediaTypeCol;
+    private TableColumn<MediaGroup, String> mediaNameCol, mediaGroupCol, mediaTypeCol;
 
 
     @FXML
@@ -48,26 +49,40 @@ public class mediaViewController {
         MyLabel.setBoldIfMouseEntered(lbAdd, 20);
         MyLabel.setBoldIfMouseEntered(lbDel, 20);
         MyLabel.setBoldIfMouseEntered(lbSave, 15);
+        mediaNameCol.setStyle("-fx-alignment: CENTER;");
+        mediaGroupCol.setStyle("-fx-alignment: CENTER;");
+        mediaTypeCol.setStyle("-fx-alignment: CENTER;");
     }
 
 
     public void getImageInTableView() {
         SQLHandler sqlite = new SQLHandler(DBType.sqlite);
-        SQLiteMedia sqLiteMedia = new SQLiteMedia(sqlite);
+
         try {
             sqlite.connect();
             ResultSet rs = sqlite.getStmt().executeQuery("select * from Image_Name");
             while (rs.next()) {
+                MediaGroup<Image> media = new MediaGroup<>(false);
                 Image img = new Image();
                 img.setId(rs.getInt(1));
                 img.setName(rs.getString(2));
-                medias.add(img);
-            }
 
-            mediaNameCol.setCellValueFactory(param -> {
-                return new SimpleStringProperty(param.getValue().getName());
-            });
-            tableViewMedia.setItems(medias);
+                media.getMediaList().add(img);
+                mediaGroups.add(media);
+            }
+            System.out.println("mediaGroups: " + mediaGroups.size());
+
+            mediaNameCol.setCellValueFactory(
+                    new Callback<TableColumn.CellDataFeatures<MediaGroup, String>, ObservableValue<String>>() {
+                        @Override
+                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaGroup, String> param) {
+                            return new SimpleStringProperty(
+                                    ((Image)param.getValue().getMediaList().get(0)).getName()
+                            );
+                        }
+                    }
+            );
+            tableViewMedia.setItems(mediaGroups);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -91,12 +106,36 @@ public class mediaViewController {
                 mediaGroups.add(media);
             }
 
-            mediaNameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Media, String>, ObservableValue<String>>() {
-                @Override
-                public ObservableValue<String> call(TableColumn.CellDataFeatures<Media, String> param) {
-                    return new SimpleStringProperty(param.getValue().getName());
-                }
-            });
+            mediaGroups.get(0).getMediaList().add(new Image());
+            mediaGroups.get(1).getMediaList().add(new Video());
+            mediaGroups.get(2).getMediaList().add(new Audio());
+            mediaGroups.get(3).getMediaList().add(new Video());
+            mediaGroups.get(4).getMediaList().add(new Video());
+            mediaGroups.get(5).getMediaList().add(new Video());
+
+            mediaNameCol.setCellValueFactory(
+                    new Callback<TableColumn.CellDataFeatures<MediaGroup, String>, ObservableValue<String>>() {
+                        @Override
+                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaGroup, String> param) {
+                            return new SimpleStringProperty(
+                                    param.getValue().getGroupName()
+                            );
+                        }
+                    }
+            );
+
+            mediaTypeCol.setCellValueFactory(
+                    new Callback<TableColumn.CellDataFeatures<MediaGroup, String>, ObservableValue<String>>() {
+                        @Override
+                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaGroup, String> param) {
+                            return new SimpleStringProperty(
+                                    param.getValue().getMediaList().get(0).getClass().getSimpleName()
+                            );
+                        }
+                    }
+            );
+            tableViewMedia.setItems(mediaGroups);
+
 
         } catch (SQLException e) {
             e.printStackTrace();

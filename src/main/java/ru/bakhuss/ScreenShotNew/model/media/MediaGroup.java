@@ -9,6 +9,7 @@ public class MediaGroup<T extends Media> {
     private String groupName = null;
     private int groupNameId = 0;
     private boolean autoscreen = false;
+    private T obj = null;
 
     public MediaGroup(boolean autoscreen) {
         this.mediaGroup = new ArrayList<>();
@@ -37,5 +38,9 @@ public class MediaGroup<T extends Media> {
 
     public boolean isAutoscreen() {
         return autoscreen;
+    }
+
+    public String getMediaGroupClass() {
+        return obj.getClass().getSimpleName();
     }
 }

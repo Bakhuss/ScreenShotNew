@@ -173,15 +173,7 @@ public class MainClass extends Application {
                     }
             );
             dialogStage.show();
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    TableView tView = (TableView) pane.getChildren().get(1);
-                    tView.getColumns().remove(2);
-                    TableColumn tColumn = (TableColumn) tView.getColumns().get(0);
-                    tColumn.setStyle("-fx-alignment: CENTER;");
-                }
-            });
+
 
             switch (mediaType) {
                 case "All media":
@@ -189,6 +181,8 @@ public class MainClass extends Application {
                     controller.getAllMediaInTableView();
                     break;
                 case "Image":
+                    TableView tView = (TableView) pane.getChildren().get(1);
+                    tView.getColumns().remove(2);
                     controller.getImageInTableView();
                     break;
                 case "Video":
