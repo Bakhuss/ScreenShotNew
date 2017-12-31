@@ -2,6 +2,7 @@ package ru.bakhuss.ScreenShotNew;
 
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.WindowEvent;
@@ -172,6 +173,8 @@ public class MainClass extends Application {
                         }
                     }
             );
+
+
             dialogStage.show();
 
 

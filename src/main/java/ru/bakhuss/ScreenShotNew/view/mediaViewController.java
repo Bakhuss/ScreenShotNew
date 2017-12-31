@@ -6,9 +6,12 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Builder;
 import javafx.util.Callback;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
@@ -77,7 +80,7 @@ public class mediaViewController {
                         @Override
                         public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaGroup, String> param) {
                             return new SimpleStringProperty(
-                                    ((Image)param.getValue().getMediaList().get(0)).getName()
+                                    ((Image) param.getValue().getMediaList().get(0)).getName()
                             );
                         }
                     }
@@ -129,14 +132,40 @@ public class mediaViewController {
                         @Override
                         public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaGroup, String> param) {
                             return new SimpleStringProperty(
-                                    param.getValue().getMediaList().get(0).getClass().getSimpleName()
+//                                    param.getValue().getMediaList().get(0).getClass().getSimpleName()
                             );
                         }
                     }
             );
+
+            mediaTypeCol.setCellFactory(
+                    new Callback<TableColumn<MediaGroup, String>, TableCell<MediaGroup, String>>() {
+                        @Override
+                        public TableCell call(TableColumn<MediaGroup, String> param) {
+                            TableCell<MediaGroup, Button> cell = new TableCell<>();
+                            Button bt = new Button("New");
+                            cell.setGraphic(bt);
+                            bt.setOnAction(
+                                    new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            System.out.println("New button clicked");
+                                            System.out.println("bounds: " + cell.getBoundsInParent());
+                                            System.out.println(bt.getBoundsInParent());
+                                            bt.setMaxWidth(cell.getWidth());
+                                            bt.setMaxHeight(cell.getHeight());
+                                            int b = param.getTableView().getItems().get(
+                                                    cell.getIndex()
+                                            ).getGroupNameId();
+                                            bt.setText(String.valueOf(b));
+                                        }
+                                    }
+                            );
+                            return cell;
+                        }
+                    }
+            );
             tableViewMedia.setItems(mediaGroups);
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -175,5 +204,9 @@ public class mediaViewController {
 
     public void setMediaType(String mediaType) {
         this.mediaType = mediaType;
+    }
+
+    public TableView<MediaGroup> getTableViewMedia() {
+        return tableViewMedia;
     }
 }
