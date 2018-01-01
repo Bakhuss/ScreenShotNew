@@ -3,13 +3,13 @@ package ru.bakhuss.ScreenShotNew.model.media;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MediaGroup<T extends Media> {
+public class MediaGroup<T extends Media> extends MediaInterface {
 
-    private List<T> mediaGroup = null;
+//    private List<T> mediaGroup = null;
     private String groupName = null;
     private int groupNameId = 0;
     private boolean autoscreen = false;
-    private T obj = null;
+//    private T obj = null;
 
     public MediaGroup(boolean autoscreen) {
         this.mediaGroup = new ArrayList<>();
@@ -41,6 +41,7 @@ public class MediaGroup<T extends Media> {
     }
 
     public String getMediaGroupClass() {
-        return obj.getClass().getSimpleName();
+//        return obj.getClass().getSimpleName();
+        return null;
     }
 }

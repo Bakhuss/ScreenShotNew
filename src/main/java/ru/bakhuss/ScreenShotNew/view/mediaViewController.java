@@ -33,7 +33,8 @@ public class mediaViewController {
     private static HashSet<Person> persons;
     private String mediaType;
     private ObservableList<Media> medias = FXCollections.observableArrayList();
-    private ObservableList<MediaGroup> mediaGroups = FXCollections.observableArrayList();
+    private ObservableList<MediaInterface> mediaGroups = FXCollections.observableArrayList();
+    private int count = 0;
 
     @FXML
     private Label lbAdd, lbDel, lbSave;
@@ -41,10 +42,10 @@ public class mediaViewController {
 //    private TableView<Media> tableViewMedia;
 
     @FXML
-    private TableView<MediaGroup> tableViewMedia;
+    private TableView<MediaInterface> tableViewMedia;
 
     @FXML
-    private TableColumn<MediaGroup, String> mediaNameCol, mediaGroupCol, mediaTypeCol;
+    private TableColumn<MediaInterface, String> mediaNameCol, mediaGroupCol, mediaTypeCol;
 
 
     @FXML
@@ -65,22 +66,26 @@ public class mediaViewController {
             sqlite.connect();
             ResultSet rs = sqlite.getStmt().executeQuery("select * from Image_Name");
             while (rs.next()) {
-                MediaGroup<Image> media = new MediaGroup<>(false);
+//                MediaGroup<Image> media = new MediaGroup<>(false);
                 Image img = new Image();
+//                Image img = new Image();
                 img.setId(rs.getInt(1));
                 img.setName(rs.getString(2));
 
-                media.getMediaList().add(img);
-                mediaGroups.add(media);
+//                ((MediaGroup<Image>)media).getMediaList().add(img);
+//                media.getMediaList().add(img);
+                mediaGroups.add(img);
             }
             System.out.println("mediaGroups: " + mediaGroups.size());
 
             mediaNameCol.setCellValueFactory(
-                    new Callback<TableColumn.CellDataFeatures<MediaGroup, String>, ObservableValue<String>>() {
+                    new Callback<TableColumn.CellDataFeatures<MediaInterface, String>, ObservableValue<String>>() {
                         @Override
-                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaGroup, String> param) {
+                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaInterface, String> param) {
                             return new SimpleStringProperty(
-                                    ((Image) param.getValue().getMediaList().get(0)).getName()
+//                                    ((MediaGroup<Image>)param.getValue()).getMediaList().get(0).getName()
+                                    ((Image)param.getValue()).getName()
+//                                    ((Image) param.getValue().getMediaList().get(0)).getName()
                             );
                         }
                     }
@@ -103,34 +108,38 @@ public class mediaViewController {
             while (rs.next()) {
                 boolean autoscreen = false;
                 if (rs.getInt(3) == 1) autoscreen = true;
-                MediaGroup<Media> media = new MediaGroup<>(autoscreen);
-                media.setGroupNameId(rs.getInt(1));
-                media.setGroupName(rs.getString(2));
+                MediaInterface media = new MediaGroup<>(autoscreen);
+                ((MediaGroup)media).setGroupNameId(rs.getInt(1));
+                ((MediaGroup)media).setGroupName(rs.getString(2));
+
+//                media.setGroupNameId(rs.getInt(1));
+//                media.setGroupName(rs.getString(2));
                 mediaGroups.add(media);
             }
 
-            mediaGroups.get(0).getMediaList().add(new Image());
-            mediaGroups.get(1).getMediaList().add(new Video());
-            mediaGroups.get(2).getMediaList().add(new Audio());
-            mediaGroups.get(3).getMediaList().add(new Video());
-            mediaGroups.get(4).getMediaList().add(new Video());
-            mediaGroups.get(5).getMediaList().add(new Video());
+//            mediaGroups.get(0).getMediaList().add(new Image());
+//            mediaGroups.get(1).getMediaList().add(new Video());
+//            mediaGroups.get(2).getMediaList().add(new Audio());
+//            mediaGroups.get(3).getMediaList().add(new Video());
+//            mediaGroups.get(4).getMediaList().add(new Video());
+//            mediaGroups.get(5).getMediaList().add(new Video());
 
             mediaNameCol.setCellValueFactory(
-                    new Callback<TableColumn.CellDataFeatures<MediaGroup, String>, ObservableValue<String>>() {
+                    new Callback<TableColumn.CellDataFeatures<MediaInterface, String>, ObservableValue<String>>() {
                         @Override
-                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaGroup, String> param) {
+                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaInterface, String> param) {
                             return new SimpleStringProperty(
-                                    param.getValue().getGroupName()
+                                    ((MediaGroup)param.getValue()).getGroupName()
+//                                    param.getValue().getGroupName()
                             );
                         }
                     }
             );
 
             mediaTypeCol.setCellValueFactory(
-                    new Callback<TableColumn.CellDataFeatures<MediaGroup, String>, ObservableValue<String>>() {
+                    new Callback<TableColumn.CellDataFeatures<MediaInterface, String>, ObservableValue<String>>() {
                         @Override
-                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaGroup, String> param) {
+                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaInterface, String> param) {
                             return new SimpleStringProperty(
 //                                    param.getValue().getMediaList().get(0).getClass().getSimpleName()
                             );
@@ -139,12 +148,17 @@ public class mediaViewController {
             );
 
             mediaTypeCol.setCellFactory(
-                    new Callback<TableColumn<MediaGroup, String>, TableCell<MediaGroup, String>>() {
+                    new Callback<TableColumn<MediaInterface, String>, TableCell<MediaInterface, String>>() {
                         @Override
-                        public TableCell call(TableColumn<MediaGroup, String> param) {
-                            TableCell<MediaGroup, Button> cell = new TableCell<>();
+                        public TableCell call(TableColumn<MediaInterface, String> param) {
+
+                            TableCell<MediaInterface, Button> cell = new TableCell<>();
+
+                            if (count > mediaGroups.size()) return cell;
+
                             Button bt = new Button("New");
                             cell.setGraphic(bt);
+
                             bt.setOnAction(
                                     new EventHandler<ActionEvent>() {
                                         @Override
@@ -154,13 +168,15 @@ public class mediaViewController {
                                             System.out.println(bt.getBoundsInParent());
                                             bt.setMaxWidth(cell.getWidth());
                                             bt.setMaxHeight(cell.getHeight());
-                                            int b = param.getTableView().getItems().get(
+                                            int b = ((MediaGroup)param.getTableView().getItems().get(
                                                     cell.getIndex()
-                                            ).getGroupNameId();
+                                                    )).getGroupNameId();
+//                                            ).getGroupNameId();
                                             bt.setText(String.valueOf(b));
                                         }
                                     }
                             );
+                            count++;
                             return cell;
                         }
                     }
@@ -206,7 +222,7 @@ public class mediaViewController {
         this.mediaType = mediaType;
     }
 
-    public TableView<MediaGroup> getTableViewMedia() {
+    public TableView<MediaInterface> getTableViewMedia() {
         return tableViewMedia;
     }
 }

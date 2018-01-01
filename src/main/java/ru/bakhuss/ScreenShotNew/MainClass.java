@@ -68,6 +68,10 @@ public class MainClass extends Application {
         person.getPersonMediaList().add(new Image());
         System.out.println(person.getPersonMediaList().size());
 
+        MediaInterface interf = new MediaGroup(false);
+        System.out.println("interfClass: " + interf.getClass().getSimpleName());
+
+
 
         System.out.println(System.currentTimeMillis());
         System.out.println(System.currentTimeMillis());

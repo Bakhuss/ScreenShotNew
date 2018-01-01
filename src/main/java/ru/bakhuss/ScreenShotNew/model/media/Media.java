@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Media {
+public class Media extends MediaInterface {
 
     protected BufferedImage media = null;
     protected String name = null;
