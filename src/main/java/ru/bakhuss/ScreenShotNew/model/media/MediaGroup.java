@@ -9,7 +9,7 @@ public class MediaGroup<T extends Media> extends MediaInterface {
     private String groupName = null;
     private int groupNameId = 0;
     private boolean autoscreen = false;
-//    private T obj = null;
+    private int elementsCount = 0;
 
     public MediaGroup(boolean autoscreen) {
         this.mediaGroup = new ArrayList<>();
@@ -40,8 +40,11 @@ public class MediaGroup<T extends Media> extends MediaInterface {
         return autoscreen;
     }
 
-    public String getMediaGroupClass() {
-//        return obj.getClass().getSimpleName();
-        return null;
+    public int getElementsCount() {
+        return elementsCount;
+    }
+
+    public void setElementsCount(int elementsCount) {
+        this.elementsCount = elementsCount;
     }
 }

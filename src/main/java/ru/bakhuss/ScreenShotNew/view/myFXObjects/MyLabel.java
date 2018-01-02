@@ -1,4 +1,4 @@
-package ru.bakhuss.ScreenShotNew.view;
+package ru.bakhuss.ScreenShotNew.view.myFXObjects;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;

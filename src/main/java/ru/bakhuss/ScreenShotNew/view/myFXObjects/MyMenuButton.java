@@ -1,4 +1,4 @@
-package ru.bakhuss.ScreenShotNew.view;
+package ru.bakhuss.ScreenShotNew.view.myFXObjects;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,7 +20,7 @@ public class MyMenuButton extends MenuButton {
     public MenuButton createMenuButton() {
 
         mbAllMedia = new MenuButton("Media");
-        mbAllMedia.setPadding(new Insets(0.0, 0.0, 0.0, 20.0));
+        mbAllMedia.setPadding(new Insets(0.0, 0.0, 0.0, 10.0));
         allMedia = new MenuItem("All media");
         imageAllMedia = new MenuItem("Image");
         videoAllMedia = new MenuItem("Video");

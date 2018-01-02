@@ -29,6 +29,8 @@ import ru.bakhuss.ScreenShotNew.dataBase.DataBaseFile;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLitePerson;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
+import ru.bakhuss.ScreenShotNew.view.myFXObjects.MyLabel;
+import ru.bakhuss.ScreenShotNew.view.myFXObjects.MyMenuButton;
 
 import java.io.File;
 import java.io.IOException;

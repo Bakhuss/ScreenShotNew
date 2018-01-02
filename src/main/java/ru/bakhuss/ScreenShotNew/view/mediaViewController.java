@@ -1,8 +1,6 @@
 package ru.bakhuss.ScreenShotNew.view;
 
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,23 +9,18 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.util.Builder;
 import javafx.util.Callback;
 import ru.bakhuss.ScreenShotNew.MainClass;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
-import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLiteMedia;
 import ru.bakhuss.ScreenShotNew.model.media.*;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
+import ru.bakhuss.ScreenShotNew.view.myFXObjects.MyLabel;
 
-import java.lang.reflect.ParameterizedType;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
 public class mediaViewController {
 
@@ -37,7 +30,7 @@ public class mediaViewController {
     private String mediaType;
     private ObservableList<Media> medias = FXCollections.observableArrayList();
     private ObservableList<MediaInterface> mediaGroups = FXCollections.observableArrayList();
-    private int count = 0;
+    private int count = -1;
     private MainClass mainClass;
 
     @FXML
@@ -68,14 +61,9 @@ public class mediaViewController {
             sqlite.connect();
             ResultSet rs = sqlite.getStmt().executeQuery("select * from Image_Name");
             while (rs.next()) {
-//                MediaGroup<Image> media = new MediaGroup<>(false);
                 Image img = new Image();
-//                Image img = new Image();
                 img.setId(rs.getInt(1));
                 img.setName(rs.getString(2));
-
-//                ((MediaGroup<Image>)media).getMediaList().add(img);
-//                media.getMediaList().add(img);
                 mediaGroups.add(img);
             }
             System.out.println("mediaGroups: " + mediaGroups.size());
@@ -85,9 +73,7 @@ public class mediaViewController {
                         @Override
                         public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaInterface, String> param) {
                             return new SimpleStringProperty(
-//                                    ((MediaGroup<Image>)param.getValue()).getMediaList().get(0).getName()
                                     ((Image)param.getValue()).getName()
-//                                    ((Image) param.getValue().getMediaList().get(0)).getName()
                             );
                         }
                     }
@@ -113,18 +99,11 @@ public class mediaViewController {
                 MediaInterface media = new MediaGroup<>(autoscreen);
                 ((MediaGroup)media).setGroupNameId(rs.getInt(1));
                 ((MediaGroup)media).setGroupName(rs.getString(2));
-
-//                media.setGroupNameId(rs.getInt(1));
-//                media.setGroupName(rs.getString(2));
+                ((MediaGroup)media).setElementsCount(rs.getInt(4));
                 mediaGroups.add(media);
             }
 
-//            mediaGroups.get(0).getMediaList().add(new Image());
-//            mediaGroups.get(1).getMediaList().add(new Video());
-//            mediaGroups.get(2).getMediaList().add(new Audio());
-//            mediaGroups.get(3).getMediaList().add(new Video());
-//            mediaGroups.get(4).getMediaList().add(new Video());
-//            mediaGroups.get(5).getMediaList().add(new Video());
+            tableViewMedia.setItems(mediaGroups);
 
             mediaNameCol.setCellValueFactory(
                     new Callback<TableColumn.CellDataFeatures<MediaInterface, String>, ObservableValue<String>>() {
@@ -132,8 +111,42 @@ public class mediaViewController {
                         public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaInterface, String> param) {
                             return new SimpleStringProperty(
                                     ((MediaGroup)param.getValue()).getGroupName()
-//                                    param.getValue().getGroupName()
                             );
+                        }
+                    }
+            );
+
+            mediaGroupCol.setCellFactory(
+                    new Callback<TableColumn<MediaInterface, String>, TableCell<MediaInterface, String>>() {
+                        @Override
+                        public TableCell call(TableColumn<MediaInterface, String> param) {
+                            TableCell<MediaInterface, String> cell = new TableCell<>();
+//                            count++;
+                            System.out.println("count: " + count);
+                            System.out.println(mediaGroups.size());
+                            Button bt = new Button("bt");
+                            if (count > mediaGroups.size()) {
+                                System.out.println(11111);
+                                return cell;
+                            } else {
+
+                                if (count >= 0 && count < mediaGroups.size()) {
+                                    String cls = mediaGroups.get(count).getClass().getSimpleName();
+
+                                    if (!cls.equals("MediaGroup")) return cell;
+                                    else {
+                                        int elementsCount = ((MediaGroup) mediaGroups.get(count)).getElementsCount();
+                                        System.out.println("elements: " + elementsCount);
+                                        bt.setText(String.valueOf(elementsCount));
+                                    }
+                                }
+                            }
+
+
+
+                            cell.setGraphic(bt);
+
+                            return cell;
                         }
                     }
             );
@@ -153,27 +166,31 @@ public class mediaViewController {
                     new Callback<TableColumn<MediaInterface, String>, TableCell<MediaInterface, String>>() {
                         @Override
                         public TableCell call(TableColumn<MediaInterface, String> param) {
-
                             TableCell<MediaInterface, Button> cell = new TableCell<>();
-
-                            if (count > mediaGroups.size()) return cell;
-
+                            System.out.println("count: " + count);
+                            if (count > mediaGroups.size()) {
+                                System.out.println(222222);
+                                return cell;
+                            }
                             Button bt = new Button("New");
+                            if (count == 0) {
+                                System.out.println(3333);
+                                bt.setText("NEW");
+                            }
+                            if (count == mediaGroups.size()) bt.setText("new");
                             cell.setGraphic(bt);
-
                             bt.setOnAction(
                                     new EventHandler<ActionEvent>() {
                                         @Override
                                         public void handle(ActionEvent event) {
-                                            System.out.println("New button clicked");
-                                            System.out.println("bounds: " + cell.getBoundsInParent());
-                                            System.out.println(bt.getBoundsInParent());
+//                                            System.out.println("bounds: " + cell.getBoundsInParent());
+//                                            System.out.println(bt.getBoundsInParent());
                                             bt.setMaxWidth(cell.getWidth());
                                             bt.setMaxHeight(cell.getHeight());
+                                            System.out.println("cellIndex: " + cell.getIndex());
                                             int b = ((MediaGroup)param.getTableView().getItems().get(
                                                     cell.getIndex()
                                                     )).getGroupNameId();
-//                                            ).getGroupNameId();
                                             bt.setText(String.valueOf(b));
                                         }
                                     }
@@ -183,12 +200,16 @@ public class mediaViewController {
                         }
                     }
             );
-            tableViewMedia.setItems(mediaGroups);
+
+
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             sqlite.disconnect();
         }
+//        tableViewMedia.setItems(mediaGroups);
     }
 
 
