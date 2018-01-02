@@ -10,9 +10,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Builder;
 import javafx.util.Callback;
+import ru.bakhuss.ScreenShotNew.MainClass;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLiteMedia;
@@ -35,15 +38,14 @@ public class mediaViewController {
     private ObservableList<Media> medias = FXCollections.observableArrayList();
     private ObservableList<MediaInterface> mediaGroups = FXCollections.observableArrayList();
     private int count = 0;
+    private MainClass mainClass;
 
+    @FXML
+    private AnchorPane mediaViewParent;
     @FXML
     private Label lbAdd, lbDel, lbSave;
-//    @FXML
-//    private TableView<Media> tableViewMedia;
-
     @FXML
     private TableView<MediaInterface> tableViewMedia;
-
     @FXML
     private TableColumn<MediaInterface, String> mediaNameCol, mediaGroupCol, mediaTypeCol;
 
@@ -224,5 +226,13 @@ public class mediaViewController {
 
     public TableView<MediaInterface> getTableViewMedia() {
         return tableViewMedia;
+    }
+
+    public MainClass getMainClass() {
+        return mainClass;
+    }
+
+    public void setMainClass(MainClass mainClass) {
+        this.mainClass = mainClass;
     }
 }

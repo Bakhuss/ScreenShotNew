@@ -2,9 +2,11 @@ package ru.bakhuss.ScreenShotNew;
 
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.HBox;
 import javafx.stage.WindowEvent;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
@@ -12,6 +14,7 @@ import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLiteMedia;
 import ru.bakhuss.ScreenShotNew.model.media.*;
 import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
+import ru.bakhuss.ScreenShotNew.view.MyMenuButton;
 import ru.bakhuss.ScreenShotNew.view.mainViewController;
 import ru.bakhuss.ScreenShotNew.view.mediaViewController;
 import javafx.application.Application;
@@ -137,6 +140,10 @@ public class MainClass extends Application {
             dialogStage.setScene(scene);
 
             mediaViewController controller = loader.getController();
+            MyMenuButton myMenuButton = new MyMenuButton(this);
+            HBox hBox = (HBox) page.getChildren().get(0);
+            hBox.setAlignment(Pos.CENTER_LEFT);
+            hBox.getChildren().add(myMenuButton.createMenuButton());
             controller.setDialogStage(dialogStage);
             controller.setPerson(person);
 
@@ -185,6 +192,7 @@ public class MainClass extends Application {
             switch (mediaType) {
                 case "All media":
                     System.out.println("all media");
+                    controller.setMainClass(this);
                     controller.getAllMediaInTableView();
                     break;
                 case "Image":

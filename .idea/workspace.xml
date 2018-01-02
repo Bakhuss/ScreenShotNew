@@ -4,8 +4,8 @@
     <list default="true" id="626d3047-9691-4470-a2b8-305cc1101216" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Media.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Media.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaGroup.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaGroup.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mainViewController.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mainViewController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mediaView.fxml" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mediaView.fxml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mediaViewController.java" afterPath="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mediaViewController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -22,18 +22,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="71" column="80" lean-forward="false" selection-start-line="71" selection-start-column="80" selection-end-line="71" selection-end-column="80" />
+            <state relative-caret-position="67">
+              <caret line="144" column="45" lean-forward="false" selection-start-line="144" selection-start-column="45" selection-end-line="144" selection-end-column="45" />
               <folding>
-                <element signature="e#2739#2740#0" expanded="true" />
-                <element signature="e#2774#2775#0" expanded="true" />
-                <element signature="e#7421#7422#0" expanded="true" />
-                <element signature="e#7477#7478#0" expanded="true" />
-                <element signature="e#7523#7524#0" expanded="true" />
-                <element signature="e#7580#7581#0" expanded="true" />
+                <element signature="e#2851#2852#0" expanded="true" />
+                <element signature="e#2886#2887#0" expanded="true" />
+                <element signature="e#7823#7824#0" expanded="true" />
+                <element signature="e#7879#7880#0" expanded="true" />
+                <element signature="e#7925#7926#0" expanded="true" />
+                <element signature="e#7982#7983#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,11 +42,12 @@
       <file leaf-file-name="mainViewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mainViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="427" column="0" lean-forward="false" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+            <state relative-caret-position="192">
+              <caret line="115" column="54" lean-forward="true" selection-start-line="115" selection-start-column="54" selection-end-line="115" selection-end-column="54" />
               <folding>
-                <element signature="e#8402#8403#0" expanded="true" />
-                <element signature="e#8492#8493#0" expanded="true" />
+                <element signature="e#7887#7934#0" expanded="false" />
+                <element signature="e#12084#12085#0" expanded="true" />
+                <element signature="e#12126#12127#0" expanded="true" />
                 <element signature="method#getDBFile#0;class#mainViewController#0" expanded="false" />
                 <element signature="method#getData#0;class#mainViewController#0" expanded="false" />
                 <element signature="method#setData#0;class#mainViewController#0" expanded="false" />
@@ -56,75 +57,54 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Media.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Media.java">
+      <file leaf-file-name="mediaViewController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mediaViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MediaGroup.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaGroup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+            <state relative-caret-position="-1675">
+              <caret line="53" column="30" lean-forward="false" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
               <folding>
-                <element signature="e#514#515#0" expanded="true" />
-                <element signature="e#547#548#0" expanded="true" />
-                <element signature="e#583#584#0" expanded="true" />
-                <element signature="e#615#616#0" expanded="true" />
-                <element signature="e#665#666#0" expanded="true" />
-                <element signature="e#707#708#0" expanded="true" />
-                <element signature="e#742#743#0" expanded="true" />
-                <element signature="e#776#777#0" expanded="true" />
-                <element signature="e#827#828#0" expanded="true" />
-                <element signature="e#873#874#0" expanded="true" />
-                <element signature="e#910#911#0" expanded="true" />
-                <element signature="e#943#944#0" expanded="true" />
+                <element signature="method#initialize#0;class#mediaViewController#0" expanded="false" />
+                <element signature="class#6206:7986" expanded="false" />
+                <element signature="e#8225#8226#0" expanded="true" />
+                <element signature="e#8259#8260#0" expanded="true" />
+                <element signature="e#8312#8313#0" expanded="true" />
+                <element signature="e#8358#8359#0" expanded="true" />
+                <element signature="e#8391#8392#0" expanded="true" />
+                <element signature="e#8420#8421#0" expanded="true" />
+                <element signature="e#8464#8465#0" expanded="true" />
+                <element signature="e#8500#8501#0" expanded="true" />
+                <element signature="e#8550#8551#0" expanded="true" />
+                <element signature="e#8580#8581#0" expanded="true" />
+                <element signature="e#8619#8620#0" expanded="true" />
+                <element signature="e#8680#8681#0" expanded="true" />
+                <element signature="e#8716#8717#0" expanded="true" />
+                <element signature="e#8748#8749#0" expanded="true" />
+                <element signature="e#8798#8799#0" expanded="true" />
+                <element signature="e#8840#8841#0" expanded="true" />
+                <element signature="e#8900#8901#0" expanded="true" />
+                <element signature="e#8937#8938#0" expanded="true" />
+                <element signature="e#8976#8977#0" expanded="true" />
+                <element signature="e#9008#9009#0" expanded="true" />
+                <element signature="e#9061#9062#0" expanded="true" />
+                <element signature="e#9103#9104#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MediaInterface.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaInterface.java">
+      <file leaf-file-name="MyMenuButton.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/MyMenuButton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mediaViewController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mediaViewController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="156" column="72" lean-forward="true" selection-start-line="156" selection-start-column="72" selection-end-line="156" selection-end-column="72" />
+            <state relative-caret-position="96">
+              <caret line="22" column="58" lean-forward="false" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
               <folding>
-                <element signature="method#initialize#0;class#mediaViewController#0" expanded="false" />
-                <element signature="e#8088#8089#0" expanded="true" />
-                <element signature="e#8122#8123#0" expanded="true" />
-                <element signature="e#8175#8176#0" expanded="true" />
-                <element signature="e#8221#8222#0" expanded="true" />
-                <element signature="e#8254#8255#0" expanded="true" />
-                <element signature="e#8283#8284#0" expanded="true" />
-                <element signature="e#8327#8328#0" expanded="true" />
-                <element signature="e#8363#8364#0" expanded="true" />
-                <element signature="e#8413#8414#0" expanded="true" />
-                <element signature="e#8443#8444#0" expanded="true" />
-                <element signature="e#8482#8483#0" expanded="true" />
-                <element signature="e#8543#8544#0" expanded="true" />
-                <element signature="e#8579#8580#0" expanded="true" />
-                <element signature="e#8611#8612#0" expanded="true" />
-                <element signature="e#8661#8662#0" expanded="true" />
-                <element signature="e#8703#8704#0" expanded="true" />
-                <element signature="e#8763#8764#0" expanded="true" />
-                <element signature="e#8800#8801#0" expanded="true" />
-                <marker date="1514843622831" expanded="true" signature="4241:4347" ph="..." />
+                <element signature="imports" expanded="true" />
+                <element signature="e#505#506#0" expanded="true" />
+                <element signature="e#547#548#0" expanded="true" />
+                <element signature="e#1153#1154#0" expanded="true" />
+                <element signature="e#1243#1244#0" expanded="true" />
+                <element signature="e#1825#1826#0" expanded="true" />
+                <element signature="e#1867#1868#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,8 +119,8 @@
         <option value="Properties" />
         <option value="Enum" />
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -176,7 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Med.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaRep.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/docs/RU/Passport.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/dataBase/SQLite.java" />
@@ -219,14 +198,15 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/allMedia/imageAllMediaViewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/allMedia/imageAllMediaView.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/MyLabel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mainViewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mediaView.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/person/Person.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Media.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaGroup.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mediaViewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mainViewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/MyMenuButton.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java" />
       </list>
     </option>
   </component>
@@ -302,8 +282,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -356,12 +338,19 @@
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="media" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ScreenShotNew" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ScreenShotNew" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ScreenShotNew" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -567,8 +556,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50482315" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50482315" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50482315" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -577,8 +566,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39871383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21558245" sideWeight="0.52572346" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39871383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -586,34 +575,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31993568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39871383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31993568" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36495176" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1762481" sideWeight="0.4742765" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31993568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21558245" sideWeight="0.52572346" order="5" side_tool="true" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -656,13 +617,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/text/SimpleDateFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16429">
-          <caret line="1093" column="7" lean-forward="true" selection-start-line="1093" selection-start-column="7" selection-end-line="1093" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/TimeZone.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -921,16 +875,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mainView.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="44" column="102" lean-forward="false" selection-start-line="44" selection-start-column="102" selection-end-line="44" selection-end-column="102" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/util/Callback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -956,17 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mediaView.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/reflect/ParameterizedType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -988,13 +921,122 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+          <folding>
+            <element signature="e#514#515#0" expanded="false" />
+            <element signature="e#547#548#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#615#616#0" expanded="false" />
+            <element signature="e#665#666#0" expanded="false" />
+            <element signature="e#707#708#0" expanded="false" />
+            <element signature="e#742#743#0" expanded="false" />
+            <element signature="e#776#777#0" expanded="false" />
+            <element signature="e#827#828#0" expanded="false" />
+            <element signature="e#873#874#0" expanded="false" />
+            <element signature="e#910#911#0" expanded="false" />
+            <element signature="e#943#944#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mainView.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="61" column="52" lean-forward="false" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mediaView.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Media.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/MyMenuButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="22" column="58" lean-forward="false" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#547#548#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+            <element signature="e#1243#1244#0" expanded="true" />
+            <element signature="e#1825#1826#0" expanded="true" />
+            <element signature="e#1867#1868#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mediaViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1675">
+          <caret line="53" column="30" lean-forward="false" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+          <folding>
+            <element signature="method#initialize#0;class#mediaViewController#0" expanded="false" />
+            <element signature="class#6206:7986" expanded="false" />
+            <element signature="e#8225#8226#0" expanded="true" />
+            <element signature="e#8259#8260#0" expanded="true" />
+            <element signature="e#8312#8313#0" expanded="true" />
+            <element signature="e#8358#8359#0" expanded="true" />
+            <element signature="e#8391#8392#0" expanded="true" />
+            <element signature="e#8420#8421#0" expanded="true" />
+            <element signature="e#8464#8465#0" expanded="true" />
+            <element signature="e#8500#8501#0" expanded="true" />
+            <element signature="e#8550#8551#0" expanded="true" />
+            <element signature="e#8580#8581#0" expanded="true" />
+            <element signature="e#8619#8620#0" expanded="true" />
+            <element signature="e#8680#8681#0" expanded="true" />
+            <element signature="e#8716#8717#0" expanded="true" />
+            <element signature="e#8748#8749#0" expanded="true" />
+            <element signature="e#8798#8799#0" expanded="true" />
+            <element signature="e#8840#8841#0" expanded="true" />
+            <element signature="e#8900#8901#0" expanded="true" />
+            <element signature="e#8937#8938#0" expanded="true" />
+            <element signature="e#8976#8977#0" expanded="true" />
+            <element signature="e#9008#9009#0" expanded="true" />
+            <element signature="e#9061#9062#0" expanded="true" />
+            <element signature="e#9103#9104#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mainViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="427" column="0" lean-forward="false" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+        <state relative-caret-position="192">
+          <caret line="115" column="54" lean-forward="true" selection-start-line="115" selection-start-column="54" selection-end-line="115" selection-end-column="54" />
           <folding>
-            <element signature="e#8402#8403#0" expanded="true" />
-            <element signature="e#8492#8493#0" expanded="true" />
+            <element signature="e#7887#7934#0" expanded="false" />
+            <element signature="e#12084#12085#0" expanded="true" />
+            <element signature="e#12126#12127#0" expanded="true" />
             <element signature="method#getDBFile#0;class#mainViewController#0" expanded="false" />
             <element signature="method#getData#0;class#mainViewController#0" expanded="false" />
             <element signature="method#setData#0;class#mainViewController#0" expanded="false" />
@@ -1003,83 +1045,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/Media.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-          <folding>
-            <element signature="e#514#515#0" expanded="true" />
-            <element signature="e#547#548#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#615#616#0" expanded="true" />
-            <element signature="e#665#666#0" expanded="true" />
-            <element signature="e#707#708#0" expanded="true" />
-            <element signature="e#742#743#0" expanded="true" />
-            <element signature="e#776#777#0" expanded="true" />
-            <element signature="e#827#828#0" expanded="true" />
-            <element signature="e#873#874#0" expanded="true" />
-            <element signature="e#910#911#0" expanded="true" />
-            <element signature="e#943#944#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/MainClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="71" column="80" lean-forward="false" selection-start-line="71" selection-start-column="80" selection-end-line="71" selection-end-column="80" />
+        <state relative-caret-position="67">
+          <caret line="144" column="45" lean-forward="false" selection-start-line="144" selection-start-column="45" selection-end-line="144" selection-end-column="45" />
           <folding>
-            <element signature="e#2739#2740#0" expanded="true" />
-            <element signature="e#2774#2775#0" expanded="true" />
-            <element signature="e#7421#7422#0" expanded="true" />
-            <element signature="e#7477#7478#0" expanded="true" />
-            <element signature="e#7523#7524#0" expanded="true" />
-            <element signature="e#7580#7581#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/model/media/MediaInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bakhuss/ScreenShotNew/view/mediaViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="156" column="72" lean-forward="true" selection-start-line="156" selection-start-column="72" selection-end-line="156" selection-end-column="72" />
-          <folding>
-            <element signature="method#initialize#0;class#mediaViewController#0" expanded="false" />
-            <element signature="e#8088#8089#0" expanded="true" />
-            <element signature="e#8122#8123#0" expanded="true" />
-            <element signature="e#8175#8176#0" expanded="true" />
-            <element signature="e#8221#8222#0" expanded="true" />
-            <element signature="e#8254#8255#0" expanded="true" />
-            <element signature="e#8283#8284#0" expanded="true" />
-            <element signature="e#8327#8328#0" expanded="true" />
-            <element signature="e#8363#8364#0" expanded="true" />
-            <element signature="e#8413#8414#0" expanded="true" />
-            <element signature="e#8443#8444#0" expanded="true" />
-            <element signature="e#8482#8483#0" expanded="true" />
-            <element signature="e#8543#8544#0" expanded="true" />
-            <element signature="e#8579#8580#0" expanded="true" />
-            <element signature="e#8611#8612#0" expanded="true" />
-            <element signature="e#8661#8662#0" expanded="true" />
-            <element signature="e#8703#8704#0" expanded="true" />
-            <element signature="e#8763#8764#0" expanded="true" />
-            <element signature="e#8800#8801#0" expanded="true" />
-            <marker date="1514843622831" expanded="true" signature="4241:4347" ph="..." />
+            <element signature="e#2851#2852#0" expanded="true" />
+            <element signature="e#2886#2887#0" expanded="true" />
+            <element signature="e#7823#7824#0" expanded="true" />
+            <element signature="e#7879#7880#0" expanded="true" />
+            <element signature="e#7925#7926#0" expanded="true" />
+            <element signature="e#7982#7983#0" expanded="true" />
           </folding>
         </state>
       </provider>

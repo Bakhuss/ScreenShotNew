@@ -63,8 +63,9 @@ public class mainViewController {
     private static ObservableList<Person> data = FXCollections.observableArrayList();
     private HBox hBox;
     private Label lbAdd, lbDel, lbSave, lbCountInDB;
-    private MenuButton mbAllMedia;
-    private MenuItem allMedia, imageAllMedia, videoAllMedia, audioAllMedia;
+    private MyMenuButton myMenuButton;
+//    private MenuButton mbAllMedia;
+//    private MenuItem allMedia, imageAllMedia, videoAllMedia, audioAllMedia;
     private static int countPersonsInDB = 0;
 
 
@@ -197,35 +198,36 @@ public class mainViewController {
         System.out.println("count: " + getCountPersonsInDB());
         lbCountInDB.setPadding(new Insets(4.0, 150.0, 0.0, 50.0));
 
-        mbAllMedia = new MenuButton("Media");
-        mbAllMedia.setPadding(new Insets(0.0, 0.0, 0.0, 0.0));
-        allMedia = new MenuItem("All media");
-        imageAllMedia = new MenuItem("Image");
-        videoAllMedia = new MenuItem("Video");
-        audioAllMedia = new MenuItem("Audio");
-        mbAllMedia.getItems().addAll(allMedia, imageAllMedia, videoAllMedia, audioAllMedia);
+//        mbAllMedia = new MenuButton("Media");
+//        mbAllMedia.setPadding(new Insets(0.0, 0.0, 0.0, 0.0));
+//        allMedia = new MenuItem("All media");
+//        imageAllMedia = new MenuItem("Image");
+//        videoAllMedia = new MenuItem("Video");
+//        audioAllMedia = new MenuItem("Audio");
+//        mbAllMedia.getItems().addAll(allMedia, imageAllMedia, videoAllMedia, audioAllMedia);
+//
+//        allMedia.setOnAction(
+//                new EventHandler<ActionEvent>() {
+//                    @Override
+//                    public void handle(ActionEvent event) {
+//                        mainClass.showAllMedia(allMedia.getText());
+//                    }
+//                }
+//        );
+//
+//        imageAllMedia.setOnAction(
+//                new EventHandler<ActionEvent>() {
+//                    @Override
+//                    public void handle(ActionEvent event) {
+//                        System.out.println( event.getEventType().getName() );
+//                        System.out.println( event.getSource().getClass().getSimpleName() );
+//                        mainClass.showAllMedia(imageAllMedia.getText());
+//                    }
+//                }
+//        );
 
-        allMedia.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        mainClass.showAllMedia(allMedia.getText());
-                    }
-                }
-        );
-
-        imageAllMedia.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        System.out.println( event.getEventType().getName() );
-                        System.out.println( event.getSource().getClass().getSimpleName() );
-                        mainClass.showAllMedia(imageAllMedia.getText());
-                    }
-                }
-        );
-
-        hBox.getChildren().addAll(lbAdd, lbDel, lbSave, lbCountInDB, mbAllMedia);
+        myMenuButton = new MyMenuButton(mainClass);
+        hBox.getChildren().addAll(lbAdd, lbDel, lbSave, lbCountInDB, myMenuButton.createMenuButton());
         AnchorPane.setBottomAnchor(hBox, 0.0);
         AnchorPane.setLeftAnchor(hBox, 0.0);
         AnchorPane.setRightAnchor(hBox, 0.0);
