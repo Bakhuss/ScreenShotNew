@@ -142,12 +142,14 @@ public class DataBaseFile {
                 ");";
         stmt.execute(sql);
 
-        sql = "CREATE TABLE IF NOT EXISTS Group_Name (\n" +
-                "    id          INTEGER PRIMARY KEY AUTOINCREMENT\n" +
-                "                        UNIQUE\n" +
-                "                        NOT NULL,\n" +
-                "    name        TEXT    NOT NULL,\n" +
-                "    auto_screen BOOLEAN NOT NULL\n" +
+        sql = "CREATE TABLE Group_Name (\n" +
+                "    id             INTEGER PRIMARY KEY AUTOINCREMENT\n" +
+                "                           UNIQUE\n" +
+                "                           NOT NULL,\n" +
+                "    name           TEXT    NOT NULL,\n" +
+                "    auto_screen    BOOLEAN NOT NULL,\n" +
+                "    elements_count INTEGER NOT NULL\n" +
+                "                           DEFAULT (0) \n" +
                 ");";
         stmt.execute(sql);
 
