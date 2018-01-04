@@ -1,5 +1,6 @@
 package ru.bakhuss.ScreenShotNew.dataBase.SQLite;
 
+import ru.bakhuss.ScreenShotNew.action.screen.ScreenCapture;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
 import ru.bakhuss.ScreenShotNew.dataBase.MediaRepository;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
@@ -112,7 +113,8 @@ public class SQLiteMedia implements MediaRepository {
 
     public int setGroupName(String groupName) {
         try {
-            String sqlIns = "insert into Group_Name (name, auto_screen) values ('" + groupName + "', 1);";
+            long date_in = System.currentTimeMillis() - ScreenCapture.getTimezoneOffset();
+            String sqlIns = "insert into Group_Name (name, date_in, auto_screen) values ('" + groupName + "'," + date_in + ", 1);";
             String sqlSel = "select id from Group_Name where rowid = last_insert_rowid();";
 //            sqlHandler.connect();
             sqlHandler.getStmt().execute(sqlIns);

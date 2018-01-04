@@ -51,11 +51,11 @@ public class ScreenCapture {
         dateFormat.setTimeZone(TZ_utc);
         String date = dateFormat.format(dateNow);
         System.out.println("date: " + date);
-        SimpleDateFormat saveDateUTC = new SimpleDateFormat();
-        saveDateUTC.setTimeZone(TZ_utc);
-        Date d = new Date();
-        System.out.println(d);
-        System.out.println(saveDateUTC.format(d));
+//        SimpleDateFormat saveDateUTC = new SimpleDateFormat();
+//        saveDateUTC.setTimeZone(TZ_utc);
+//        Date d = new Date();
+//        System.out.println(d);
+//        System.out.println(saveDateUTC.format(d));
 
         SQLHandler sqlite = new SQLHandler(DBType.sqlite);
         SQLiteMedia sqLiteMedia = new SQLiteMedia(sqlite);
@@ -131,7 +131,7 @@ public class ScreenCapture {
                     "image_id from Image_Temp where image_id is not null;";
             sqlite.getStmt().execute(query);
             sqlite.getStmt().execute("DROP TABLE IF EXISTS Image_Temp;");
-
+            sqlite.getStmt().execute("update Group_Name set elements_count = " + getFrames() + " where id = " + groupNameId + ";");
 
             sqlite.getConnection().commit();
             sqlite.getConnection().setAutoCommit(true);
@@ -208,5 +208,9 @@ public class ScreenCapture {
 
     public static void setMediaGroup(MediaGroup mediaGroup) {
         ScreenCapture.mediaGroup = mediaGroup;
+    }
+
+    public static int getTimezoneOffset() {
+        return TIMEZONE_OFFSET;
     }
 }

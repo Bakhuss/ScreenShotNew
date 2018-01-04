@@ -101,12 +101,11 @@ public class mediaViewController {
             ResultSet rs = sqlite.getStmt().executeQuery("select * from Group_Name;");
             while (rs.next()) {
                 boolean autoscreen = false;
-                if (rs.getInt(3) == 1) autoscreen = true;
+                if (rs.getInt(4) == 1) autoscreen = true;
                 MediaGroup<Image> media = new MediaGroup<>(autoscreen);
-
                 media.setGroupNameId(rs.getInt(1));
                 media.setGroupName(rs.getString(2));
-                media.setElementsCount(rs.getInt(4));
+                media.setElementsCount(rs.getInt(5));
                 mediaGroups.add(media);
             }
 
@@ -154,39 +153,39 @@ public class mediaViewController {
             );
 
 
-/*
-            mediaTypeCol.setCellFactory(
-                    new Callback<TableColumn<MediaInterface, String>, TableCell<MediaInterface, String>>() {
-                        @Override
-                        public TableCell call(TableColumn<MediaInterface, String> param) {
-                            TableCell<MediaInterface, Button> cell = new TableCell<>();
-                            if (count >= mediaGroups.size()) return cell;
-                            Button bt = new Button("New");
-                            if (count == mediaGroups.size()) bt.setText("new");
-                            cell.setGraphic(bt);
-                            cell.setAlignment(Pos.CENTER);
-                            bt.setOnAction(
-                                    new EventHandler<ActionEvent>() {
-                                        @Override
-                                        public void handle(ActionEvent event) {
-//                                            System.out.println("bounds: " + cell.getBoundsInParent());
-//                                            System.out.println(bt.getBoundsInParent());
-                                            bt.setMaxWidth(cell.getWidth()-30);
-                                            bt.setMaxHeight(cell.getHeight());
-                                            System.out.println("cellIndex: " + cell.getIndex());
-                                            int b = ((MediaGroup)param.getTableView().getItems().get(
-                                                    cell.getIndex()
-                                                    )).getGroupNameId();
-                                            bt.setText(String.valueOf(b));
-                                        }
-                                    }
-                            );
-                            count++;
-                            return cell;
-                        }
-                    }
-            );
-*/
+///*
+//            mediaTypeCol.setCellFactory(
+//                    new Callback<TableColumn<MediaInterface, String>, TableCell<MediaInterface, String>>() {
+//                        @Override
+//                        public TableCell call(TableColumn<MediaInterface, String> param) {
+//                            TableCell<MediaInterface, Button> cell = new TableCell<>();
+//                            if (count >= mediaGroups.size()) return cell;
+//                            Button bt = new Button("New");
+//                            if (count == mediaGroups.size()) bt.setText("new");
+//                            cell.setGraphic(bt);
+//                            cell.setAlignment(Pos.CENTER);
+//                            bt.setOnAction(
+//                                    new EventHandler<ActionEvent>() {
+//                                        @Override
+//                                        public void handle(ActionEvent event) {
+////                                            System.out.println("bounds: " + cell.getBoundsInParent());
+////                                            System.out.println(bt.getBoundsInParent());
+//                                            bt.setMaxWidth(cell.getWidth()-30);
+//                                            bt.setMaxHeight(cell.getHeight());
+//                                            System.out.println("cellIndex: " + cell.getIndex());
+//                                            int b = ((MediaGroup)param.getTableView().getItems().get(
+//                                                    cell.getIndex()
+//                                                    )).getGroupNameId();
+//                                            bt.setText(String.valueOf(b));
+//                                        }
+//                                    }
+//                            );
+//                            count++;
+//                            return cell;
+//                        }
+//                    }
+//            );
+//*/
 
         } catch (SQLException e) {
             e.printStackTrace();

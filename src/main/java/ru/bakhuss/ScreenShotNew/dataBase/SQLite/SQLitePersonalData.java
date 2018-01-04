@@ -11,17 +11,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class SQLitePersonalDataRepository implements PersonalDataRepository {
+public class SQLitePersonalData implements PersonalDataRepository {
 
     SQLHandler sqlHandler;
 //    Statement stmt;
 //    PreparedStatement pstmt;
 
-    public SQLitePersonalDataRepository() {
+    public SQLitePersonalData() {
         sqlHandler = new SQLHandler(DBType.sqlite);
     }
 
-    public SQLitePersonalDataRepository(SQLHandler sqlHandler) {
+    public SQLitePersonalData(SQLHandler sqlHandler) {
         this.sqlHandler = sqlHandler;
     }
 
@@ -45,7 +45,7 @@ public class SQLitePersonalDataRepository implements PersonalDataRepository {
 
 //        } catch (SQLException e) {
 //            e.printStackTrace();
-//            System.out.println("error: SQLitePersonalDataRepository set");
+//            System.out.println("error: SQLitePersonalData set");
 //        } finally {
 ////            sqlHandler.disconnect();
 //        }

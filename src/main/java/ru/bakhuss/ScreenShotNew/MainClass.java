@@ -6,8 +6,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.stage.WindowEvent;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
+import ru.bakhuss.ScreenShotNew.dataBase.Repository;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLiteMedia;
+import ru.bakhuss.ScreenShotNew.dataBase.SetAndGet;
 import ru.bakhuss.ScreenShotNew.model.media.*;
 import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
@@ -53,30 +55,10 @@ public class MainClass extends Application {
 
     static void method() {
         SQLHandler sqlite = new SQLHandler(DBType.sqlite);
-        SQLiteMedia sqLiteMedia = new SQLiteMedia(sqlite);
-
-
-        MediaGroup<Media> media = new MediaGroup<>(false);
-        media.getMediaList().add(new Image());
-        media.getMediaList().add(new Audio());
-        media.getMediaList().add(new Video());
-        media.getMediaList().add(new Image());
-        Person person = new Person();
-        person.newPersonMediaList();
-        System.out.println(person.getPersonMediaList().size());
-        person.getPersonMediaList().add(media);
-        person.getPersonMediaList().add(new Image());
-        System.out.println(person.getPersonMediaList().size());
-
-        MediaInterface interf = new MediaGroup(false);
-        System.out.println("interfClass: " + interf.getClass().getSimpleName());
-
-
 
         System.out.println(System.currentTimeMillis());
-        System.out.println(System.currentTimeMillis());
         System.out.println(System.nanoTime());
-        System.out.println(System.nanoTime());
+
     }
 
     public static Stage getPrimaryStage() {

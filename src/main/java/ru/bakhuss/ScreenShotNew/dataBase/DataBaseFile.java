@@ -147,6 +147,7 @@ public class DataBaseFile {
                 "                           UNIQUE\n" +
                 "                           NOT NULL,\n" +
                 "    name           TEXT    NOT NULL,\n" +
+                "    date_in        TEXT,\n" +
                 "    auto_screen    BOOLEAN NOT NULL,\n" +
                 "    elements_count INTEGER NOT NULL\n" +
                 "                           DEFAULT (0) \n" +
