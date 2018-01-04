@@ -5,7 +5,6 @@ import java.util.List;
 
 public class MediaGroup<T extends Media> extends MediaInterface {
 
-//    private List<T> mediaGroup = null;
     private String groupName = null;
     private int groupNameId = 0;
     private boolean autoscreen = false;
@@ -15,6 +14,7 @@ public class MediaGroup<T extends Media> extends MediaInterface {
         this.mediaGroup = new ArrayList<>();
         this.autoscreen = autoscreen;
     }
+
 
     public List<T> getMediaList() {
         return mediaGroup;
@@ -47,4 +47,5 @@ public class MediaGroup<T extends Media> extends MediaInterface {
     public void setElementsCount(int elementsCount) {
         this.elementsCount = elementsCount;
     }
+
 }

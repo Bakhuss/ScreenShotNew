@@ -7,7 +7,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -18,6 +20,10 @@ import ru.bakhuss.ScreenShotNew.model.media.*;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 import ru.bakhuss.ScreenShotNew.view.myFXObjects.MyLabel;
 
+import javax.swing.table.TableCellEditor;
+import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -96,14 +102,16 @@ public class mediaViewController {
             while (rs.next()) {
                 boolean autoscreen = false;
                 if (rs.getInt(3) == 1) autoscreen = true;
-                MediaInterface media = new MediaGroup<>(autoscreen);
-                ((MediaGroup)media).setGroupNameId(rs.getInt(1));
-                ((MediaGroup)media).setGroupName(rs.getString(2));
-                ((MediaGroup)media).setElementsCount(rs.getInt(4));
+                MediaGroup<Image> media = new MediaGroup<>(autoscreen);
+
+                media.setGroupNameId(rs.getInt(1));
+                media.setGroupName(rs.getString(2));
+                media.setElementsCount(rs.getInt(4));
                 mediaGroups.add(media);
             }
 
             tableViewMedia.setItems(mediaGroups);
+            tableViewMedia.setEditable(true);
 
             mediaNameCol.setCellValueFactory(
                     new Callback<TableColumn.CellDataFeatures<MediaInterface, String>, ObservableValue<String>>() {
@@ -116,37 +124,21 @@ public class mediaViewController {
                     }
             );
 
-            mediaGroupCol.setCellFactory(
-                    new Callback<TableColumn<MediaInterface, String>, TableCell<MediaInterface, String>>() {
+            mediaGroupCol.setCellValueFactory(
+                    new Callback<TableColumn.CellDataFeatures<MediaInterface, String>, ObservableValue<String>>() {
                         @Override
-                        public TableCell call(TableColumn<MediaInterface, String> param) {
-                            TableCell<MediaInterface, String> cell = new TableCell<>();
-//                            count++;
-                            System.out.println("count: " + count);
-                            System.out.println(mediaGroups.size());
-                            Button bt = new Button("bt");
-                            if (count > mediaGroups.size()) {
-                                System.out.println(11111);
-                                return cell;
-                            } else {
+                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaInterface, String> param) {
+                            int count = ((MediaGroup)param.getValue()).getElementsCount();
+                            return new SimpleStringProperty(String.valueOf(count));
+                        }
+                    }
+            );
 
-                                if (count >= 0 && count < mediaGroups.size()) {
-                                    String cls = mediaGroups.get(count).getClass().getSimpleName();
-
-                                    if (!cls.equals("MediaGroup")) return cell;
-                                    else {
-                                        int elementsCount = ((MediaGroup) mediaGroups.get(count)).getElementsCount();
-                                        System.out.println("elements: " + elementsCount);
-                                        bt.setText(String.valueOf(elementsCount));
-                                    }
-                                }
-                            }
-
-
-
-                            cell.setGraphic(bt);
-
-                            return cell;
+            mediaGroupCol.setOnEditStart(
+                    new EventHandler<TableColumn.CellEditEvent<MediaInterface, String>>() {
+                        @Override
+                        public void handle(TableColumn.CellEditEvent<MediaInterface, String> event) {
+                            System.out.println("count: " + ((MediaGroup)event.getRowValue()).getElementsCount() );
                         }
                     }
             );
@@ -155,37 +147,31 @@ public class mediaViewController {
                     new Callback<TableColumn.CellDataFeatures<MediaInterface, String>, ObservableValue<String>>() {
                         @Override
                         public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaInterface, String> param) {
-                            return new SimpleStringProperty(
-//                                    param.getValue().getMediaList().get(0).getClass().getSimpleName()
-                            );
+                            String str = param.getValue().getClass().getSimpleName();
+                            return new SimpleStringProperty(str);
                         }
                     }
             );
 
+
+/*
             mediaTypeCol.setCellFactory(
                     new Callback<TableColumn<MediaInterface, String>, TableCell<MediaInterface, String>>() {
                         @Override
                         public TableCell call(TableColumn<MediaInterface, String> param) {
                             TableCell<MediaInterface, Button> cell = new TableCell<>();
-                            System.out.println("count: " + count);
-                            if (count > mediaGroups.size()) {
-                                System.out.println(222222);
-                                return cell;
-                            }
+                            if (count >= mediaGroups.size()) return cell;
                             Button bt = new Button("New");
-                            if (count == 0) {
-                                System.out.println(3333);
-                                bt.setText("NEW");
-                            }
                             if (count == mediaGroups.size()) bt.setText("new");
                             cell.setGraphic(bt);
+                            cell.setAlignment(Pos.CENTER);
                             bt.setOnAction(
                                     new EventHandler<ActionEvent>() {
                                         @Override
                                         public void handle(ActionEvent event) {
 //                                            System.out.println("bounds: " + cell.getBoundsInParent());
 //                                            System.out.println(bt.getBoundsInParent());
-                                            bt.setMaxWidth(cell.getWidth());
+                                            bt.setMaxWidth(cell.getWidth()-30);
                                             bt.setMaxHeight(cell.getHeight());
                                             System.out.println("cellIndex: " + cell.getIndex());
                                             int b = ((MediaGroup)param.getTableView().getItems().get(
@@ -200,16 +186,13 @@ public class mediaViewController {
                         }
                     }
             );
-
-
-
+*/
 
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             sqlite.disconnect();
         }
-//        tableViewMedia.setItems(mediaGroups);
     }
 
 
