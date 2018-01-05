@@ -9,6 +9,7 @@ public class PersonalData {
     private String height;
     private String eyeColor;
     private String hairColor;
+    private int personalDataIdInDB;
 
 
     public PersonalData(Person person) {
@@ -77,5 +78,13 @@ public class PersonalData {
 
     public void setHairColor(String hairColor) {
         this.hairColor = hairColor;
+    }
+
+    public int getPersonalDataIdInDB() {
+        return personalDataIdInDB;
+    }
+
+    public void setPersonalDataIdInDB(int personalDataIdInDB) {
+        this.personalDataIdInDB = personalDataIdInDB;
     }
 }
