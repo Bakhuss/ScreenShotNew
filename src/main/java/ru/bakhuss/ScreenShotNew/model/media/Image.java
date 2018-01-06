@@ -4,8 +4,6 @@ import java.awt.image.BufferedImage;
 
 public class Image extends Media {
 
-    private int imageId;
-
     public Image() {}
 
     public Image(Long dateIn, BufferedImage img) {

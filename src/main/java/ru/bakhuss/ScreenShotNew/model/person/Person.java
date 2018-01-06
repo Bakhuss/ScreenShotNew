@@ -2,19 +2,20 @@ package ru.bakhuss.ScreenShotNew.model.person;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import ru.bakhuss.ScreenShotNew.model.AbstractFields;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 import ru.bakhuss.ScreenShotNew.model.media.MediaGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Person {
+public class Person extends AbstractFields {
 
     private StringProperty surname;
     private StringProperty firstName;
     private StringProperty patronymic;
-    private int personIdInDB = 0;
     private List mediaList = null;
+    private PersonalData persData = null;
 
     // Constructors
     public Person() {
@@ -67,18 +68,25 @@ public class Person {
         return patronymic;
     }
 
-    public int getPersonIdInDB() { return personIdInDB; }
+    public Long getDateIn() {
+        return dateIn;
+    }
 
-    public void setPersonIdInDB(int personIdInDB) {
-        this.personIdInDB = personIdInDB;
+    public void setDateIn(Long dateIn) {
+        this.dateIn = dateIn;
     }
 
     public List getPersonMediaList() {
+        if (mediaList == null) mediaList = new ArrayList();
         return mediaList;
     }
 
-    public void newPersonMediaList() {
-        if (mediaList == null) mediaList = new ArrayList();
+    public PersonalData getPersData() {
+        return persData;
+    }
+
+    public void setPersData(PersonalData persData) {
+        this.persData = persData;
     }
 
     public String getFullName() {

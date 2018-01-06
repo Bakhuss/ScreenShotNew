@@ -4,12 +4,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -20,10 +17,6 @@ import ru.bakhuss.ScreenShotNew.model.media.*;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 import ru.bakhuss.ScreenShotNew.view.myFXObjects.MyLabel;
 
-import javax.swing.table.TableCellEditor;
-import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -35,7 +28,7 @@ public class mediaViewController {
     private static HashSet<Person> persons;
     private String mediaType;
     private ObservableList<Media> medias = FXCollections.observableArrayList();
-    private ObservableList<MediaInterface> mediaGroups = FXCollections.observableArrayList();
+    private ObservableList<MediaAbstract> mediaGroups = FXCollections.observableArrayList();
     private int count = -1;
     private MainClass mainClass;
 
@@ -44,9 +37,9 @@ public class mediaViewController {
     @FXML
     private Label lbAdd, lbDel, lbSave;
     @FXML
-    private TableView<MediaInterface> tableViewMedia;
+    private TableView<MediaAbstract> tableViewMedia;
     @FXML
-    private TableColumn<MediaInterface, String> mediaNameCol, mediaGroupCol, mediaTypeCol;
+    private TableColumn<MediaAbstract, String> mediaNameCol, mediaGroupCol, mediaTypeCol;
 
 
     @FXML
@@ -68,16 +61,16 @@ public class mediaViewController {
             ResultSet rs = sqlite.getStmt().executeQuery("select * from Image_Name");
             while (rs.next()) {
                 Image img = new Image();
-                img.setId(rs.getInt(1));
+                img.setId(Long.valueOf(rs.getInt(1)));
                 img.setName(rs.getString(2));
                 mediaGroups.add(img);
             }
             System.out.println("mediaGroups: " + mediaGroups.size());
 
             mediaNameCol.setCellValueFactory(
-                    new Callback<TableColumn.CellDataFeatures<MediaInterface, String>, ObservableValue<String>>() {
+                    new Callback<TableColumn.CellDataFeatures<MediaAbstract, String>, ObservableValue<String>>() {
                         @Override
-                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaInterface, String> param) {
+                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaAbstract, String> param) {
                             return new SimpleStringProperty(
                                     ((Image)param.getValue()).getName()
                             );
@@ -101,10 +94,12 @@ public class mediaViewController {
             ResultSet rs = sqlite.getStmt().executeQuery("select * from Group_Name;");
             while (rs.next()) {
                 boolean autoscreen = false;
+                MediaGroup<Image> media = new MediaGroup<>();
                 if (rs.getInt(4) == 1) autoscreen = true;
-                MediaGroup<Image> media = new MediaGroup<>(autoscreen);
-                media.setGroupNameId(rs.getInt(1));
-                media.setGroupName(rs.getString(2));
+                media.setAutoscreen(autoscreen);
+//                MediaGroup<Image> media = new MediaGroup<>(autoscreen);
+                media.setId(Long.valueOf(rs.getInt(1)));
+                media.setName(rs.getString(2));
                 media.setElementsCount(rs.getInt(5));
                 mediaGroups.add(media);
             }
@@ -113,20 +108,20 @@ public class mediaViewController {
             tableViewMedia.setEditable(true);
 
             mediaNameCol.setCellValueFactory(
-                    new Callback<TableColumn.CellDataFeatures<MediaInterface, String>, ObservableValue<String>>() {
+                    new Callback<TableColumn.CellDataFeatures<MediaAbstract, String>, ObservableValue<String>>() {
                         @Override
-                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaInterface, String> param) {
+                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaAbstract, String> param) {
                             return new SimpleStringProperty(
-                                    ((MediaGroup)param.getValue()).getGroupName()
+                                    ((MediaGroup)param.getValue()).getName()
                             );
                         }
                     }
             );
 
             mediaGroupCol.setCellValueFactory(
-                    new Callback<TableColumn.CellDataFeatures<MediaInterface, String>, ObservableValue<String>>() {
+                    new Callback<TableColumn.CellDataFeatures<MediaAbstract, String>, ObservableValue<String>>() {
                         @Override
-                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaInterface, String> param) {
+                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaAbstract, String> param) {
                             int count = ((MediaGroup)param.getValue()).getElementsCount();
                             return new SimpleStringProperty(String.valueOf(count));
                         }
@@ -134,18 +129,18 @@ public class mediaViewController {
             );
 
             mediaGroupCol.setOnEditStart(
-                    new EventHandler<TableColumn.CellEditEvent<MediaInterface, String>>() {
+                    new EventHandler<TableColumn.CellEditEvent<MediaAbstract, String>>() {
                         @Override
-                        public void handle(TableColumn.CellEditEvent<MediaInterface, String> event) {
+                        public void handle(TableColumn.CellEditEvent<MediaAbstract, String> event) {
                             System.out.println("count: " + ((MediaGroup)event.getRowValue()).getElementsCount() );
                         }
                     }
             );
 
             mediaTypeCol.setCellValueFactory(
-                    new Callback<TableColumn.CellDataFeatures<MediaInterface, String>, ObservableValue<String>>() {
+                    new Callback<TableColumn.CellDataFeatures<MediaAbstract, String>, ObservableValue<String>>() {
                         @Override
-                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaInterface, String> param) {
+                        public ObservableValue<String> call(TableColumn.CellDataFeatures<MediaAbstract, String> param) {
                             String str = param.getValue().getClass().getSimpleName();
                             return new SimpleStringProperty(str);
                         }
@@ -155,10 +150,10 @@ public class mediaViewController {
 
 ///*
 //            mediaTypeCol.setCellFactory(
-//                    new Callback<TableColumn<MediaInterface, String>, TableCell<MediaInterface, String>>() {
+//                    new Callback<TableColumn<MediaAbstract, String>, TableCell<MediaAbstract, String>>() {
 //                        @Override
-//                        public TableCell call(TableColumn<MediaInterface, String> param) {
-//                            TableCell<MediaInterface, Button> cell = new TableCell<>();
+//                        public TableCell call(TableColumn<MediaAbstract, String> param) {
+//                            TableCell<MediaAbstract, Button> cell = new TableCell<>();
 //                            if (count >= mediaGroups.size()) return cell;
 //                            Button bt = new Button("New");
 //                            if (count == mediaGroups.size()) bt.setText("new");
@@ -227,7 +222,7 @@ public class mediaViewController {
         this.mediaType = mediaType;
     }
 
-    public TableView<MediaInterface> getTableViewMedia() {
+    public TableView<MediaAbstract> getTableViewMedia() {
         return tableViewMedia;
     }
 

@@ -1,17 +1,14 @@
 package ru.bakhuss.ScreenShotNew.dataBase.SQLite;
 
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
-import ru.bakhuss.ScreenShotNew.dataBase.PersonalDataRepository;
+import ru.bakhuss.ScreenShotNew.dataBase.PersonalDataRepo;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.model.person.PersonalData;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
-public class SQLitePersonalData implements PersonalDataRepository {
+public class SQLitePersonalData implements PersonalDataRepo {
 
     SQLHandler sqlHandler;
 //    Statement stmt;

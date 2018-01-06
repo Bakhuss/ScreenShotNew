@@ -136,7 +136,7 @@ public class mainViewController {
                     @Override
                     public void handle(MouseEvent event) {
                         for (Person p : getData()) {
-                            if (p.getPersonIdInDB() != 0) continue;
+                            if (p.getId() != null) continue;
                             SQLHandler sqlite = new SQLHandler(DBType.sqlite);
                             SQLitePerson sqLitePerson = new SQLitePerson(sqlite);
                             System.out.println(p.getSurname());
@@ -153,7 +153,7 @@ public class mainViewController {
                             }
 
                             System.out.println("goodSetPerson");
-                            System.out.println("id: " + p.getPersonIdInDB());
+                            System.out.println("id: " + p.getId());
                         }
                     }
                 }
@@ -175,7 +175,7 @@ public class mainViewController {
                         Person person = viewPersons.getFocusModel().getFocusedItem();
                         System.out.println(person.getSurname());
 
-                        if (person.getPersonIdInDB() != 0) {
+                        if (person.getId() != null) {
                             SQLHandler sqlite = new SQLHandler(DBType.sqlite);
                             SQLitePerson sqLitePerson = new SQLitePerson(sqlite);
                             try {

@@ -1,7 +1,7 @@
 package ru.bakhuss.ScreenShotNew.dataBase.SQLite;
 
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
-import ru.bakhuss.ScreenShotNew.dataBase.PersonRepository;
+import ru.bakhuss.ScreenShotNew.dataBase.PersonRepo;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 import ru.bakhuss.ScreenShotNew.model.person.PersonalData;
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SQLitePerson implements PersonRepository {
+public class SQLitePerson implements PersonRepo {
 
     private SQLHandler sqlHandler;
 
@@ -48,7 +48,7 @@ public class SQLitePerson implements PersonRepository {
             int idPersonFromDB = rs.getInt(1);
             rs.close();
             System.out.println(idPersonFromDB);
-            person.setPersonIdInDB(idPersonFromDB);
+            person.setId(Long.valueOf(idPersonFromDB));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -74,7 +74,7 @@ public class SQLitePerson implements PersonRepository {
             ResultSet rs = sqlHandler.getStmt().executeQuery(query);
             while (rs.next()) {
                 p = new Person();
-                p.setPersonIdInDB(rs.getInt(1));
+                p.setId(Long.valueOf(rs.getInt(1)));
                 p.setSurname(rs.getString(2));
                 p.setFirstName(rs.getString(3));
                 p.setPatronymic(rs.getString(4));
@@ -102,10 +102,10 @@ public class SQLitePerson implements PersonRepository {
 //            String query = "delete from Personal_Data where id = (select personal_data_id from Person where id = " + person.getPersonIdInDB() + ");" +
 //                    "delete from Person where id = " + person.getPersonIdInDB() + ";";
 
-            String query = "delete from Personal_Data where id = (select personal_data_id from Person where id = " + person.getPersonIdInDB() + ");";
+            String query = "delete from Personal_Data where id = (select personal_data_id from Person where id = " + person.getId() + ");";
             sqlHandler.connect();
             sqlHandler.getStmt().execute(query);
-            query = "delete from Person where id = " + person.getPersonIdInDB() + ";";
+            query = "delete from Person where id = " + person.getId() + ";";
             sqlHandler.getStmt().execute(query);
 
         } catch (SQLException e) {

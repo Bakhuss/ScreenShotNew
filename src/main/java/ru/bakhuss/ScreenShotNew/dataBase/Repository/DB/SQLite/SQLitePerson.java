@@ -1,21 +1,21 @@
-package ru.bakhuss.ScreenShotNew.dataBase.RepositoryDB;
+package ru.bakhuss.ScreenShotNew.dataBase.Repository.DB.SQLite;
 
+import ru.bakhuss.ScreenShotNew.dataBase.Repository.impl.PersonRep;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 
-public class SQLitePerson implements PersonDB {
+public class SQLitePerson implements PersonRep {
+
     @Override
     public void set(Person... p) throws SQLException {
-        if (p.length == 1) System.out.println(1);
-        else System.out.println(2);
+
     }
 
     @Override
     public Collection<Person> get() throws SQLException {
-        return new ArrayList<>();
+        return null;
     }
 
     @Override

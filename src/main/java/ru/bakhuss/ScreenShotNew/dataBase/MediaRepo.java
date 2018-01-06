@@ -6,7 +6,7 @@ import ru.bakhuss.ScreenShotNew.model.media.MediaGroup;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface MediaRepository extends Repository<Media> {
+public interface MediaRepo extends Repo<Media> {
 
     void set(Media media) throws SQLException;
 
