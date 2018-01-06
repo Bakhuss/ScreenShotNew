@@ -2,7 +2,7 @@ package ru.bakhuss.ScreenShotNew.dataBase.SQLite;
 
 import ru.bakhuss.ScreenShotNew.action.screen.ScreenCapture;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
-import ru.bakhuss.ScreenShotNew.dataBase.MediaRepository;
+import ru.bakhuss.ScreenShotNew.dataBase.MediaRepo;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
@@ -14,12 +14,9 @@ import java.io.*;
 import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.*;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Semaphore;
 
-public class SQLiteMedia implements MediaRepository {
+public class SQLiteMedia implements MediaRepo {
 
     Object obj = new Object();
 
@@ -111,7 +108,7 @@ public class SQLiteMedia implements MediaRepository {
         return columns;
     }
 
-    public int setGroupName(String groupName) {
+    public Long setGroupName(String groupName) {
         try {
             long date_in = System.currentTimeMillis() - ScreenCapture.getTimezoneOffset();
             String sqlIns = "insert into Group_Name (name, date_in, auto_screen) values ('" + groupName + "'," + date_in + ", 1);";
@@ -121,14 +118,14 @@ public class SQLiteMedia implements MediaRepository {
             ResultSet rs = sqlHandler.getStmt().executeQuery(sqlSel);
             rs.next();
             System.out.println("rs: " + rs.getInt(1));
-            return rs.getInt(1);
+            return Long.valueOf(rs.getInt(1));
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("error: setGroupName");
         } finally {
 //            sqlHandler.disconnect();
         }
-        return 0;
+        return null;
     }
 
     @Override
@@ -146,7 +143,7 @@ public class SQLiteMedia implements MediaRepository {
                     "    inner join Audio_Name on Person_AND_Media.any_media = Audio_Name.audio_id\n" +
                     "    inner join Video_Name on Person_AND_Media.any_media = Video_Name.video_id\n" +
                     "    inner join Group_Name on Person_AND_Media.any_media = Group_Name.id\n" +
-                    "where person_id = " + person.getPersonIdInDB() + ";";
+                    "where person_id = " + person.getId() + ";";
             ResultSet rs = sqlHandler.getStmt().executeQuery(query);
             while (rs.next()) {
 

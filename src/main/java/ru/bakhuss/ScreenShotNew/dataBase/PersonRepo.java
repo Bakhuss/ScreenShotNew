@@ -4,7 +4,7 @@ import ru.bakhuss.ScreenShotNew.model.person.Person;
 
 import java.util.ArrayList;
 
-public interface PersonRepository extends Repository<Person> {
+public interface PersonRepo extends Repo<Person> {
 
 
     void set(Person person);

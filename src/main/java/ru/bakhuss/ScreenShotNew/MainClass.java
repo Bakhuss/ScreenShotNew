@@ -6,10 +6,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.stage.WindowEvent;
 import ru.bakhuss.ScreenShotNew.dataBase.DBType;
-import ru.bakhuss.ScreenShotNew.dataBase.Repository;
 import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
-import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLiteMedia;
-import ru.bakhuss.ScreenShotNew.dataBase.SetAndGet;
 import ru.bakhuss.ScreenShotNew.model.media.*;
 import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
@@ -59,6 +56,13 @@ public class MainClass extends Application {
         System.out.println(System.currentTimeMillis());
         System.out.println(System.nanoTime());
 
+        Image img = new Image();
+
+        MediaGroup<Image> media = new MediaGroup<>(false);
+        media.getMediaList().add(img);
+
+        Person person = new Person();
+        person.getPersData();
     }
 
     public static Stage getPrimaryStage() {

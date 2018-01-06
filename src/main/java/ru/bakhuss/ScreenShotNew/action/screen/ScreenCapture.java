@@ -32,7 +32,7 @@ public class ScreenCapture {
     private static int timeScreen = 1;
     private static int countFrames = 0;
     private static AtomicInteger frames;
-    private static int groupNameId = 0;
+    private static Long groupNameId = null;
     private static final String dateFormStr = "dd.MM.yyyy-HH:mm:ss.SSS-z";
     private static final TimeZone TZ_utc = TimeZone.getTimeZone("UTC");
     private static final int TIMEZONE_OFFSET = TimeZone.getDefault().getOffset(new Date().getTime());
@@ -76,16 +76,16 @@ public class ScreenCapture {
             sqlite.getStmt().execute(imgTemp);
 
             if (mediaGroup != null) {
-                if (mediaGroup.getGroupNameId() != 0) {
-                    groupNameId = mediaGroup.getGroupNameId();
-                } else groupNameId = sqLiteMedia.setGroupName(mediaGroup.getGroupName());
+                if (mediaGroup.getId() != 0) {
+                    groupNameId = mediaGroup.getId();
+                } else groupNameId = sqLiteMedia.setGroupName(mediaGroup.getName());
             } else groupNameId = sqLiteMedia.setGroupName(date);
 
             sqlite.getStmt().execute("insert into Image_Temp (group_name_id) values (" + groupNameId + ")");
 
             for (int i = 0; i < threadsCount; i++) {
                 medias[i] = new MediaGroup<>(true);
-                medias[i].setGroupNameId(groupNameId);
+                medias[i].setId(groupNameId);
             }
 
             System.out.println("groupNameId = " + groupNameId);

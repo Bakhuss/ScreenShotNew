@@ -1,7 +1,8 @@
 package ru.bakhuss.ScreenShotNew.model.person;
 
-public class PersonalData {
-    private Person person;
+import ru.bakhuss.ScreenShotNew.model.AbstractFields;
+
+public class PersonalData extends AbstractFields {
     private String birthDay;
     private String birthPlace;
     private String deathDay;
@@ -11,17 +12,8 @@ public class PersonalData {
     private String hairColor;
 
 
-    public PersonalData(Person person) {
-        this.person = person;
-    }
+    public PersonalData(Person person) {}
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
 
     public String getBirthDay() {
         return birthDay;
@@ -78,4 +70,5 @@ public class PersonalData {
     public void setHairColor(String hairColor) {
         this.hairColor = hairColor;
     }
+
 }
