@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -56,10 +57,21 @@ public class MainClass extends Application {
         System.out.println(System.currentTimeMillis());
         System.out.println(System.nanoTime());
 
-        Image img = new Image();
+        Image image = new Image();
+//        if (Media.getCommonImageList().containsKey(image.getId())) Media.getCommonImageList().get(image.getId());
 
-        MediaGroup<Image> media = new MediaGroup<>(false);
-        media.getMediaList().add(img);
+        Image img = new Image();
+        Person pers = new Person();
+        Media med = new Image();
+        MediaAbstract abc = new MediaGroup<>();
+        pers.getPersonMedia().addAll(Arrays.asList(new Image(), new Audio()));
+        MediaGroup<Media> group = new MediaGroup<>();
+        group.getMediaList().add(new Image());
+        pers.getPersonMedia().add(group);
+        pers.getPersonMedia().add(group.getMediaList().get(0));
+        System.out.println("class: " + pers.getPersonMedia().get(0).getClass().getSimpleName());
+        System.out.println("class: " + pers.getPersonMedia().get(1).getClass().getSimpleName());
+        System.out.println("class: " + pers.getPersonMedia().get(2).getClass().getSimpleName());
 
         Person person = new Person();
         person.getPersData();

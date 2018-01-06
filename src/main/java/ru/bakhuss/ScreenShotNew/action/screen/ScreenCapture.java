@@ -129,6 +129,11 @@ public class ScreenCapture {
             query = "insert into Group_All_Media (group_name, any_media) " +
                     "select (select group_name_id from Image_Temp where group_name_id is not null), " +
                     "image_id from Image_Temp where image_id is not null;";
+
+            query = "insert into Group_All_Media (group_name, any_media) " +
+                    "select (select group_name_id from Image_Temp where group_name_id is not null), " +
+                    "id from Image_Name where image_id in ( select image_id from Image_Temp );";
+
             sqlite.getStmt().execute(query);
             sqlite.getStmt().execute("DROP TABLE IF EXISTS Image_Temp;");
             sqlite.getStmt().execute("update Group_Name set elements_count = " + getFrames() + " where id = " + groupNameId + ";");

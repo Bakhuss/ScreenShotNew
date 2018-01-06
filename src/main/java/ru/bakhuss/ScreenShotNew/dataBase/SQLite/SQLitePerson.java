@@ -36,7 +36,7 @@ public class SQLitePerson implements PersonRepo {
             int idFullNameFromDB = rs.getInt(1);
             rs.close();
             SQLitePersonalData sqLitePersonalData = new SQLitePersonalData(this.sqlHandler);
-            sqLitePersonalData.set(new PersonalData(person));
+            sqLitePersonalData.set(new PersonalData());
             rs = sqlHandler.getStmt().executeQuery("select id from Personal_Data where rowid = last_insert_rowid();");
             rs.next();
             int idPersonalDataFromDB = rs.getInt(1);

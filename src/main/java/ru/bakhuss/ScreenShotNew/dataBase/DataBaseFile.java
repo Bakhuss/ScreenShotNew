@@ -91,6 +91,9 @@ public class DataBaseFile {
         stmt.execute(sql);
 
         sql = "CREATE TABLE IF NOT EXISTS Image_Name (\n" +
+                "    id       INTEGER PRIMARY KEY\n" +
+                "                     UNIQUE\n" +
+                "                     NOT NULL,\n" +
                 "    image_id INTEGER REFERENCES Image (id) ON DELETE CASCADE\n" +
                 "                                           ON UPDATE CASCADE\n" +
                 "                     NOT NULL,\n" +
@@ -161,8 +164,8 @@ public class DataBaseFile {
                 "    FOREIGN KEY (\n" +
                 "        any_media\n" +
                 "    )\n" +
-                "    REFERENCES Image_Name (image_id) ON DELETE CASCADE\n" +
-                "                                     ON UPDATE CASCADE,\n" +
+                "    REFERENCES Image_Name (id) ON DELETE CASCADE\n" +
+                "                               ON UPDATE CASCADE,\n" +
                 "    FOREIGN KEY (\n" +
                 "        any_media\n" +
                 "    )\n" +

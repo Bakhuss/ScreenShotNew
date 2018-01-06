@@ -10,17 +10,15 @@ public class MediaGroup<T extends Media> extends MediaAbstract {
     private List<T> mediaGroup = null;
 
 
-    public MediaGroup() {
-        this.mediaGroup = new ArrayList<>();
-    }
+    public MediaGroup(){}
 
     public MediaGroup(boolean autoscreen) {
-        this.mediaGroup = new ArrayList<>();
         this.autoscreen = autoscreen;
     }
 
 
     public List<T> getMediaList() {
+        if (mediaGroup == null) mediaGroup = new ArrayList<>();
         return mediaGroup;
     }
 

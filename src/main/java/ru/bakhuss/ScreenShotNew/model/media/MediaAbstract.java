@@ -1,9 +1,9 @@
 package ru.bakhuss.ScreenShotNew.model.media;
 
 
-import ru.bakhuss.ScreenShotNew.model.AbstractFields;
+import ru.bakhuss.ScreenShotNew.model.CommonFields;
 
-public class MediaAbstract extends AbstractFields {
+public class MediaAbstract extends CommonFields {
     protected String name = null;
 
 
@@ -14,13 +14,5 @@ public class MediaAbstract extends AbstractFields {
     public void setName(String name) {
         this.name = name;
     }
-
-//    public Long getDateIn() {
-//        return dateIn;
-//    }
-//
-//    public void setDateIn(Long dateIn) {
-//        this.dateIn = dateIn;
-//    }
 
 }

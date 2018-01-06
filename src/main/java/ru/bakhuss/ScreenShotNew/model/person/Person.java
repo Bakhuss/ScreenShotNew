@@ -2,19 +2,18 @@ package ru.bakhuss.ScreenShotNew.model.person;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import ru.bakhuss.ScreenShotNew.model.AbstractFields;
-import ru.bakhuss.ScreenShotNew.model.media.Media;
-import ru.bakhuss.ScreenShotNew.model.media.MediaGroup;
+import ru.bakhuss.ScreenShotNew.model.CommonFields;
+import ru.bakhuss.ScreenShotNew.model.media.MediaAbstract;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Person extends AbstractFields {
+public class Person extends CommonFields {
 
     private StringProperty surname;
     private StringProperty firstName;
     private StringProperty patronymic;
-    private List mediaList = null;
+    private List<? super MediaAbstract> mediaList = null;
     private PersonalData persData = null;
 
     // Constructors
@@ -76,8 +75,8 @@ public class Person extends AbstractFields {
         this.dateIn = dateIn;
     }
 
-    public List getPersonMediaList() {
-        if (mediaList == null) mediaList = new ArrayList();
+    public List<? super MediaAbstract> getPersonMedia() {
+        if (mediaList == null) mediaList = new ArrayList<>();
         return mediaList;
     }
 

@@ -61,8 +61,9 @@ public class mediaViewController {
             ResultSet rs = sqlite.getStmt().executeQuery("select * from Image_Name");
             while (rs.next()) {
                 Image img = new Image();
-                img.setId(Long.valueOf(rs.getInt(1)));
-                img.setName(rs.getString(2));
+                img.setNameId(Long.valueOf(rs.getInt(1)));
+                img.setId(Long.valueOf(rs.getInt(2)));
+                img.setName(rs.getString(3));
                 mediaGroups.add(img);
             }
             System.out.println("mediaGroups: " + mediaGroups.size());

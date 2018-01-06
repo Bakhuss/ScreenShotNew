@@ -1,8 +1,8 @@
 package ru.bakhuss.ScreenShotNew.model.person;
 
-import ru.bakhuss.ScreenShotNew.model.AbstractFields;
+import ru.bakhuss.ScreenShotNew.model.CommonFields;
 
-public class PersonalData extends AbstractFields {
+public class PersonalData extends CommonFields {
     private String birthDay;
     private String birthPlace;
     private String deathDay;
@@ -12,7 +12,7 @@ public class PersonalData extends AbstractFields {
     private String hairColor;
 
 
-    public PersonalData(Person person) {}
+    public PersonalData() {}
 
 
     public String getBirthDay() {

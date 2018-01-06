@@ -1,6 +1,6 @@
 package ru.bakhuss.ScreenShotNew.model;
 
-public class AbstractFields {
+public class CommonFields {
     protected Long id = null;
     protected Long dateIn = null;
 

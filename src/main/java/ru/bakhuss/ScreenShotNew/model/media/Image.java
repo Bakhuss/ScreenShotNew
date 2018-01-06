@@ -1,8 +1,12 @@
 package ru.bakhuss.ScreenShotNew.model.media;
 
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 
 public class Image extends Media {
+
+    // K - id, V - BufferedImage
+    private static HashMap<Long, Image> commonImageList = null;
 
     public Image() {}
 
@@ -18,4 +22,9 @@ public class Image extends Media {
     public void setImage(BufferedImage img) {
         super.media = img;
     }
+
+//    public static HashMap<Long, Image> getCommonImageList() {
+//        if (commonImageList == null) commonImageList = new HashMap<>();
+//        return commonImageList;
+//    }
 }
