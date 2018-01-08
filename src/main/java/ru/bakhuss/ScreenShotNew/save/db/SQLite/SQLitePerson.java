@@ -1,6 +1,6 @@
 package ru.bakhuss.ScreenShotNew.save.db.SQLite;
 
-import ru.bakhuss.ScreenShotNew.save.impl.PersonRep;
+import ru.bakhuss.ScreenShotNew.save.impl.repository.PersonRep;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 
 import java.sql.SQLException;

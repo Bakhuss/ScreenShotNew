@@ -5,11 +5,16 @@ import javafx.geometry.Pos;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.stage.WindowEvent;
+import ru.bakhuss.ScreenShotNew.model.DBTables;
 import ru.bakhuss.ScreenShotNew.save.dataBase.DBType;
 import ru.bakhuss.ScreenShotNew.save.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.model.media.*;
 import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
+import ru.bakhuss.ScreenShotNew.save.db.SQLite.SQLitePerson;
+import ru.bakhuss.ScreenShotNew.save.db.SQLiteDB;
+import ru.bakhuss.ScreenShotNew.save.impl.repository.Repository;
+import ru.bakhuss.ScreenShotNew.save.impl.sql.SQL;
 import ru.bakhuss.ScreenShotNew.view.myFXObjects.MyMenuButton;
 import ru.bakhuss.ScreenShotNew.view.mainViewController;
 import ru.bakhuss.ScreenShotNew.view.mediaViewController;
@@ -21,6 +26,8 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -53,6 +60,9 @@ public class MainClass extends Application {
 
     static void method() {
         SQLHandler sqlite = new SQLHandler(DBType.sqlite);
+
+        Repository<Person> rep = new SQLitePerson();
+        SQL sql = new SQLiteDB();
 
         System.out.println(System.currentTimeMillis());
         System.out.println(System.nanoTime());

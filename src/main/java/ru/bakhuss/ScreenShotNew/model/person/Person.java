@@ -3,6 +3,7 @@ package ru.bakhuss.ScreenShotNew.model.person;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import ru.bakhuss.ScreenShotNew.model.CommonFields;
+import ru.bakhuss.ScreenShotNew.model.DBTables;
 import ru.bakhuss.ScreenShotNew.model.media.MediaAbstract;
 
 import java.util.ArrayList;

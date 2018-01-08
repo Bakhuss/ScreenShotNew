@@ -1,11 +1,11 @@
 package ru.bakhuss.ScreenShotNew.save;
 
-import ru.bakhuss.ScreenShotNew.save.impl.Repository;
+import ru.bakhuss.ScreenShotNew.save.impl.repository.Repository;
+import ru.bakhuss.ScreenShotNew.save.impl.sql.SQL;
 
 public abstract class SavePlace implements Repository {
-    Repository repository;
+    SQL sql;
 
-    public SavePlace() {
-    }
+    public SavePlace() {}
 
 }

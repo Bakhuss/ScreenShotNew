@@ -19,6 +19,10 @@ public class DataBaseFile {
         return str.toString();
     }
 
+    public static DBType getDbType() {
+        return dbType;
+    }
+
     public static void createDBFile() {
         String sql = "CREATE TABLE IF NOT EXISTS Image (\n" +
                 "    id    INTEGER PRIMARY KEY AUTOINCREMENT\n" +
