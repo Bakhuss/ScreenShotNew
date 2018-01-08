@@ -1,8 +1,8 @@
-package ru.bakhuss.ScreenShotNew.dataBase.SQLite;
+package ru.bakhuss.ScreenShotNew.save.dataBase.SQLite;
 
-import ru.bakhuss.ScreenShotNew.dataBase.DBType;
-import ru.bakhuss.ScreenShotNew.dataBase.PersonRepo;
-import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
+import ru.bakhuss.ScreenShotNew.save.dataBase.DBType;
+import ru.bakhuss.ScreenShotNew.save.dataBase.PersonRepo;
+import ru.bakhuss.ScreenShotNew.save.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 import ru.bakhuss.ScreenShotNew.model.person.PersonalData;
 

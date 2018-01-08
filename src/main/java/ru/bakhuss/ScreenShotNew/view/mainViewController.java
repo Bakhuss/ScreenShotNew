@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,10 +25,10 @@ import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import ru.bakhuss.ScreenShotNew.MainClass;
 import ru.bakhuss.ScreenShotNew.action.screen.*;
-import ru.bakhuss.ScreenShotNew.dataBase.DBType;
-import ru.bakhuss.ScreenShotNew.dataBase.DataBaseFile;
-import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
-import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLitePerson;
+import ru.bakhuss.ScreenShotNew.save.dataBase.DBType;
+import ru.bakhuss.ScreenShotNew.save.dataBase.DataBaseFile;
+import ru.bakhuss.ScreenShotNew.save.dataBase.SQLHandler;
+import ru.bakhuss.ScreenShotNew.save.dataBase.SQLite.SQLitePerson;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 import ru.bakhuss.ScreenShotNew.view.myFXObjects.MyLabel;
 import ru.bakhuss.ScreenShotNew.view.myFXObjects.MyMenuButton;
@@ -111,6 +112,24 @@ public class mainViewController {
         });
         firstNameCol.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         patronymicCol.setCellValueFactory(cellData -> cellData.getValue().patronymicProperty());
+
+        personalDataCol.setCellFactory(
+                new Callback<TableColumn<Person, String>, TableCell<Person, String>>() {
+                    @Override
+                    public TableCell<Person, String> call(TableColumn<Person, String> param) {
+                        TableCell cell = new TableCell<Person, Button>();
+                        cell.setAlignment(Pos.CENTER);
+                        Canvas cv = new Canvas();
+                        cv.setWidth(20.0);
+                        cv.setHeight(20.0);
+                        cv.getGraphicsContext2D().setFill(Color.RED);
+                        cv.getGraphicsContext2D().fillOval(0,0,20,20);
+                        cell.setGraphic(cv);
+
+                        return cell;
+                    }
+                }
+        );
         viewPersons.setItems(data);
 
         setOnEditCommitMyColumn();
@@ -121,7 +140,8 @@ public class mainViewController {
         AnchorPane.setTopAnchor(viewPersons, 0.0);
 
         hBox = new HBox();
-        hBox.setAlignment(Pos.CENTER_LEFT);
+//        hBox.setAlignment(Pos.CENTER_LEFT);
+        hBox.setAlignment(Pos.CENTER);
 
         lbAdd = new Label("+");
         lbAdd.setTooltip(new Tooltip("add"));
@@ -198,7 +218,7 @@ public class mainViewController {
         SQLHandler sqlite = new SQLHandler(DBType.sqlite);
         updateCountPersonsFromDBInMain(sqlite);
         System.out.println("count: " + getCountPersonsInDB());
-        lbCountInDB.setPadding(new Insets(4.0, 150.0, 0.0, 50.0));
+        lbCountInDB.setPadding(new Insets(4.0, 50.0, 0.0, 50.0));
 
 //        mbAllMedia = new MenuButton("Media");
 //        mbAllMedia.setPadding(new Insets(0.0, 0.0, 0.0, 0.0));

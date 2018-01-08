@@ -1,4 +1,4 @@
-package ru.bakhuss.ScreenShotNew.dataBase;
+package ru.bakhuss.ScreenShotNew.save.dataBase;
 
 import ru.bakhuss.ScreenShotNew.model.person.Person;
 

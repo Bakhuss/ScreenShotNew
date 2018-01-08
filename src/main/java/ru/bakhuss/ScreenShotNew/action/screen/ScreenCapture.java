@@ -1,10 +1,11 @@
 package ru.bakhuss.ScreenShotNew.action.screen;
 
 import ru.bakhuss.ScreenShotNew.MainClass;
-import ru.bakhuss.ScreenShotNew.dataBase.DBType;
-import ru.bakhuss.ScreenShotNew.dataBase.DataBaseFile;
-import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
-import ru.bakhuss.ScreenShotNew.dataBase.SQLite.SQLiteMedia;
+import ru.bakhuss.ScreenShotNew.save.dataBase.DBType;
+import ru.bakhuss.ScreenShotNew.save.dataBase.DataBaseFile;
+import ru.bakhuss.ScreenShotNew.save.dataBase.SQLHandler;
+import ru.bakhuss.ScreenShotNew.save.dataBase.SQLite.SQLiteMedia;
+import ru.bakhuss.ScreenShotNew.model.MyDate;
 import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 import ru.bakhuss.ScreenShotNew.model.media.MediaGroup;
@@ -28,14 +29,10 @@ public class ScreenCapture {
     private static int height = MainClass.getScreenMaxHeight();
     private static int xSize = 0;
     private static int ySize = 0;
-    private static Date dateNow = null;
     private static int timeScreen = 1;
     private static int countFrames = 0;
     private static AtomicInteger frames;
     private static Long groupNameId = null;
-    private static final String dateFormStr = "dd.MM.yyyy-HH:mm:ss.SSS-z";
-    private static final TimeZone TZ_utc = TimeZone.getTimeZone("UTC");
-    private static final int TIMEZONE_OFFSET = TimeZone.getDefault().getOffset(new Date().getTime());
 
     private static Person person = null;
     private static MediaGroup mediaGroup = null;
@@ -46,16 +43,6 @@ public class ScreenCapture {
         final Rectangle rectangle = new Rectangle(getxSize(), getySize(), getWidth(), getHeight());
 
         int threadsCount = Runtime.getRuntime().availableProcessors() - 1;
-        dateNow = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormStr);
-        dateFormat.setTimeZone(TZ_utc);
-        String date = dateFormat.format(dateNow);
-        System.out.println("date: " + date);
-//        SimpleDateFormat saveDateUTC = new SimpleDateFormat();
-//        saveDateUTC.setTimeZone(TZ_utc);
-//        Date d = new Date();
-//        System.out.println(d);
-//        System.out.println(saveDateUTC.format(d));
 
         SQLHandler sqlite = new SQLHandler(DBType.sqlite);
         SQLiteMedia sqLiteMedia = new SQLiteMedia(sqlite);
@@ -79,7 +66,7 @@ public class ScreenCapture {
                 if (mediaGroup.getId() != 0) {
                     groupNameId = mediaGroup.getId();
                 } else groupNameId = sqLiteMedia.setGroupName(mediaGroup.getName());
-            } else groupNameId = sqLiteMedia.setGroupName(date);
+            } else groupNameId = sqLiteMedia.setGroupName(MyDate.dateNowUTCString());
 
             sqlite.getStmt().execute("insert into Image_Temp (group_name_id) values (" + groupNameId + ")");
 
@@ -100,7 +87,7 @@ public class ScreenCapture {
                     public void run() {
                         do {
                             try {
-                                medias[w].getMediaList().add(new Image((System.currentTimeMillis() - TIMEZONE_OFFSET), new Robot().createScreenCapture(rectangle)));
+                                medias[w].getMediaList().add(new Image(MyDate.dateNowUTClong(), new Robot().createScreenCapture(rectangle)));
                             } catch (AWTException e) {
                                 e.printStackTrace();
                             }
@@ -215,7 +202,9 @@ public class ScreenCapture {
         ScreenCapture.mediaGroup = mediaGroup;
     }
 
+/*
     public static int getTimezoneOffset() {
         return TIMEZONE_OFFSET;
     }
+*/
 }

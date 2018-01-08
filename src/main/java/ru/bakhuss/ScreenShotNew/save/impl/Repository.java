@@ -1,4 +1,4 @@
-package ru.bakhuss.ScreenShotNew.dataBase.Repository.impl;
+package ru.bakhuss.ScreenShotNew.save.impl;
 
 import java.io.IOException;
 import java.sql.SQLException;

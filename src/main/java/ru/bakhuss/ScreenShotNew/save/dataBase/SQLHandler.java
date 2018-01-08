@@ -1,4 +1,4 @@
-package ru.bakhuss.ScreenShotNew.dataBase;
+package ru.bakhuss.ScreenShotNew.save.dataBase;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class SQLHandler {
 
 
     public void connect() throws SQLException {
-        connection = DriverManager.getConnection(DataBaseFile.getUrlDB(type.toString()), user, password);
+        connection = DriverManager.getConnection(DataBaseFile.getUrlDB(type), user, password);
         stmt = connection.createStatement();
         System.out.println("db connect");
     }

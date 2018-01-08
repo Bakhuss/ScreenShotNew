@@ -1,4 +1,4 @@
-package ru.bakhuss.ScreenShotNew.dataBase;
+package ru.bakhuss.ScreenShotNew.save.dataBase;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

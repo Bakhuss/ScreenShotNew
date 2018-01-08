@@ -10,7 +10,7 @@ public class Media extends MediaAbstract {
     private static HashMap<Long, Audio> commonAudioList = null;
     private static HashMap<Long, Video> commonVideoList = null;
     private static HashMap<Long, ? extends Media> commonMediaList = null;
-    private static ConcurrentHashMap<Long, Image> commonImageList = null;
+    private static ConcurrentHashMap<Long, BufferedImage> commonImageList = null;
 
     protected Long nameId = null;
     protected BufferedImage media = null;
@@ -25,7 +25,7 @@ public class Media extends MediaAbstract {
         this.nameId = nameId;
     }
 
-    public static ConcurrentHashMap<Long, Image> getCommonImageList() {
+    public static ConcurrentHashMap<Long, BufferedImage> getCommonImageList() {
         if (commonImageList == null) commonImageList = new ConcurrentHashMap<>();
         return commonImageList;
     }

@@ -1,4 +1,4 @@
-package ru.bakhuss.ScreenShotNew.dataBase;
+package ru.bakhuss.ScreenShotNew.save.dataBase;
 
 import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.media.Media;

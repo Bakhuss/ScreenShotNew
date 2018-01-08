@@ -5,8 +5,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.stage.WindowEvent;
-import ru.bakhuss.ScreenShotNew.dataBase.DBType;
-import ru.bakhuss.ScreenShotNew.dataBase.SQLHandler;
+import ru.bakhuss.ScreenShotNew.save.dataBase.DBType;
+import ru.bakhuss.ScreenShotNew.save.dataBase.SQLHandler;
 import ru.bakhuss.ScreenShotNew.model.media.*;
 import ru.bakhuss.ScreenShotNew.model.media.Image;
 import ru.bakhuss.ScreenShotNew.model.person.Person;
@@ -57,8 +57,6 @@ public class MainClass extends Application {
         System.out.println(System.currentTimeMillis());
         System.out.println(System.nanoTime());
 
-        Image image = new Image();
-//        if (Media.getCommonImageList().containsKey(image.getId())) Media.getCommonImageList().get(image.getId());
 
         Image img = new Image();
         Person pers = new Person();

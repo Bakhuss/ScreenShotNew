@@ -1,4 +1,4 @@
-package ru.bakhuss.ScreenShotNew.dataBase.sqlQuery;
+package ru.bakhuss.ScreenShotNew.save.dataBase.sqlQuery;
 
 public class SQLConstructor {
 

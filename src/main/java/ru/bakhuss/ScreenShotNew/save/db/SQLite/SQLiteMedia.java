@@ -1,6 +1,6 @@
-package ru.bakhuss.ScreenShotNew.dataBase.Repository.DB.SQLite;
+package ru.bakhuss.ScreenShotNew.save.db.SQLite;
 
-import ru.bakhuss.ScreenShotNew.dataBase.Repository.impl.MediaRep;
+import ru.bakhuss.ScreenShotNew.save.impl.MediaRep;
 import ru.bakhuss.ScreenShotNew.model.media.Media;
 
 import java.sql.SQLException;

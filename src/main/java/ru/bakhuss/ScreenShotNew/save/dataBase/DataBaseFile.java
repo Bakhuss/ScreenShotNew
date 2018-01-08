@@ -1,5 +1,6 @@
-package ru.bakhuss.ScreenShotNew.dataBase;
+package ru.bakhuss.ScreenShotNew.save.dataBase;
 
+import javax.xml.crypto.Data;
 import java.io.File;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,10 +9,13 @@ public class DataBaseFile {
     static String dbInterface = "jdbc";
     private static String urlDB = "../lib/ScShdb.db";
 //    private static String urlDB = "ScShdb.db";
+    private static DBType dbType;
 
-    public static String getUrlDB(String dbType) {
+    public static String getUrlDB(DBType dbType) {
+        DataBaseFile.dbType = dbType;
+        String typeDB = dbType.toString();
         StringBuilder str = new StringBuilder();
-        str.append(dbInterface).append(":").append(dbType).append(":").append(urlDB);
+        str.append(dbInterface).append(":").append(typeDB).append(":").append(urlDB);
         return str.toString();
     }
 
