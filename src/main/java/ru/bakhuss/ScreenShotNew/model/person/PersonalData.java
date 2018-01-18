@@ -1,8 +1,9 @@
 package ru.bakhuss.ScreenShotNew.model.person;
 
 import ru.bakhuss.ScreenShotNew.model.CommonFields;
+import ru.bakhuss.ScreenShotNew.save.impl.SavedObjects;
 
-public class PersonalData extends CommonFields {
+public class PersonalData extends CommonFields implements SavedObjects {
     private String birthDay;
     private String birthPlace;
     private String deathDay;

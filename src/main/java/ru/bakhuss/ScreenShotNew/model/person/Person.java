@@ -5,11 +5,12 @@ import javafx.beans.property.StringProperty;
 import ru.bakhuss.ScreenShotNew.model.CommonFields;
 import ru.bakhuss.ScreenShotNew.model.DBTables;
 import ru.bakhuss.ScreenShotNew.model.media.MediaAbstract;
+import ru.bakhuss.ScreenShotNew.save.impl.SavedObjects;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Person extends CommonFields {
+public class Person extends CommonFields implements SavedObjects {
 
     private StringProperty surname;
     private StringProperty firstName;

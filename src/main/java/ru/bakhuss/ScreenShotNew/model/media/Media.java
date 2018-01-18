@@ -1,10 +1,12 @@
 package ru.bakhuss.ScreenShotNew.model.media;
 
+import ru.bakhuss.ScreenShotNew.save.impl.SavedObjects;
+
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class Media extends MediaAbstract {
+public class Media extends MediaAbstract implements SavedObjects {
 
 //    private static HashMap<Long, Image> commonImageList = null;
     private static HashMap<Long, Audio> commonAudioList = null;
